@@ -24,15 +24,15 @@ A secure workspace for national officers to audit submissions, view demographic 
 
 ---
 
-## 🌟 Key Features
+## Key Features
 
-### 👤 Citizen Interface & Command Center
+### Citizen Interface & Command Center
 - **Welcome Hero Card**: Personalized greetings display the Citizen's Profile Photo, Full Name, Family ID, and Census Registration ID with an elegant Indian tricolor glassmorphic styling.
 - **Dynamic Stats Widgets**: Visualizes active statistics such as overall registration progress, total registered family size, and status indicators.
 - **Interactive Population Globe**: Integrates a 3D Canvas-based global visualization built with React Three Fiber (`Three.js`) representing national growth and analytics.
 - **Quick Action Links**: Rapid navigation buttons to edit profiles, start/resume registration, and add dependents.
 
-### 📝 10-Step Census Registration Wizard
+### 10-Step Census Registration Wizard
 1. **Personal Details**: Legal Name, Gender, DOB, Marital Status, Nationality.
 2. **Identity Proof**: Aadhaar validation.
 3. **Contact Details**: Secure email and phone verification.
@@ -45,7 +45,7 @@ A secure workspace for national officers to audit submissions, view demographic 
 10. **Preview & Submission**: Final summary step allowing double-checking before committing the data.
 *Features safe-resume capability preserving steps in the URL queries and database state updates to prevent data loss on browser refresh.*
 
-### 👨‍👩‍👧 Dedicated Family Dependent Registry
+### Dedicated Family Dependent Registry
 - **Demographic Balance Gauges**: Computes dynamic male/female balance counters, age profiles (Children vs. Adults vs. Seniors), and household literacy percentages.
 - **Mandatory PDF Verifications**: Requires citizens to upload valid PDF documents for:
   - *Age Proof* (PAN Card, Aadhaar, etc.)
@@ -53,12 +53,12 @@ A secure workspace for national officers to audit submissions, view demographic 
   - *Qualification Proof* (Marksheets, Degrees, Diplomas, etc.)
 - **Binary Stream Downloads**: Encrypted, token-authenticated endpoints stream PDFs safely from the backend, preventing unauthorized URL access.
 
-### 👮 Census Officer Dashboard
+### Census Officer Dashboard
 - **Real-Time Audits**: Shows active census submissions needing verification.
 - **Registry Search & Filter**: Filter candidates by Aadhaar number, submission status, and states/districts.
 - **Detailed Verification Panels**: Allows download, streaming, and inspection of all 3 mandatory PDF files for dependents before approving or rejecting applications.
 
-### 🔒 Security & Backend Integration
+### Security & Backend Integration
 - **Aadhaar-Based Authentication**: Citizen registration requires identity checking, accompanied by simulated 6-digit OTP verification codes (`123456`).
 - **Role-Based Routing**: Strict React Router guards block unauthorized access between citizen accounts and officer accounts.
 - **Safe Database Syncs**: Wizard data saves preserve existing dependent document paths through name/Aadhaar matching logic.
@@ -66,7 +66,7 @@ A secure workspace for national officers to audit submissions, view demographic 
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 - **Framework**: React.js 19 (Vite)
@@ -84,7 +84,7 @@ A secure workspace for national officers to audit submissions, view demographic 
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 - Node.js (v18+ recommended)
@@ -111,7 +111,7 @@ You can run the frontend (port `5173` or `5174`) and backend (port `5000`) serve
 npm run dev
 ```
 
-### 👤 Demo Credentials
+### Demo Credentials
 - **Census Officer (Admin)**:
   - Username: `admin`
   - Password: `admin123`
