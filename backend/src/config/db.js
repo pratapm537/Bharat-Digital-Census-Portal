@@ -145,6 +145,52 @@ export const initDb = async () => {
     );
     console.log('Seeded default admin officer account (username: admin, password: admin123).');
   }
+  
+  // Data healing: Restore lost progress steps for drafts based on filled fields
+  console.log('Running database healing migration for draft step progress...');
+  try {
+    await run(`UPDATE census_responses SET step = 1 WHERE step IS NULL OR step < 1`);
+    
+    await run(`
+      UPDATE census_responses 
+      SET step = 4 
+      WHERE step = 1 
+        AND personal_fullName IS NOT NULL AND personal_fullName != ''
+        AND identity_aadhaar IS NOT NULL AND identity_aadhaar != ''
+        AND contact_phone IS NOT NULL AND contact_phone != ''
+    `);
+
+    await run(`
+      UPDATE census_responses 
+      SET step = 5 
+      WHERE step < 5 
+        AND address_state IS NOT NULL AND address_state != ''
+    `);
+
+    await run(`
+      UPDATE census_responses 
+      SET step = 7 
+      WHERE step < 7 
+        AND education_literacy IS NOT NULL AND education_literacy != ''
+    `);
+
+    await run(`
+      UPDATE census_responses 
+      SET step = 8 
+      WHERE step < 8 
+        AND employment_occupation IS NOT NULL AND employment_occupation != ''
+    `);
+
+    await run(`
+      UPDATE census_responses 
+      SET step = 9 
+      WHERE step < 9 
+        AND housing_type IS NOT NULL AND housing_type != ''
+    `);
+    console.log('Database draft step healing migration finished.');
+  } catch (err) {
+    console.error('Error running database healing migration:', err);
+  }
 
   console.log('Database initialization complete.');
 };

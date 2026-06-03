@@ -21,7 +21,7 @@ const STEP_TITLES = [
 
 const Wizard = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -151,6 +151,12 @@ const Wizard = () => {
   useEffect(() => {
     loadDraft();
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      setSearchParams({ step: currentStep }, { replace: true });
+    }
+  }, [currentStep, loading, setSearchParams]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;

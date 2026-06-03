@@ -388,7 +388,7 @@ const Dashboard = () => {
                   </div>
 
                   <button
-                    onClick={() => navigate('/wizard')}
+                    onClick={() => navigate(`/wizard?step=${step}`)}
                     className="mt-4 flex items-center gap-1.5 bg-[#0b2447] text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-[#1f3e6d] transition-all shadow-sm active:scale-95 cursor-pointer"
                   >
                     {draft?.status === 'APPROVED' ? 'View Submission' : step > 1 ? 'Continue Registration' : 'Start Registration'}
@@ -438,7 +438,7 @@ const Dashboard = () => {
                 )}
                 {statusKey === 'REJECTED' && (
                   <button
-                    onClick={() => navigate('/wizard')}
+                    onClick={() => navigate(`/wizard?step=${step}`)}
                     className="flex items-center gap-2 w-max font-bold text-xs px-5 py-2 rounded-full shadow-sm active:scale-95 transition-all cursor-pointer text-white"
                     style={{ background: statusCfg.color }}
                   >
@@ -486,7 +486,7 @@ const Dashboard = () => {
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-extrabold text-base text-[#0b2447]">Document Status</h2>
-                <button onClick={() => navigate('/wizard')}
+                <button onClick={() => navigate('/wizard?step=7')}
                   className="text-[11px] font-bold text-[#0b2447] hover:underline flex items-center gap-1 cursor-pointer">
                   Upload More <ChevronRight className="w-3.5 h-3.5" />
                 </button>
@@ -606,7 +606,7 @@ const Dashboard = () => {
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-extrabold text-sm text-[#0b2447]">Family Overview</h2>
-                <button onClick={() => navigate('/wizard')}
+                <button onClick={() => navigate('/wizard?step=5')}
                   className="text-[10px] font-bold text-[#ff9933] hover:underline flex items-center gap-1 cursor-pointer">
                   Add Member <ChevronRight className="w-3 h-3" />
                 </button>
@@ -646,7 +646,7 @@ const Dashboard = () => {
                 <div className="text-center py-4">
                   <Users className="w-8 h-8 text-slate-200 mx-auto mb-2" />
                   <p className="text-xs text-slate-400">No family members added yet.</p>
-                  <button onClick={() => navigate('/wizard')}
+                  <button onClick={() => navigate('/wizard?step=5')}
                     className="text-[10px] font-bold text-[#0b2447] hover:underline mt-1 cursor-pointer">
                     Add members in Step 5
                   </button>

@@ -37,7 +37,7 @@ export const saveCensusStep = async (req, res, next) => {
   }
 
   try {
-    const draft = await get('SELECT id, status FROM census_responses WHERE userId = ?', [userId]);
+    const draft = await get('SELECT id, status, step FROM census_responses WHERE userId = ?', [userId]);
     if (!draft) {
       return res.status(404).json({ message: 'No census record found.' });
     }
