@@ -173,8 +173,8 @@ const FamilyDashboard = () => {
   const literateCount = family.filter(m => m.qualification && m.qualification !== 'Illiterate').length;
   const literacyRate = totalCount > 0 ? Math.round((literateCount / totalCount) * 100) : 0;
 
-  // Check form editing status
-  const canEdit = draft?.status === 'DRAFT' || draft?.status === 'REJECTED';
+  // Check form editing status (always true to allow continuous updates for family members)
+  const canEdit = true;
 
   if (loading) {
     return (

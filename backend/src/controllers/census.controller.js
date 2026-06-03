@@ -337,9 +337,7 @@ export const addFamilyMember = async (req, res, next) => {
       return res.status(404).json({ message: 'No active census record found.' });
     }
 
-    if (draft.status !== 'DRAFT' && draft.status !== 'REJECTED') {
-      return res.status(400).json({ message: 'Cannot modify family members. Census is already submitted.' });
-    }
+
 
     const result = await run(
       `INSERT INTO family_members 
@@ -369,9 +367,7 @@ export const deleteFamilyMember = async (req, res, next) => {
       return res.status(404).json({ message: 'No active census record found.' });
     }
 
-    if (draft.status !== 'DRAFT' && draft.status !== 'REJECTED') {
-      return res.status(400).json({ message: 'Cannot modify family members. Census is already submitted.' });
-    }
+
 
     const member = await get('SELECT id FROM family_members WHERE id = ? AND censusResponseId = ?', [id, draft.id]);
     if (!member) {
