@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-onBackground font-sans min-h-screen flex flex-col antialiased;
+  }
+}
+
+/* Custom UI Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dark .glass-panel {
+  background: rgba(11, 36, 71, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ambient-shadow {
+  box-shadow: 0px 4px 24px rgba(11, 36, 71, 0.06);
+}
+
+.premium-card {
+  @apply bg-surface border border-outlineVariant/30 rounded-DEFAULT ambient-shadow transition-all duration-300;
+}
+
+.premium-card:hover {
+  @apply shadow-premium -translate-y-1;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-outline/20 rounded-full hover:bg-outline/40 transition-colors;
+}
+
+/* Form focus ring utility */
+.form-input-focus {
+  @apply focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none;
+}
