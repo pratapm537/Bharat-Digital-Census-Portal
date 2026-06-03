@@ -1,373 +1,223 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
-import { ArrowRight, CheckCircle, Group, Landmark, TrendingUp, Info } from 'lucide-react';
+import PopulationGlobe from '../components/dashboard/PopulationGlobe.jsx';
+import DashboardCharts from '../components/dashboard/DashboardCharts.jsx';
+import { 
+  ArrowRight, ShieldCheck, ChevronRight, Activity, Globe, Map, Layers, ZoomIn 
+} from 'lucide-react';
 
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  
-  // Population counter state
-  const [population, setPopulation] = useState(1428627663);
 
-  // Hover World Map states
-  const [hoveredCountry, setHoveredCountry] = useState(null);
-  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+  // Entrance animation loading sequence states
+  const [loadStage, setLoadStage] = useState(0); // Stages 0 to 4
+  const [livePopulation, setLivePopulation] = useState(1463857241);
+  const [mapboxLayer, setMapboxLayer] = useState('density'); // 'density', 'boundary', 'terrain'
 
   useEffect(() => {
-    // Playfully increment population by random small values to feel "live"
-    const interval = setInterval(() => {
-      setPopulation(prev => prev + Math.floor(Math.random() * 3));
-    }, 2500);
+    // Orchestrate entrance sequence
+    const t1 = setTimeout(() => setLoadStage(1), 300);  // Show Globe
+    const t2 = setTimeout(() => setLoadStage(2), 1200); // Focus India & Start Odometer
+    const t3 = setTimeout(() => setLoadStage(3), 2000); // Show Rankings
+    const t4 = setTimeout(() => setLoadStage(4), 2800); // Show Analytics
 
-    return () => clearInterval(interval);
+    // Odometer updates once per second
+    const interval = setInterval(() => {
+      setLivePopulation(prev => prev + Math.floor(Math.random() * 2) + 1);
+    }, 1000);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+      clearInterval(interval);
+    };
   }, []);
 
-  const formatPopulation = (num) => {
+  const formatOdometer = (num) => {
     return num.toLocaleString('en-IN');
   };
 
-  const handleStartRegistration = () => {
+  const handleStartFiling = () => {
     if (user) {
-      if (user.role === 'OFFICER') {
-        navigate('/admin');
-      } else {
-        navigate('/wizard');
-      }
+      navigate(user.role === 'OFFICER' ? '/admin' : '/wizard');
     } else {
       navigate('/login?mode=signup');
     }
   };
 
-  // Map mouse handlers
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setTooltipPos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
-
-  const handleMouseEnter = (e, name, pop, rank, desc) => {
-    setHoveredCountry({ name, population: pop, rank, desc });
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredCountry(null);
-  };
-
   return (
-    <div className="flex-grow w-full max-w-containerMax mx-auto px-6 py-8 flex flex-col gap-10">
-      
-      {/* Dynamic styles for map animation */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes pulse-ring {
-          0% {
-            transform: scale(0.3);
-            opacity: 0.8;
-          }
-          100% {
-            transform: scale(2.2);
-            opacity: 0;
-          }
-        }
-        @keyframes pulse-ring-blue {
-          0% {
-            transform: scale(0.3);
-            opacity: 0.6;
-          }
-          100% {
-            transform: scale(1.8);
-            opacity: 0;
-          }
-        }
-        .pulse-ring {
-          animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-          transform-origin: 625px 220px;
-        }
-        .pulse-ring-blue {
-          animation: pulse-ring-blue 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-      `}} />
-
-      {/* Hero Section */}
-      <section className="relative w-full rounded-md overflow-hidden bg-surface-container/30 min-h-[500px] flex flex-col md:flex-row items-center justify-between p-8 md:p-12 ambient-shadow border border-outlineVariant/30 gap-8">
+    <div className="flex-grow w-full bg-[#020617] text-slate-100 flex flex-col items-center">
+      <div className="w-full max-w-containerMax px-6 py-8 flex flex-col gap-10">
         
-        <div className="w-full md:w-2/5 flex flex-col gap-6 z-10 shrink-0">
-          <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary-dark px-3 py-1 rounded-full w-max border border-secondary/20">
-            <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-            <span className="font-semibold text-xs tracking-wider uppercase">Live Updates 2026</span>
-          </div>
+        {/* Real-time National Demographics Hero Console */}
+        <section className="relative w-full rounded-md bg-gradient-to-b from-[#0b1b33]/60 to-[#020617] border border-white/10 p-6 md:p-10 shadow-premium flex flex-col lg:flex-row items-center gap-10 min-h-[580px] overflow-hidden">
           
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-primary leading-tight">
-            Empowering Tomorrow's India
-          </h2>
+          {/* Subtle Grid backdrop */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none" />
           
-          <p className="text-sm md:text-base text-onSurfaceVariant leading-relaxed">
-            The digital infrastructure for the world's largest democratic census. Secure, transparent, and built for a modern, progressive nation.
-          </p>
-
-          {/* Live Counter */}
-          <div className="glass-panel p-6 rounded-md flex flex-col gap-1.5 ambient-shadow border-l-[4px] border-l-secondary">
-            <span className="text-xs font-bold text-onSurfaceVariant uppercase tracking-wider">Estimated Population</span>
-            <div className="text-2xl md:text-4xl font-bold text-primary tracking-wide tabular-nums">
-              {formatPopulation(population)}
+          {/* Left Column (40% width) - Core Information & Actions */}
+          <div className={`w-full lg:w-[42%] flex flex-col gap-6 z-10 transition-all duration-700 transform ${
+            loadStage >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}>
+            
+            {/* National Crest Badge */}
+            <div className="flex items-center gap-2 bg-[#ff9933]/10 border border-[#ff9933]/20 px-3 py-1 rounded-full w-max">
+              <Activity className="w-3.5 h-3.5 text-[#ff9933] animate-pulse" />
+              <span className="text-[10px] font-bold tracking-widest text-[#ff9933] uppercase">Live Demographics Registry</span>
             </div>
-          </div>
 
-          <div className="flex flex-wrap gap-4 mt-2">
-            <button 
-              onClick={handleStartRegistration}
-              className="bg-primary text-white hover:bg-primary-light px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 transition-all shadow-ambient active:scale-95 cursor-pointer"
-            >
-              Register for Census
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a 
-              href="#process"
-              className="bg-surface-high/60 text-primary border border-outlineVariant/50 hover:bg-surface-high hover:border-primary px-6 py-3 rounded-full font-bold text-xs flex items-center gap-2 transition-all cursor-pointer"
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+              Empowering <br className="hidden md:inline" />
+              <span className="bg-gradient-to-r from-[#ff9933] via-white to-[#138808] bg-clip-text text-transparent">
+                Tomorrow's India
+              </span>
+            </h2>
+            
+            <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
+              National demographic monitoring command. Real-time intelligence dashboard mapping the digital infrastructure of 1.4+ Billion citizens securely.
+            </p>
 
-        {/* Interactive World Map Section */}
-        <div className="w-full md:w-3/5 relative select-none flex items-center justify-center z-10 bg-white/20 rounded-md p-2 border border-outlineVariant/20 overflow-hidden">
-          
-          <svg 
-            viewBox="0 0 1000 480" 
-            className="w-full h-auto drop-shadow-sm select-none"
-            onMouseMove={handleMouseMove}
-          >
-            <defs>
-              <filter id="saffron-glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1" />
-                <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur2" />
-                <feMerge>
-                  <feMergeNode in="blur2" />
-                  <feMergeNode in="blur1" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* Stylized background grid */}
-            <g stroke="#cbd5e1" strokeWidth="0.5" strokeDasharray="3 9" opacity="0.3">
-              {[...Array(10)].map((_, i) => (
-                <line key={`v-${i}`} x1={i * 100} y1={0} x2={i * 100} y2={480} />
-              ))}
-              {[...Array(6)].map((_, i) => (
-                <line key={`h-${i}`} x1={0} y1={i * 80} x2={1000} y2={i * 80} />
-              ))}
-            </g>
-
-            {/* Stylized Continent Paths Backdrop */}
-            <g fill="#0b2447" fillOpacity="0.05" stroke="#0b2447" strokeWidth="1" strokeOpacity="0.15">
-              {/* North America */}
-              <path d="M 80,100 Q 150,60 280,110 T 260,200 T 220,230 T 170,250 T 130,220 T 70,140 Z" />
-              {/* South America */}
-              <path d="M 220,230 Q 250,250 260,300 T 230,380 T 190,440 T 170,400 T 180,300 Z" />
-              {/* Africa */}
-              <path d="M 430,220 Q 480,190 530,210 T 560,260 T 540,340 T 500,380 T 450,330 T 420,240 Z" />
-              {/* Eurasia */}
-              <path d="M 330,160 Q 400,90 600,80 T 850,90 T 900,180 T 800,240 T 650,260 T 500,240 T 360,210 Z" />
-              {/* Australia */}
-              <path d="M 760,330 Q 800,320 840,340 T 850,390 T 800,400 T 750,360 Z" />
-            </g>
-
-            {/* Glowing Saffron India Shape overlay */}
-            <path 
-              d="M 605,200 L 625,190 L 640,205 L 655,215 L 645,230 L 635,245 L 620,250 L 605,235 Z" 
-              fill="#ff9933" 
-              fillOpacity="0.75" 
-              stroke="#8f4e00" 
-              strokeWidth="1.5" 
-              filter="url(#saffron-glow)"
-              className="transition-all duration-300 hover:fill-opacity-95 cursor-pointer"
-              onMouseEnter={(e) => handleMouseEnter(e, 'India', formatPopulation(population), '1st', 'World\'s largest digital census registration system.')}
-              onMouseLeave={handleMouseLeave}
-            />
-
-            {/* Interactive Country pulsing markers */}
-            {/* 1. India Hotspot */}
-            <g 
-              className="cursor-pointer group"
-              onMouseEnter={(e) => handleMouseEnter(e, 'India', formatPopulation(population), '1st', 'World\'s largest digital census registration system.')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <circle cx="625" cy="220" r="16" fill="#ff9933" fillOpacity="0.3" className="pulse-ring" />
-              <circle cx="625" cy="220" r="28" fill="#ff9933" fillOpacity="0.15" className="pulse-ring" style={{ animationDelay: '0.8s' }} />
-              <circle cx="625" cy="220" r="6" fill="#ff9933" stroke="#8f4e00" strokeWidth="1" className="group-hover:scale-125 transition-transform" />
-            </g>
-
-            {/* 2. China Hotspot */}
-            <g 
-              className="cursor-pointer group"
-              onMouseEnter={(e) => handleMouseEnter(e, 'China', '1,411,750,000', '2nd', 'East Asian demographic giant.')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <circle cx="690" cy="165" r="12" fill="#0b2447" fillOpacity="0.15" className="pulse-ring-blue" style={{ transformOrigin: '690px 165px' }} />
-              <circle cx="690" cy="165" r="5" fill="#0b2447" className="group-hover:scale-125 transition-transform" />
-            </g>
-
-            {/* 3. United States Hotspot */}
-            <g 
-              className="cursor-pointer group"
-              onMouseEnter={(e) => handleMouseEnter(e, 'United States', '339,996,563', '3rd', 'Third most populated nation.')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <circle cx="180" cy="140" r="12" fill="#0b2447" fillOpacity="0.15" className="pulse-ring-blue" style={{ transformOrigin: '180px 140px' }} />
-              <circle cx="180" cy="140" r="5" fill="#0b2447" className="group-hover:scale-125 transition-transform" />
-            </g>
-
-            {/* 4. Indonesia Hotspot */}
-            <g 
-              className="cursor-pointer group"
-              onMouseEnter={(e) => handleMouseEnter(e, 'Indonesia', '277,534,122', '4th', 'Largest archipelago population.')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <circle cx="750" cy="275" r="12" fill="#0b2447" fillOpacity="0.15" className="pulse-ring-blue" style={{ transformOrigin: '750px 275px' }} />
-              <circle cx="750" cy="275" r="5" fill="#0b2447" className="group-hover:scale-125 transition-transform" />
-            </g>
-
-            {/* 5. Pakistan Hotspot */}
-            <g 
-              className="cursor-pointer group"
-              onMouseEnter={(e) => handleMouseEnter(e, 'Pakistan', '240,485,658', '5th', 'Fifth most populated nation.')}
-              onMouseLeave={handleMouseLeave}
-            >
-              <circle cx="590" cy="195" r="12" fill="#0b2447" fillOpacity="0.15" className="pulse-ring-blue" style={{ transformOrigin: '590px 195px' }} />
-              <circle cx="590" cy="195" r="5" fill="#0b2447" className="group-hover:scale-125 transition-transform" />
-            </g>
-          </svg>
-
-          {/* Floating Hover Tooltip */}
-          {hoveredCountry && (
-            <div 
-              style={{ left: tooltipPos.x + 15, top: tooltipPos.y + 15 }}
-              className="absolute bg-primary text-white border border-outlineVariant/30 rounded p-3 shadow-premium text-left pointer-events-none z-50 glass-panel animate-fade-in text-xs max-w-xs flex flex-col gap-1"
-            >
-              <div className="flex items-center justify-between border-b border-white/20 pb-1 mb-1">
-                <span className="font-bold text-sm text-secondary">{hoveredCountry.name}</span>
-                <span className="font-bold text-[9px] bg-white/20 px-1.5 py-0.5 rounded text-white uppercase tracking-wider">
-                  Rank {hoveredCountry.rank}
-                </span>
+            {/* Odometer Live India Population Counter */}
+            <div className={`glass-panel p-5 rounded-md border border-white/10 shadow-premium relative overflow-hidden transition-all duration-700 transform ${
+              loadStage >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}>
+              <div className="absolute right-3 top-3 flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+                <span className="text-[8px] font-bold text-red-500 uppercase tracking-widest">Live Sync</span>
               </div>
-              <p className="font-bold text-white text-xs">Population: {hoveredCountry.population}</p>
-              <p className="text-[10px] text-slate-300 leading-normal">{hoveredCountry.desc}</p>
+              <span className="text-[10px] font-bold text-[#ff9933] uppercase tracking-widest">India Population</span>
+              
+              <div className="text-2xl md:text-4xl font-extrabold text-white tracking-wider mt-2 font-mono tabular-nums leading-none">
+                {formatOdometer(livePopulation)}
+              </div>
+              
+              <span className="text-[8px] text-slate-400 uppercase tracking-wider block mt-2 font-bold">
+                Updating Live • National Census Bureau
+              </span>
             </div>
-          )}
 
-        </div>
-
-      </section>
-
-      {/* Stats Bento Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        {/* Global Context Panel - Top 5 Countries */}
-        <div className="md:col-span-1 bg-surface rounded-md border border-outlineVariant/50 p-6 flex flex-col gap-4 shadow-sm">
-          <div className="flex items-center justify-between border-b border-outlineVariant/30 pb-3">
-            <h3 className="font-bold text-base text-primary">Global Context</h3>
-            <span className="text-xs uppercase font-bold text-outline">Top 5 Nations</span>
-          </div>
-          <div className="flex flex-col gap-2.5">
-            <div className="flex items-center justify-between p-3 bg-secondary/15 rounded-md border-l-2 border-secondary animate-pulse">
-              <span className="font-semibold text-xs text-primary">1. India</span>
-              <span className="font-bold text-xs text-secondary-dark">{formatPopulation(population)}</span>
-            </div>
-            <div className="flex items-center justify-between p-3 hover:bg-surface-container/30 rounded-md transition-all text-onSurfaceVariant">
-              <span className="text-xs font-semibold">2. China</span>
-              <span className="text-xs font-bold">~1.41B</span>
-            </div>
-            <div className="flex items-center justify-between p-3 hover:bg-surface-container/30 rounded-md transition-all text-onSurfaceVariant">
-              <span className="text-xs font-semibold">3. United States</span>
-              <span className="text-xs font-bold">~340M</span>
-            </div>
-            <div className="flex items-center justify-between p-3 hover:bg-surface-container/30 rounded-md transition-all text-onSurfaceVariant">
-              <span className="text-xs font-semibold">4. Indonesia</span>
-              <span className="text-xs font-bold">~278M</span>
-            </div>
-            <div className="flex items-center justify-between p-3 hover:bg-surface-container/30 rounded-md transition-all text-onSurfaceVariant">
-              <span className="text-xs font-semibold">5. Pakistan</span>
-              <span className="text-xs font-bold">~240M</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Stats 2 Columns */}
-        <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="bg-surface rounded-md border border-outlineVariant/50 p-6 flex flex-col justify-between gap-4 shadow-sm relative overflow-hidden group">
-            <div className="absolute right-4 bottom-4 text-primary/5 group-hover:scale-110 transition-transform duration-300">
-              <CheckCircle className="w-24 h-24 stroke-[1]" />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold text-onSurfaceVariant uppercase tracking-widest">Citizens Documented</span>
-              <span className="text-2xl font-bold text-primary tracking-wide">45,230,192</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-success font-semibold text-xs mt-2">
-              <TrendingUp className="w-4 h-4" />
-              <span>+124,000 this week</span>
+            {/* Action CTAs */}
+            <div className="flex flex-wrap gap-4 items-center">
+              <button 
+                onClick={handleStartFiling}
+                className="bg-gradient-to-r from-[#ff9933] to-orange-500 text-white font-bold text-xs px-6 py-3.5 rounded-full flex items-center gap-2 hover:shadow-premium hover:opacity-95 transition-all transform active:scale-95 cursor-pointer"
+              >
+                Register Census Registry
+                <ArrowRight className="w-4 h-4" />
+              </button>
             </div>
           </div>
 
-          <div className="bg-surface rounded-md border border-outlineVariant/50 p-6 flex flex-col justify-between gap-4 shadow-sm relative overflow-hidden group">
-            <div className="absolute right-4 bottom-4 text-primary/5 group-hover:scale-110 transition-transform duration-300">
-              <Group className="w-24 h-24 stroke-[1]" />
+          {/* Right Column (58% width) - 3D Globe + Concept Overlay Mapbox */}
+          <div className="w-full lg:w-[58%] h-[400px] md:h-[500px] relative flex items-center justify-center">
+            
+            {/* 3D WebGL Earth Globe Container */}
+            <div className={`w-full h-full transition-opacity duration-1000 ${
+              loadStage >= 1 ? 'opacity-100' : 'opacity-0'
+            }`}>
+              {loadStage >= 1 && <PopulationGlobe />}
             </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold text-onSurfaceVariant uppercase tracking-widest">Families Recorded</span>
-              <span className="text-2xl font-bold text-primary tracking-wide">12,845,901</span>
+
+            {/* Mapbox Density Layout Concept layer controls */}
+            <div className={`absolute bottom-3 left-3 glass-panel p-3.5 rounded-md border border-white/10 shadow-premium z-20 flex flex-col gap-2 transition-all duration-700 transform ${
+              loadStage >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}>
+              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                <Map className="w-3 h-3 text-[#ff9933]" /> Mapbox Heatmap Layer
+              </span>
+              <div className="flex gap-1">
+                {[
+                  { id: 'density', label: 'Density Grid', icon: Layers },
+                  { id: 'boundary', label: 'Boundaries', icon: Globe }
+                ].map(tab => {
+                  const Icon = tab.icon;
+                  const active = mapboxLayer === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setMapboxLayer(tab.id)}
+                      className={`px-3 py-1 rounded text-[9px] font-bold flex items-center gap-1 transition-colors cursor-pointer ${
+                        active 
+                          ? 'bg-[#ff9933]/20 text-[#ff9933] border border-[#ff9933]/30' 
+                          : 'bg-white/5 text-slate-400 hover:text-white border border-transparent'
+                      }`}
+                    >
+                      <Icon className="w-2.5 h-2.5" /> {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <div className="flex items-center gap-1.5 text-onSurfaceVariant font-semibold text-xs mt-2">
-              <span className="w-2 h-2 rounded-full bg-success" />
-              <span>Verified via Aadhaar linkage</span>
+
+            {/* Floating World Population Ranking Panel */}
+            <div className={`absolute right-3 top-3 glass-panel p-4 rounded-md border border-white/10 shadow-premium z-20 w-52 flex flex-col gap-3.5 transition-all duration-700 transform ${
+              loadStage >= 3 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+            }`}>
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-white/5 pb-1.5 flex items-center justify-between">
+                <span>World Ranking</span>
+                <span className="text-secondary tracking-normal">Top 5</span>
+              </span>
+              <div className="flex flex-col gap-2.5">
+                {[
+                  { rank: '#1', name: 'India', flag: '🇮🇳', pop: '1.46B', growth: '+0.8%', active: true },
+                  { rank: '#2', name: 'China', flag: '🇨🇳', pop: '1.41B', growth: '-0.06%', active: false },
+                  { rank: '#3', name: 'USA', flag: '🇺🇸', pop: '340M', growth: '+0.5%', active: false },
+                  { rank: '#4', name: 'Indonesia', flag: '🇮🇩', pop: '277M', growth: '+0.8%', active: false },
+                  { rank: '#5', name: 'Pakistan', flag: '🇵🇰', pop: '240M', growth: '+1.9%', active: false }
+                ].map(country => (
+                  <div 
+                    key={country.name} 
+                    className={`flex items-center justify-between text-xs py-0.5 px-1.5 rounded transition-all ${
+                      country.active ? 'bg-[#ff9933]/10 border border-[#ff9933]/20 font-bold' : ''
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-slate-400 font-mono text-[10px]">{country.rank}</span>
+                      <span className="text-sm leading-none">{country.flag}</span>
+                      <span className="text-slate-200">{country.name}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-slate-100 font-semibold">{country.pop}</span>
+                      <span className={`text-[9px] ${country.growth.startsWith('+') ? 'text-success' : 'text-slate-400'}`}>
+                        {country.growth}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </div>
 
-      </section>
+            {/* Mapbox Heatmap visual mock layer when Density Grid is selected */}
+            {mapboxLayer === 'density' && (
+              <div className="absolute inset-0 pointer-events-none opacity-20 bg-radial-gradient flex items-center justify-center">
+                {/* Visual mesh overlay */}
+                <div className="w-80 h-80 rounded-full border border-success/15 border-dashed animate-spin duration-10000" />
+                <div className="absolute w-96 h-96 rounded-full border border-secondary/10 border-dashed animate-spin duration-20000" />
+              </div>
+            )}
 
-      {/* Registration Process Stepper Flow */}
-      <section id="process" className="bg-surface rounded-md border border-outlineVariant/50 p-8 shadow-sm flex flex-col gap-6">
-        <div className="text-center max-w-md mx-auto flex flex-col gap-2">
-          <h3 className="font-bold text-xl text-primary">Simple Verification Process</h3>
-          <p className="text-xs text-onSurfaceVariant">
-            Ensure your household participation in the census by following these simple interactive steps.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-5 gap-6 mt-4 relative">
-          
-          <div className="flex flex-col items-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold shadow-md">1</div>
-            <span className="font-semibold text-xs text-primary leading-tight">Aadhaar Validation</span>
           </div>
 
-          <div className="flex flex-col items-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-surface border-2 border-primary text-primary flex items-center justify-center font-bold">2</div>
-            <span className="font-semibold text-xs text-primary leading-tight">OTP Authentication</span>
+        </section>
+
+        {/* ECharts Analytics panels section */}
+        <section className={`w-full transition-all duration-700 transform ${
+          loadStage >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-3 bg-secondary rounded-full" />
+              <h3 className="font-bold text-base text-white uppercase tracking-wider">Registry Analytics Dashboard</h3>
+            </div>
+            <DashboardCharts />
           </div>
+        </section>
 
-          <div className="flex flex-col items-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-surface-high text-outline flex items-center justify-center font-bold">3</div>
-            <span className="font-semibold text-xs text-outline leading-tight">Filing wizard (10 Steps)</span>
-          </div>
-
-          <div className="flex flex-col items-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-surface-high text-outline flex items-center justify-center font-bold">4</div>
-            <span className="font-semibold text-xs text-outline leading-tight">Document Upload</span>
-          </div>
-
-          <div className="flex flex-col items-center text-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-surface-high text-outline flex items-center justify-center font-bold">5</div>
-            <span className="font-semibold text-xs text-outline leading-tight">Registry Approval</span>
-          </div>
-
-        </div>
-      </section>
-
+      </div>
     </div>
   );
 };
