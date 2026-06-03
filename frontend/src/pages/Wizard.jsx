@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { censusAPI } from '../services/api.js';
 import { 
   ArrowLeft, ArrowRight, Save, User, Landmark, Phone, Mail, MapPin, 
@@ -21,6 +21,7 @@ const STEP_TITLES = [
 
 const Wizard = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -129,8 +130,16 @@ const Wizard = () => {
         declaration: false
       });
 
-      // Resume from draft step
-      setCurrentStep(draft.step || 1);
+      // Resume from draft step, or jump to a requested step via ?step=N
+      const draftStep = parseInt(draft.step, 10) || 1;
+      const requestedStep = parseInt(searchParams.get('step'), 10);
+
+      if (requestedStep && requestedStep >= 1 && requestedStep <= 10) {
+        // Allow jumping to the requested step, but clamp to the user's progress
+        setCurrentStep(Math.min(requestedStep, draftStep));
+      } else {
+        setCurrentStep(draftStep);
+      }
     } catch (err) {
       console.error(err);
       setError('Could not establish draft registration session.');

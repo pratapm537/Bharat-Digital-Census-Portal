@@ -401,7 +401,7 @@ const Dashboard = () => {
             {/* ══════════════════════════════════════════════════
                 SECTION 3 · VERIFICATION STATUS
             ══════════════════════════════════════════════════ */}
-            <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+            <div id="verification-status" className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <h2 className="font-extrabold text-base text-[#0b2447] mb-4">Verification Status</h2>
 
               {/* Timeline */}
@@ -455,12 +455,12 @@ const Dashboard = () => {
               <h2 className="font-extrabold text-base text-[#0b2447] mb-4">Quick Actions</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
-                  { label: 'Continue Registration', icon: FileText,     color: '#0b2447', action: () => navigate('/wizard')    },
-                  { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/wizard')    },
-                  { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard')    },
-                  { label: 'Download Certificate',  icon: Download,     color: '#f59e0b', action: handleDownloadCertificate },
-                  { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => {}                    },
-                  { label: 'AI Census Assistant',   icon: Bot,          color: '#ef4444', action: () => setChatOpen(true)     },
+                  { label: 'Continue Registration', icon: FileText,     color: '#0b2447', action: () => navigate(`/wizard?step=${step}`)      },
+                  { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/wizard?step=5')             },
+                  { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard?step=7')             },
+                  { label: 'Download Certificate',  icon: Download,     color: '#f59e0b', action: handleDownloadCertificate                   },
+                  { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => document.getElementById('verification-status')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) },
+                  { label: 'AI Census Assistant',   icon: Bot,          color: '#ef4444', action: () => setChatOpen(true)                     },
                 ].map((a, i) => {
                   const Icon = a.icon;
                   return (
