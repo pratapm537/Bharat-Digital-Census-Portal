@@ -135,8 +135,8 @@ const Wizard = () => {
       const requestedStep = parseInt(searchParams.get('step'), 10);
 
       if (requestedStep && requestedStep >= 1 && requestedStep <= 10) {
-        // Allow jumping to the requested step, but clamp to the user's progress
-        setCurrentStep(Math.min(requestedStep, draftStep));
+        // Allow jumping to any valid step (data is auto-saved per step)
+        setCurrentStep(requestedStep);
       } else {
         setCurrentStep(draftStep);
       }
@@ -279,7 +279,14 @@ const Wizard = () => {
             return (
               <div 
                 key={title} 
-                className={`flex items-start gap-3 relative z-10 mb-4 transition-opacity duration-250 ${
+                onClick={() => {
+                  setError('');
+                  setSuccess('');
+                  setCurrentStep(stepNum);
+                }}
+                role="button"
+                tabIndex={0}
+                className={`flex items-start gap-3 relative z-10 mb-4 transition-opacity duration-250 cursor-pointer hover:opacity-100 ${
                   isActive || isCompleted ? 'opacity-100' : 'opacity-50'
                 }`}
               >
