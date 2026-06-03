@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import Wizard from './pages/Wizard.jsx';
 import Admin from './pages/Admin.jsx';
 import FamilyDashboard from './pages/FamilyDashboard.jsx';
+import CertificateCenter from './pages/CertificateCenter.jsx';
 
 // Guard for authenticated Citizen routes
 const CitizenRoute = ({ children }) => {
@@ -72,6 +73,14 @@ const AppContent = () => {
           element={
             <CitizenRoute>
               <FamilyDashboard />
+            </CitizenRoute>
+          }
+        />
+        <Route
+          path="/certificates"
+          element={
+            <CitizenRoute>
+              <CertificateCenter />
             </CitizenRoute>
           }
         />

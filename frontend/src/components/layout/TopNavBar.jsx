@@ -61,6 +61,14 @@ const TopNavBar = () => {
               >
                 File Census
               </Link>
+              <Link 
+                to="/certificates" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/certificates') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Certificates
+              </Link>
             </>
           )}
 
@@ -149,6 +157,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/wizard') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 File Census
+              </Link>
+              <Link 
+                to="/certificates" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/certificates') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Certificates
               </Link>
             </>
           )}

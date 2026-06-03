@@ -458,7 +458,7 @@ const Dashboard = () => {
                   { label: 'Continue Registration', icon: FileText,     color: '#0b2447', action: () => navigate(`/wizard?step=${step}`)      },
                   { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/family')             },
                   { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard?step=7')             },
-                  { label: 'Download Certificate',  icon: Download,     color: '#f59e0b', action: handleDownloadCertificate                   },
+                  { label: 'Certificate Center',  icon: Award,        color: '#f59e0b', action: () => navigate('/certificates')             },
                   { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => document.getElementById('verification-status')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) },
                   { label: 'AI Census Assistant',   icon: Bot,          color: '#ef4444', action: () => setChatOpen(true)                     },
                 ].map((a, i) => {
@@ -705,7 +705,7 @@ const Dashboard = () => {
                 { label: 'Help Centre',          icon: HelpCircle, action: () => {}                   },
                 { label: 'Contact Support',       icon: Phone,      action: () => {}                   },
                 { label: 'Raise a Complaint',     icon: Flag,       action: () => {}                   },
-                { label: 'Download Certificate',  icon: Download,   action: handleDownloadCertificate },
+                { label: 'Certificate Center',  icon: Award,   action: () => navigate('/certificates') },
                 { label: 'Sign Out',              icon: LogOut,     action: () => { logout(); navigate('/'); } },
               ].map((a, i) => {
                 const Icon = a.icon;
