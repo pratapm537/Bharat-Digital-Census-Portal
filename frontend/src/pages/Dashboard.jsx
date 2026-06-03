@@ -456,7 +456,7 @@ const Dashboard = () => {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {[
                   { label: 'Continue Registration', icon: FileText,     color: '#0b2447', action: () => navigate(`/wizard?step=${step}`)      },
-                  { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/wizard?step=5')             },
+                  { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/family')             },
                   { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard?step=7')             },
                   { label: 'Download Certificate',  icon: Download,     color: '#f59e0b', action: handleDownloadCertificate                   },
                   { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => document.getElementById('verification-status')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) },
@@ -606,7 +606,7 @@ const Dashboard = () => {
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-extrabold text-sm text-[#0b2447]">Family Overview</h2>
-                <button onClick={() => navigate('/wizard?step=5')}
+                <button onClick={() => navigate('/family')}
                   className="text-[10px] font-bold text-[#ff9933] hover:underline flex items-center gap-1 cursor-pointer">
                   Add Member <ChevronRight className="w-3 h-3" />
                 </button>
@@ -646,7 +646,7 @@ const Dashboard = () => {
                 <div className="text-center py-4">
                   <Users className="w-8 h-8 text-slate-200 mx-auto mb-2" />
                   <p className="text-xs text-slate-400">No family members added yet.</p>
-                  <button onClick={() => navigate('/wizard?step=5')}
+                  <button onClick={() => navigate('/family')}
                     className="text-[10px] font-bold text-[#0b2447] hover:underline mt-1 cursor-pointer">
                     Add members in Step 5
                   </button>

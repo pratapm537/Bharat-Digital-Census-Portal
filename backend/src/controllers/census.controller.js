@@ -102,8 +102,8 @@ export const saveCensusStep = async (req, res, next) => {
       for (const member of familyList) {
         if (member.fullName) {
           await run(
-            'INSERT INTO family_members (censusResponseId, fullName, dob, gender, relationship, aadhaar) VALUES (?, ?, ?, ?, ?, ?)',
-            [draft.id, member.fullName, member.dob || '', member.gender || '', member.relationship || '', member.aadhaar || '']
+            'INSERT INTO family_members (censusResponseId, fullName, dob, gender, relationship, aadhaar, qualification, occupation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+            [draft.id, member.fullName, member.dob || '', member.gender || '', member.relationship || '', member.aadhaar || '', member.qualification || '', member.occupation || '']
           );
         }
       }
@@ -318,6 +318,71 @@ export const downloadCertificate = async (req, res, next) => {
     res.setHeader('Content-Type', 'image/svg+xml');
     res.setHeader('Content-Disposition', `attachment; filename="${refNumber}.svg"`);
     return res.status(200).send(svgCertificate);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const addFamilyMember = async (req, res, next) => {
+  const userId = req.user.id;
+  const { fullName, dob, gender, relationship, aadhaar, qualification, occupation } = req.body;
+
+  if (!fullName) {
+    return res.status(400).json({ message: 'Full name is required.' });
+  }
+
+  try {
+    const draft = await get('SELECT id, status FROM census_responses WHERE userId = ?', [userId]);
+    if (!draft) {
+      return res.status(404).json({ message: 'No active census record found.' });
+    }
+
+    if (draft.status !== 'DRAFT' && draft.status !== 'REJECTED') {
+      return res.status(400).json({ message: 'Cannot modify family members. Census is already submitted.' });
+    }
+
+    const result = await run(
+      `INSERT INTO family_members 
+       (censusResponseId, fullName, dob, gender, relationship, aadhaar, qualification, occupation) 
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [draft.id, fullName, dob || '', gender || '', relationship || '', aadhaar || '', qualification || '', occupation || '']
+    );
+
+    const newMember = await get('SELECT * FROM family_members WHERE id = ?', [result.id]);
+
+    return res.status(201).json({
+      message: 'Family member added successfully.',
+      member: newMember
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteFamilyMember = async (req, res, next) => {
+  const userId = req.user.id;
+  const { id } = req.params;
+
+  try {
+    const draft = await get('SELECT id, status FROM census_responses WHERE userId = ?', [userId]);
+    if (!draft) {
+      return res.status(404).json({ message: 'No active census record found.' });
+    }
+
+    if (draft.status !== 'DRAFT' && draft.status !== 'REJECTED') {
+      return res.status(400).json({ message: 'Cannot modify family members. Census is already submitted.' });
+    }
+
+    const member = await get('SELECT id FROM family_members WHERE id = ? AND censusResponseId = ?', [id, draft.id]);
+    if (!member) {
+      return res.status(404).json({ message: 'Family member not found or does not belong to your household.' });
+    }
+
+    await run('DELETE FROM family_members WHERE id = ?', [id]);
+
+    return res.status(200).json({
+      message: 'Family member deleted successfully.'
+    });
   } catch (error) {
     next(error);
   }

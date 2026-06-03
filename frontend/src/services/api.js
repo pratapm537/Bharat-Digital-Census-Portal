@@ -64,6 +64,8 @@ export const censusAPI = {
     link.remove();
     window.URL.revokeObjectURL(url);
   },
+  addFamilyMember: (member) => api.post('/census/family-member', member),
+  deleteFamilyMember: (id) => api.delete(`/census/family-member/${id}`),
 };
 
 

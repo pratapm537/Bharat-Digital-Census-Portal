@@ -172,7 +172,7 @@ const Wizard = () => {
       ...prev,
       family: [
         ...prev.family,
-        { fullName: '', dob: '', gender: '', relationship: '', aadhaar: '' }
+        { fullName: '', dob: '', gender: '', relationship: '', aadhaar: '', qualification: '', occupation: '' }
       ]
     }));
   };
@@ -638,6 +638,33 @@ const Wizard = () => {
                             <option value="Mother">Mother</option>
                             <option value="Sibling">Sibling</option>
                           </select>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <select 
+                            value={member.qualification || ''}
+                            onChange={(e) => handleFamilyMemberChange(index, 'qualification', e.target.value)}
+                            className="px-2 py-1 bg-surface border border-outlineVariant rounded text-[11px] outline-none"
+                          >
+                            <option value="">Qualification</option>
+                            <option value="Illiterate">Illiterate</option>
+                            <option value="Literate">Literate</option>
+                            <option value="Primary School">Primary School</option>
+                            <option value="Middle School">Middle School</option>
+                            <option value="High School (10th)">High School (10th)</option>
+                            <option value="Senior Secondary (12th)">Senior Secondary (12th)</option>
+                            <option value="Diploma">Diploma</option>
+                            <option value="Graduate / Bachelor">Graduate / Bachelor</option>
+                            <option value="Post Graduate / Master">Post Graduate / Master</option>
+                            <option value="Doctorate (PhD)">Doctorate (PhD)</option>
+                          </select>
+                          <input 
+                            type="text" 
+                            placeholder="Occupation (e.g. Student, Job)"
+                            value={member.occupation || ''}
+                            onChange={(e) => handleFamilyMemberChange(index, 'occupation', e.target.value)}
+                            className="px-3 py-1 bg-surface border border-outlineVariant rounded text-[11px] outline-none focus:border-primary"
+                          />
                         </div>
                       </div>
                     ))}

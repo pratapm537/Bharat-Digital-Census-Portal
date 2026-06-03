@@ -116,6 +116,8 @@ export const initDb = async () => {
       gender TEXT,
       relationship TEXT,
       aadhaar TEXT,
+      qualification TEXT,
+      occupation TEXT,
       createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (censusResponseId) REFERENCES census_responses (id) ON DELETE CASCADE
     )
@@ -190,6 +192,21 @@ export const initDb = async () => {
     console.log('Database draft step healing migration finished.');
   } catch (err) {
     console.error('Error running database healing migration:', err);
+  }
+
+  // Schema alterations for family_members table
+  try {
+    await run('ALTER TABLE family_members ADD COLUMN qualification TEXT');
+    console.log("Added qualification column to family_members table.");
+  } catch (e) {
+    // Column already exists, ignore
+  }
+
+  try {
+    await run('ALTER TABLE family_members ADD COLUMN occupation TEXT');
+    console.log("Added occupation column to family_members table.");
+  } catch (e) {
+    // Column already exists, ignore
   }
 
   console.log('Database initialization complete.');
