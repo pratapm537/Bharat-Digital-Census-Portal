@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -137,6 +137,23 @@ const Dashboard = () => {
   ]);
   const [chatInput, setChatInput] = useState('');
   const chatEndRef = useRef(null);
+
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownloadCertificate = useCallback(async () => {
+    if (downloading) return;
+    setDownloading(true);
+    try {
+      await censusAPI.downloadCertificate();
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+        'Certificate download failed. Ensure your census is Approved.'
+      );
+    } finally {
+      setDownloading(false);
+    }
+  }, [downloading]);
 
   /* Fetch census data */
   useEffect(() => {
@@ -413,7 +430,7 @@ const Dashboard = () => {
 
                 {statusKey === 'APPROVED' && (
                   <button
-                    onClick={() => window.open(censusAPI.getCertificateDownloadUrl(), '_blank')}
+                    onClick={handleDownloadCertificate} disabled={downloading}
                     className="flex items-center gap-2 w-max bg-[#10b981] text-white font-bold text-xs px-5 py-2 rounded-full shadow-sm hover:opacity-90 active:scale-95 transition-all cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5" /> Download Certificate
@@ -441,7 +458,7 @@ const Dashboard = () => {
                   { label: 'Continue Registration', icon: FileText,     color: '#0b2447', action: () => navigate('/wizard')    },
                   { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/wizard')    },
                   { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard')    },
-                  { label: 'Download Certificate',  icon: Download,     color: '#f59e0b', action: () => window.open(censusAPI.getCertificateDownloadUrl(), '_blank') },
+                  { label: 'Download Certificate',  icon: Download,     color: '#f59e0b', action: handleDownloadCertificate },
                   { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => {}                    },
                   { label: 'AI Census Assistant',   icon: Bot,          color: '#ef4444', action: () => setChatOpen(true)     },
                 ].map((a, i) => {
@@ -688,7 +705,7 @@ const Dashboard = () => {
                 { label: 'Help Centre',          icon: HelpCircle, action: () => {}                   },
                 { label: 'Contact Support',       icon: Phone,      action: () => {}                   },
                 { label: 'Raise a Complaint',     icon: Flag,       action: () => {}                   },
-                { label: 'Download Certificate',  icon: Download,   action: () => window.open(censusAPI.getCertificateDownloadUrl(), '_blank') },
+                { label: 'Download Certificate',  icon: Download,   action: handleDownloadCertificate },
                 { label: 'Sign Out',              icon: LogOut,     action: () => { logout(); navigate('/'); } },
               ].map((a, i) => {
                 const Icon = a.icon;

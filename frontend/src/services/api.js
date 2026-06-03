@@ -39,8 +39,33 @@ export const censusAPI = {
       'Content-Type': 'multipart/form-data',
     },
   }),
-  getCertificateDownloadUrl: () => `${API_BASE_URL}/census/certificate`,
+
+  // Downloads the SVG certificate with auth token attached, then saves it locally.
+  downloadCertificate: async () => {
+    const response = await api.get('/census/certificate', {
+      responseType: 'blob',          // receive raw binary/svg
+    });
+
+    // Determine filename from Content-Disposition header if present
+    const disposition = response.headers['content-disposition'];
+    let filename = 'census-certificate.svg';
+    if (disposition) {
+      const match = disposition.match(/filename="?([^";\n]+)"?/);
+      if (match?.[1]) filename = match[1];
+    }
+
+    // Create a temporary object URL and trigger browser download
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'image/svg+xml' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', filename);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  },
 };
+
 
 export const adminAPI = {
   getStats: () => api.get('/admin/stats'),
