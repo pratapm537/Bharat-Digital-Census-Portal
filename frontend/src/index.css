@@ -4,11 +4,16 @@
 
 @layer base {
   body {
-    @apply bg-background text-onBackground font-sans min-h-screen flex flex-col antialiased;
+    @apply bg-background text-onBackground font-sans min-h-screen antialiased;
   }
 }
 
-/* Custom UI Utilities */
+/* Layout helper — lets the homepage fill the remaining height */
+.flex-grow {
+  flex-grow: 1;
+}
+
+/* Glass panel — kept for Login, Dashboard, Wizard cards */
 .glass-panel {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(16px);
@@ -52,4 +57,14 @@
 /* Form focus ring utility */
 .form-input-focus {
   @apply focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none;
+}
+
+/* Fade-in animation for hero elements */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeUp 0.5s ease both;
 }

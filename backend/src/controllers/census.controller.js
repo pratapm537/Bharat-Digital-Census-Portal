@@ -28,9 +28,11 @@ export const getCensusDraft = async (req, res, next) => {
 
 export const saveCensusStep = async (req, res, next) => {
   const userId = req.user.id;
-  const { step, data } = req.body;
+  // Cast to integer — SQLite and JSON serialization can produce strings
+  const step = parseInt(req.body.step, 10);
+  const data = req.body.data;
 
-  if (!step || step < 1 || step > 10) {
+  if (!step || isNaN(step) || step < 1 || step > 10) {
     return res.status(400).json({ message: 'Invalid step number. Must be between 1 and 10.' });
   }
 
@@ -166,7 +168,8 @@ export const saveCensusStep = async (req, res, next) => {
     }
 
     // Always update the progress step index if it is higher than the current step
-    const currentStep = draft.step;
+    // Cast draft.step to integer — SQLite node driver returns column values as strings
+    const currentStep = parseInt(draft.step, 10) || 1;
     let nextStep = step + 1;
     if (nextStep > 10) nextStep = 10;
 

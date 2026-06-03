@@ -50,31 +50,31 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
 
         {/* Private Citizen Routes */}
-        <Route 
-          path="/dashboard" 
+        <Route
+          path="/dashboard"
           element={
             <CitizenRoute>
               <Dashboard />
             </CitizenRoute>
-          } 
+          }
         />
-        <Route 
-          path="/wizard" 
+        <Route
+          path="/wizard"
           element={
             <CitizenRoute>
               <Wizard />
             </CitizenRoute>
-          } 
+          }
         />
 
         {/* Private Officer Routes */}
-        <Route 
-          path="/admin" 
+        <Route
+          path="/admin"
           element={
             <OfficerRoute>
               <Admin />
             </OfficerRoute>
-          } 
+          }
         />
 
         {/* Fallback redirect */}
