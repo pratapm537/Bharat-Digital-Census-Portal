@@ -64,8 +64,25 @@ export const censusAPI = {
     link.remove();
     window.URL.revokeObjectURL(url);
   },
-  addFamilyMember: (member) => api.post('/census/family-member', member),
+  addFamilyMember: (formData) => api.post('/census/family-member', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }),
   deleteFamilyMember: (id) => api.delete(`/census/family-member/${id}`),
+  downloadFamilyDocument: async (memberId, docType, memberName = 'family-document') => {
+    const response = await api.get(`/census/family-document/${memberId}/${docType}`, {
+      responseType: 'blob',
+    });
+    const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `${memberName.replace(/\s+/g, '_')}-${docType}-proof.pdf`);
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url);
+  },
 };
 
 

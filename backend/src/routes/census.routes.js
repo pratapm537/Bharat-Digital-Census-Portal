@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
-import { getCensusDraft, saveCensusStep, uploadDocument, downloadCertificate, addFamilyMember, deleteFamilyMember } from '../controllers/census.controller.js';
+import { getCensusDraft, saveCensusStep, uploadDocument, downloadCertificate, addFamilyMember, deleteFamilyMember, downloadFamilyDocument } from '../controllers/census.controller.js';
 import { authenticate } from '../middleware/auth.js';
 
 const router = express.Router();
@@ -33,12 +33,19 @@ const upload = multer({
   }
 });
 
+const familyUpload = upload.fields([
+  { name: 'ageProof', maxCount: 1 },
+  { name: 'addressProof', maxCount: 1 },
+  { name: 'qualificationProof', maxCount: 1 }
+]);
+
 router.get('/draft', authenticate, getCensusDraft);
 router.post('/save-step', authenticate, saveCensusStep);
 router.post('/upload', authenticate, upload.single('document'), uploadDocument);
 router.get('/certificate', authenticate, downloadCertificate);
 
-router.post('/family-member', authenticate, addFamilyMember);
+router.post('/family-member', authenticate, familyUpload, addFamilyMember);
 router.delete('/family-member/:id', authenticate, deleteFamilyMember);
+router.get('/family-document/:id/:type', authenticate, downloadFamilyDocument);
 
 export default router;

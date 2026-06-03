@@ -118,6 +118,12 @@ export const initDb = async () => {
       aadhaar TEXT,
       qualification TEXT,
       occupation TEXT,
+      ageProofPath TEXT,
+      ageProofName TEXT,
+      addressProofPath TEXT,
+      addressProofName TEXT,
+      qualificationProofPath TEXT,
+      qualificationProofName TEXT,
       createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
       FOREIGN KEY (censusResponseId) REFERENCES census_responses (id) ON DELETE CASCADE
     )
@@ -208,6 +214,25 @@ export const initDb = async () => {
   } catch (e) {
     // Column already exists, ignore
   }
+
+  // Schema alterations for family_members table (verification documents)
+  try {
+    await run('ALTER TABLE family_members ADD COLUMN ageProofPath TEXT');
+    await run('ALTER TABLE family_members ADD COLUMN ageProofName TEXT');
+    console.log("Added ageProof columns to family_members table.");
+  } catch (e) {}
+
+  try {
+    await run('ALTER TABLE family_members ADD COLUMN addressProofPath TEXT');
+    await run('ALTER TABLE family_members ADD COLUMN addressProofName TEXT');
+    console.log("Added addressProof columns to family_members table.");
+  } catch (e) {}
+
+  try {
+    await run('ALTER TABLE family_members ADD COLUMN qualificationProofPath TEXT');
+    await run('ALTER TABLE family_members ADD COLUMN qualificationProofName TEXT');
+    console.log("Added qualificationProof columns to family_members table.");
+  } catch (e) {}
 
   console.log('Database initialization complete.');
 };

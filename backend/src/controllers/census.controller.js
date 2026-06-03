@@ -95,15 +95,32 @@ export const saveCensusStep = async (req, res, next) => {
       // Sync family members array to the DB
       const familyList = data.family || [];
       
+      // Select existing members to preserve their document columns
+      const existing = await query('SELECT * FROM family_members WHERE censusResponseId = ?', [draft.id]);
+      
       // Delete old members
       await run('DELETE FROM family_members WHERE censusResponseId = ?', [draft.id]);
       
       // Insert new members
       for (const member of familyList) {
         if (member.fullName) {
+          const matched = existing.find(e => e.aadhaar === member.aadhaar || e.fullName === member.fullName);
+          const agePath = matched ? matched.ageProofPath : '';
+          const ageName = matched ? matched.ageProofName : '';
+          const addrPath = matched ? matched.addressProofPath : '';
+          const addrName = matched ? matched.addressProofName : '';
+          const qualPath = matched ? matched.qualificationProofPath : '';
+          const qualName = matched ? matched.qualificationProofName : '';
+
           await run(
-            'INSERT INTO family_members (censusResponseId, fullName, dob, gender, relationship, aadhaar, qualification, occupation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-            [draft.id, member.fullName, member.dob || '', member.gender || '', member.relationship || '', member.aadhaar || '', member.qualification || '', member.occupation || '']
+            `INSERT INTO family_members 
+             (censusResponseId, fullName, dob, gender, relationship, aadhaar, qualification, occupation,
+              ageProofPath, ageProofName, addressProofPath, addressProofName, qualificationProofPath, qualificationProofName) 
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            [
+              draft.id, member.fullName, member.dob || '', member.gender || '', member.relationship || '', member.aadhaar || '', member.qualification || '', member.occupation || '',
+              agePath, ageName, addrPath, addrName, qualPath, qualName
+            ]
           );
         }
       }
@@ -331,25 +348,38 @@ export const addFamilyMember = async (req, res, next) => {
     return res.status(400).json({ message: 'Full name is required.' });
   }
 
+  // Extract uploaded files
+  const ageProofFile = req.files?.ageProof?.[0];
+  const addressProofFile = req.files?.addressProof?.[0];
+  const qualificationProofFile = req.files?.qualificationProof?.[0];
+
+  if (!ageProofFile || !addressProofFile || !qualificationProofFile) {
+    return res.status(400).json({ message: 'All three verification documents (Age, Address, and Qualification proofs) are required in PDF/Image format.' });
+  }
+
   try {
     const draft = await get('SELECT id, status FROM census_responses WHERE userId = ?', [userId]);
     if (!draft) {
       return res.status(404).json({ message: 'No active census record found.' });
     }
 
-
-
     const result = await run(
       `INSERT INTO family_members 
-       (censusResponseId, fullName, dob, gender, relationship, aadhaar, qualification, occupation) 
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [draft.id, fullName, dob || '', gender || '', relationship || '', aadhaar || '', qualification || '', occupation || '']
+       (censusResponseId, fullName, dob, gender, relationship, aadhaar, qualification, occupation,
+        ageProofPath, ageProofName, addressProofPath, addressProofName, qualificationProofPath, qualificationProofName) 
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        draft.id, fullName, dob || '', gender || '', relationship || '', aadhaar || '', qualification || '', occupation || '',
+        ageProofFile.path, ageProofFile.originalname,
+        addressProofFile.path, addressProofFile.originalname,
+        qualificationProofFile.path, qualificationProofFile.originalname
+      ]
     );
 
     const newMember = await get('SELECT * FROM family_members WHERE id = ?', [result.id]);
 
     return res.status(201).json({
-      message: 'Family member added successfully.',
+      message: 'Family member registered with documents successfully.',
       member: newMember
     });
   } catch (error) {
@@ -379,6 +409,51 @@ export const deleteFamilyMember = async (req, res, next) => {
     return res.status(200).json({
       message: 'Family member deleted successfully.'
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const downloadFamilyDocument = async (req, res, next) => {
+  const userId = req.user.id;
+  const role = req.user.role;
+  const { id, type } = req.params; // type: 'age', 'address', 'qualification'
+
+  try {
+    let member;
+    if (role === 'OFFICER') {
+      member = await get('SELECT * FROM family_members WHERE id = ?', [id]);
+    } else {
+      const draft = await get('SELECT id FROM census_responses WHERE userId = ?', [userId]);
+      if (!draft) {
+        return res.status(404).json({ message: 'No active census record found.' });
+      }
+      member = await get('SELECT * FROM family_members WHERE id = ? AND censusResponseId = ?', [id, draft.id]);
+    }
+
+    if (!member) {
+      return res.status(404).json({ message: 'Family member not found.' });
+    }
+
+    let filePath = '';
+    let fileName = '';
+
+    if (type === 'age') {
+      filePath = member.ageProofPath;
+      fileName = member.ageProofName;
+    } else if (type === 'address') {
+      filePath = member.addressProofPath;
+      fileName = member.addressProofName;
+    } else if (type === 'qualification') {
+      filePath = member.qualificationProofPath;
+      fileName = member.qualificationProofName;
+    }
+
+    if (!filePath) {
+      return res.status(404).json({ message: 'Document not found or not uploaded.' });
+    }
+
+    res.download(filePath, fileName);
   } catch (error) {
     next(error);
   }

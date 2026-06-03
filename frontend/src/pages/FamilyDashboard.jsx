@@ -29,6 +29,11 @@ const FamilyDashboard = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
+  // File states for verification proofs
+  const [ageProof, setAgeProof] = useState(null);
+  const [addressProof, setAddressProof] = useState(null);
+  const [qualificationProof, setQualificationProof] = useState(null);
+
   // Add Member form state
   const [newMember, setNewMember] = useState({
     fullName: '',
@@ -100,10 +105,27 @@ const FamilyDashboard = () => {
       return;
     }
 
+    if (!ageProof || !addressProof || !qualificationProof) {
+      setError('All three verification documents (Age, Address, and Qualification proofs) are required in PDF format.');
+      return;
+    }
+
+    const uploadData = new FormData();
+    uploadData.append('fullName', newMember.fullName);
+    uploadData.append('dob', newMember.dob);
+    uploadData.append('gender', newMember.gender);
+    uploadData.append('relationship', newMember.relationship);
+    uploadData.append('aadhaar', newMember.aadhaar);
+    uploadData.append('qualification', newMember.qualification);
+    uploadData.append('occupation', newMember.occupation);
+    uploadData.append('ageProof', ageProof);
+    uploadData.append('addressProof', addressProof);
+    uploadData.append('qualificationProof', qualificationProof);
+
     setSaving(true);
     try {
-      const response = await censusAPI.addFamilyMember(newMember);
-      setSuccess('Family member registered in household successfully!');
+      const response = await censusAPI.addFamilyMember(uploadData);
+      setSuccess('Family member registered in household with verification documents successfully!');
       setFamily(prev => [...prev, response.data.member]);
       // Reset form
       setNewMember({
@@ -115,6 +137,10 @@ const FamilyDashboard = () => {
         qualification: '',
         occupation: ''
       });
+      setAgeProof(null);
+      setAddressProof(null);
+      setQualificationProof(null);
+      document.querySelectorAll('input[type="file"]').forEach(input => { input.value = ''; });
       // Refresh draft to make sure calculations stay in sync
       loadFamilyData();
     } catch (err) {
@@ -138,6 +164,15 @@ const FamilyDashboard = () => {
       loadFamilyData();
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to remove family member.');
+    }
+  };
+
+  const handleDownloadDoc = async (memberId, docType, memberName) => {
+    setError('');
+    try {
+      await censusAPI.downloadFamilyDocument(memberId, docType, memberName);
+    } catch (err) {
+      setError('Failed to download verification document.');
     }
   };
 
@@ -450,6 +485,49 @@ const FamilyDashboard = () => {
                   />
                 </div>
 
+                {/* PDF Verification Documents */}
+                <div className="grid grid-cols-1 gap-3.5 border-t border-slate-100 pt-4 mt-2">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[11px] font-bold text-[#0b2447] uppercase tracking-wide flex justify-between">
+                      <span>Age Proof PDF (e.g. PAN, Aadhaar)</span>
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <input 
+                      type="file" 
+                      accept=".pdf"
+                      onChange={(e) => setAgeProof(e.target.files[0])}
+                      className="w-full text-xs text-slate-500 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-[#0b2447]/10 file:text-[#0b2447] hover:file:bg-[#0b2447]/15 cursor-pointer outline-none"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[11px] font-bold text-[#0b2447] uppercase tracking-wide flex justify-between">
+                      <span>Address Proof PDF (e.g. Aadhaar, Bill)</span>
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <input 
+                      type="file" 
+                      accept=".pdf"
+                      onChange={(e) => setAddressProof(e.target.files[0])}
+                      className="w-full text-xs text-slate-500 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-[#0b2447]/10 file:text-[#0b2447] hover:file:bg-[#0b2447]/15 cursor-pointer outline-none"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[11px] font-bold text-[#0b2447] uppercase tracking-wide flex justify-between">
+                      <span>Qualification PDF (e.g. Degree, Marksheet)</span>
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <input 
+                      type="file" 
+                      accept=".pdf"
+                      onChange={(e) => setQualificationProof(e.target.files[0])}
+                      className="w-full text-xs text-slate-500 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-[10px] file:font-bold file:bg-[#0b2447]/10 file:text-[#0b2447] hover:file:bg-[#0b2447]/15 cursor-pointer outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+
                 <div className="pt-2">
                   <button 
                     type="submit"
@@ -534,6 +612,38 @@ const FamilyDashboard = () => {
                                   <Briefcase className="w-3 h-3 text-slate-400 shrink-0" />
                                   <span className="truncate">Job: {member.occupation}</span>
                                 </span>
+                              )}
+                            </div>
+
+                            {/* Verification documents view/download links */}
+                            <div className="mt-3.5 pt-3 border-t border-slate-100 flex flex-wrap gap-2">
+                              <span className="text-[9px] uppercase font-bold text-slate-400 self-center mr-1">Proofs:</span>
+                              {member.ageProofPath && (
+                                <button 
+                                  type="button"
+                                  onClick={() => handleDownloadDoc(member.id, 'age', member.fullName)}
+                                  className="flex items-center gap-1 bg-[#0b2447]/5 hover:bg-[#0b2447]/10 border border-[#0b2447]/10 rounded-lg px-2 py-0.5 text-[9px] font-bold text-[#0b2447] transition-all cursor-pointer hover:scale-105 active:scale-95"
+                                >
+                                  Age Proof
+                                </button>
+                              )}
+                              {member.addressProofPath && (
+                                <button 
+                                  type="button"
+                                  onClick={() => handleDownloadDoc(member.id, 'address', member.fullName)}
+                                  className="flex items-center gap-1 bg-[#0b2447]/5 hover:bg-[#0b2447]/10 border border-[#0b2447]/10 rounded-lg px-2 py-0.5 text-[9px] font-bold text-[#0b2447] transition-all cursor-pointer hover:scale-105 active:scale-95"
+                                >
+                                  Address Proof
+                                </button>
+                              )}
+                              {member.qualificationProofPath && (
+                                <button 
+                                  type="button"
+                                  onClick={() => handleDownloadDoc(member.id, 'qualification', member.fullName)}
+                                  className="flex items-center gap-1 bg-[#0b2447]/5 hover:bg-[#0b2447]/10 border border-[#0b2447]/10 rounded-lg px-2 py-0.5 text-[9px] font-bold text-[#0b2447] transition-all cursor-pointer hover:scale-105 active:scale-95"
+                                >
+                                  Edu Proof
+                                </button>
                               )}
                             </div>
                           </div>
