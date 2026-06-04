@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import Wizard from './pages/Wizard.jsx';
 import Admin from './pages/Admin.jsx';
 import FamilyDashboard from './pages/FamilyDashboard.jsx';
+import FamilyAnalytics from './pages/FamilyAnalytics.jsx';
 import CertificateCenter from './pages/CertificateCenter.jsx';
 import AppointmentBooking from './pages/AppointmentBooking.jsx';
 import NotificationCenter from './pages/NotificationCenter.jsx';
@@ -78,6 +79,14 @@ const AppContent = () => {
           element={
             <CitizenRoute>
               <FamilyDashboard />
+            </CitizenRoute>
+          }
+        />
+        <Route
+          path="/family-analytics"
+          element={
+            <CitizenRoute>
+              <FamilyAnalytics />
             </CitizenRoute>
           }
         />

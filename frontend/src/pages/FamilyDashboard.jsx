@@ -7,7 +7,7 @@ import {
   Calendar, Shield, Sparkles, CheckCircle, AlertTriangle, AlertCircle, Info,
   Heart, Bot, Send, Search, Filter, ArrowUpDown, ChevronDown, Check, X,
   FileText, Upload, Plus, Download, Edit, Phone, Eye, Share2, ZoomIn, ZoomOut,
-  Maximize2, Mic, Languages, Award
+  Maximize2, Mic, Languages, Award, BarChart2
 } from 'lucide-react';
 
 /* Qualification list aligned with Wizard.jsx */
@@ -575,8 +575,14 @@ const FamilyDashboard = () => {
               Manage complete household relations, visualize lineage trees, audit identification verification states, and download official family certifications.
             </p>
           </div>
-          
           <div className="flex items-center gap-4">
+            <button 
+              onClick={() => navigate('/family-analytics')}
+              className="flex items-center gap-2 bg-[#ff9933] hover:bg-orange-500 text-white font-bold text-xs px-4 py-2.5 rounded-2xl transition-all shadow-md active:scale-95 cursor-pointer border border-transparent"
+            >
+              <BarChart2 className="w-4 h-4" /> Family Analytics
+            </button>
+
             {/* Live vs Demo Toggle Switch */}
             <div className="flex items-center bg-white/5 border border-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-md">
               <div className="text-right mr-3">

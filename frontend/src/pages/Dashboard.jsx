@@ -7,7 +7,7 @@ import {
   ArrowRight, ShieldCheck, MapPin, Users, Heart, Bell, Activity,
   Briefcase, Home, BookOpen, Upload, MessageCircle, ChevronRight,
   Star, Zap, Eye, Edit, Phone, HelpCircle, Flag, LogOut,
-  X, Send, Bot, User, CheckSquare, Circle, TrendingUp, Award
+  X, Send, Bot, User, CheckSquare, Circle, TrendingUp, Award, BarChart2
 } from 'lucide-react';
 
 /* ─── Helpers ──────────────────────────────────────────────── */
@@ -457,6 +457,7 @@ const Dashboard = () => {
                 {[
                   { label: 'Continue Registration', icon: FileText,     color: '#0b2447', action: () => navigate(`/wizard?step=${step}`)      },
                   { label: 'Add Family Member',     icon: Users,        color: '#10b981', action: () => navigate('/family')             },
+                  { label: 'Family Analytics',      icon: BarChart2,    color: '#3b82f6', action: () => navigate('/family-analytics')   },
                   { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard?step=7')             },
                   { label: 'Certificate Center',  icon: Award,        color: '#f59e0b', action: () => navigate('/certificates')             },
                   { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => document.getElementById('verification-status')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) },
