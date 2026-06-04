@@ -68,3 +68,133 @@
 .animate-fade-in {
   animation: fadeUp 0.5s ease both;
 }
+
+/* ══════════════════════════════════════════════════
+   GLOBAL DARK MODE OVERRIDES
+   ══════════════════════════════════════════════════ */
+.dark body {
+  background-color: #030d1b !important;
+  color: #f1f5f9 !important;
+}
+
+.dark, .dark main, .dark .flex-grow {
+  background-color: #030d1b !important;
+}
+
+/* Surfaces & Cards */
+.dark .bg-surface,
+.dark .bg-white,
+.dark .premium-card {
+  background-color: #09172a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Background utilities */
+.dark .bg-\[\#f8faff\],
+.dark .bg-slate-50,
+.dark .bg-slate-50\/50,
+.dark .bg-slate-50\/70,
+.dark .bg-slate-55,
+.dark .bg-slate-100 {
+  background-color: #0d1e36 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Text overrides */
+.dark .text-slate-800,
+.dark .text-slate-750,
+.dark .text-slate-700,
+.dark .text-slate-650,
+.dark .text-slate-600,
+.dark .text-onSurface,
+.dark .text-onBackground,
+.dark h1:not(.text-white),
+.dark h2:not(.text-white),
+.dark h3:not(.text-white),
+.dark h4:not(.text-white) {
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-500,
+.dark .text-slate-450,
+.dark .text-slate-400,
+.dark .text-onSurfaceVariant {
+  color: #94a3b8 !important;
+}
+
+.dark .text-primary {
+  color: #ffdcc2 !important;
+}
+
+.dark .text-slate-350 {
+  color: #cbd5e1 !important;
+}
+
+/* Borders & Dividers */
+.dark .border-slate-200,
+.dark .border-slate-200\/50,
+.dark .border-slate-200\/60,
+.dark .border-slate-200\/80,
+.dark .border-slate-150,
+.dark .border-slate-250,
+.dark .border-outlineVariant\/30,
+.dark .border-outlineVariant\/50,
+.dark .border-outline\/10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .divide-slate-100 > * + * {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Header & Navigation Bar Dark Styles */
+.dark header.bg-surface\/90 {
+  background-color: rgba(9, 23, 42, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark header .text-primary {
+  color: #ff9933 !important;
+}
+
+.dark header nav a {
+  color: #cbd5e1 !important;
+}
+
+.dark header nav a.border-primary {
+  border-color: #ff9933 !important;
+  color: #ff9933 !important;
+}
+
+/* Form Controls */
+.dark input, 
+.dark select, 
+.dark textarea {
+  background-color: #0d1e36 !important;
+  color: #ffffff !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.dark input::placeholder, 
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Modals */
+.dark .fixed .bg-white {
+  background-color: #09172a !important;
+}
+
+/* Tables & Lists */
+.dark .bg-slate-50\/20 {
+  background-color: rgba(13, 30, 54, 0.2) !important;
+}
+
+.dark table th {
+  background-color: #0d1e36 !important;
+  color: #cbd5e1 !important;
+}
+
+.dark table td {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
