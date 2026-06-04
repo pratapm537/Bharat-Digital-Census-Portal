@@ -101,33 +101,57 @@
 }
 
 /* Text overrides */
+.dark .text-slate-900,
+.dark .text-slate-850,
 .dark .text-slate-800,
 .dark .text-slate-750,
 .dark .text-slate-700,
-.dark .text-slate-650,
-.dark .text-slate-600,
+.dark .text-gray-900,
+.dark .text-gray-850,
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-\[\#0b2447\],
+.dark .text-\[\#1a3d6c\],
 .dark .text-onSurface,
 .dark .text-onBackground,
-.dark h1:not(.text-white),
-.dark h2:not(.text-white),
-.dark h3:not(.text-white),
-.dark h4:not(.text-white) {
+.dark h1:not(.text-white):not(.text-primary),
+.dark h2:not(.text-white):not(.text-primary),
+.dark h3:not(.text-white):not(.text-primary),
+.dark h4:not(.text-white):not(.text-primary),
+.dark h5:not(.text-white):not(.text-primary),
+.dark h6:not(.text-white):not(.text-primary),
+.dark p:not(.text-white):not(.text-\[\#138808\]):not(.text-\[\#ff9933\]),
+.dark label:not(.text-white),
+.dark li:not(.text-white),
+.dark th:not(.text-white) {
   color: #f1f5f9 !important;
+}
+
+.dark .text-slate-650,
+.dark .text-slate-600,
+.dark .text-slate-550,
+.dark .text-gray-650,
+.dark .text-gray-600,
+.dark .text-slate-350,
+.dark .text-onSurfaceVariant {
+  color: #cbd5e1 !important;
 }
 
 .dark .text-slate-500,
 .dark .text-slate-450,
 .dark .text-slate-400,
-.dark .text-onSurfaceVariant {
+.dark .text-gray-500,
+.dark .text-gray-400 {
   color: #94a3b8 !important;
 }
 
 .dark .text-primary {
-  color: #ffdcc2 !important;
+  color: #ff9933 !important; /* Accent saffron orange for contrast */
 }
 
-.dark .text-slate-350 {
-  color: #cbd5e1 !important;
+.dark .text-blue-600,
+.dark .text-blue-700 {
+  color: #60a5fa !important;
 }
 
 /* Borders & Dividers */
