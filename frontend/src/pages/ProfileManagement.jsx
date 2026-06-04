@@ -465,16 +465,17 @@ Ministry of Home Affairs, Government of India
   // Add mock family member
   const handleAddFamilyMember = (e) => {
     e.preventDefault();
-    if (!newFamilyMember.name) {
+    const trimmedName = newFamilyMember.name.trim();
+    if (!trimmedName) {
       setError('Please provide family member name.');
       return;
     }
     const newMember = {
       id: Date.now(),
-      name: newFamilyMember.name,
+      name: trimmedName,
       relation: newFamilyMember.relation,
       verified: newFamilyMember.verified,
-      avatar: newFamilyMember.name.split(' ').map(n => n[0]).join('').toUpperCase()
+      avatar: trimmedName.split(/\s+/).map(n => n[0]).join('').toUpperCase().slice(0, 2)
     };
     setFamilyMembers(prev => [...prev, newMember]);
     setNewFamilyMember({ name: '', relation: 'Son', verified: true });
