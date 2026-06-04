@@ -77,6 +77,14 @@ const TopNavBar = () => {
               >
                 Appointments
               </Link>
+              <Link 
+                to="/notifications" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/notifications') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Notifications
+              </Link>
             </>
           )}
 
@@ -179,6 +187,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/appointments') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Appointments
+              </Link>
+              <Link 
+                to="/notifications" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/notifications') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Notifications
               </Link>
             </>
           )}
