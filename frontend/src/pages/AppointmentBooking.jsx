@@ -242,12 +242,13 @@ const AppointmentBooking = () => {
 
   // Reset booking wizard to start again
   const handleResetBooking = (targetTab = 'wizard') => {
+    const actualTab = typeof targetTab === 'string' ? targetTab : 'wizard';
     setSelectedType('verification');
     setSelectedCenter(null);
     setSelectedDate('');
     setSelectedTimeSlot('');
     setBookingStep(1);
-    setActiveTab(targetTab);
+    setActiveTab(actualTab);
   };
 
   // Chat message submit
@@ -1127,7 +1128,7 @@ const AppointmentBooking = () => {
 
                     <div className="pt-2 flex justify-center gap-3">
                       <button
-                        onClick={handleResetBooking}
+                        onClick={() => handleResetBooking('wizard')}
                         className="bg-primary hover:bg-primary-light text-white text-xs font-bold py-2.5 px-6 rounded-xl transition-all cursor-pointer shadow-sm"
                       >
                         Book Another Appointment
