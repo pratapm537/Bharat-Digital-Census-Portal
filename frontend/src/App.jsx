@@ -12,6 +12,7 @@ import FamilyDashboard from './pages/FamilyDashboard.jsx';
 import CertificateCenter from './pages/CertificateCenter.jsx';
 import AppointmentBooking from './pages/AppointmentBooking.jsx';
 import NotificationCenter from './pages/NotificationCenter.jsx';
+import GrievanceCenter from './pages/GrievanceCenter.jsx';
 
 // Guard for authenticated Citizen routes
 const CitizenRoute = ({ children }) => {
@@ -99,6 +100,14 @@ const AppContent = () => {
           element={
             <CitizenRoute>
               <NotificationCenter />
+            </CitizenRoute>
+          }
+        />
+        <Route
+          path="/grievance"
+          element={
+            <CitizenRoute>
+              <GrievanceCenter />
             </CitizenRoute>
           }
         />

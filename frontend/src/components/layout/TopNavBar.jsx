@@ -85,6 +85,14 @@ const TopNavBar = () => {
               >
                 Notifications
               </Link>
+              <Link 
+                to="/grievance" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/grievance') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Grievances
+              </Link>
             </>
           )}
 
@@ -194,6 +202,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/notifications') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Notifications
+              </Link>
+              <Link 
+                to="/grievance" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/grievance') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Grievances
               </Link>
             </>
           )}
