@@ -54,6 +54,14 @@ const TopNavBar = () => {
                 Dashboard
               </Link>
               <Link 
+                to="/benefits-eligibility" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/benefits-eligibility') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Benefits
+              </Link>
+              <Link 
                 to="/wizard" 
                 className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
                   isActive('/wizard') ? 'border-primary text-primary' : 'border-transparent'
@@ -182,6 +190,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/dashboard') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Dashboard
+              </Link>
+              <Link 
+                to="/benefits-eligibility" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/benefits-eligibility') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Benefits
               </Link>
               <Link 
                 to="/wizard" 
