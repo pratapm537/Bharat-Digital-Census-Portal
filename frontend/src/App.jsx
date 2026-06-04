@@ -147,6 +147,11 @@ function App() {
     } else {
       document.documentElement.classList.remove('dark');
     }
+
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+      document.documentElement.style.fontSize = savedFontSize;
+    }
   }, []);
 
   return (

@@ -126,11 +126,18 @@ const ProfileManagement = () => {
     { id: 3, title: 'Password Changed', detail: 'Credential security renewal completed.', time: '15 May 2026', type: 'success' }
   ]);
 
+  const getAccessibilitySetting = () => {
+    const size = localStorage.getItem('fontSize');
+    if (size === '16px') return 'Medium Font';
+    if (size === '18px') return 'Large Font';
+    return 'Normal Font';
+  };
+
   // Account preferences state
   const [preferences, setPreferences] = useState({
     language: 'English',
     theme: localStorage.getItem('theme') === 'dark' ? 'Dark' : 'Light',
-    accessibility: 'Normal Font',
+    accessibility: getAccessibilitySetting(),
     preferredComm: 'SMS + Email',
     smsAlerts: true,
     emailAlerts: true,
@@ -231,6 +238,17 @@ const ProfileManagement = () => {
       localStorage.setItem('theme', 'light');
     }
   }, [preferences.theme]);
+  // Sync accessibility font size selection with DOM style
+  useEffect(() => {
+    let size = '14px';
+    if (preferences.accessibility === 'Medium Font') {
+      size = '16px';
+    } else if (preferences.accessibility === 'Large Font') {
+      size = '18px';
+    }
+    document.documentElement.style.fontSize = size;
+    localStorage.setItem('fontSize', size);
+  }, [preferences.accessibility]);
 
   // Password strength meter logic
   const passwordStrength = useMemo(() => {
