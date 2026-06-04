@@ -295,3 +295,21 @@
 .dark .border-green-200 {
   border-color: rgba(16, 185, 129, 0.2) !important;
 }
+
+/* Hide Google Translate UI Elements */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+body {
+  top: 0px !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+#google_translate_element {
+  display: none !important;
+}

@@ -49,6 +49,7 @@ const AppContent = () => {
 
   return (
     <Router>
+      <div id="google_translate_element" style={{ display: 'none' }} />
       <TopNavBar />
       <Routes>
         {/* Public Routes */}
@@ -151,6 +152,29 @@ function App() {
     const savedFontSize = localStorage.getItem('fontSize');
     if (savedFontSize) {
       document.documentElement.style.fontSize = savedFontSize;
+    }
+
+    // Set Translation Cookie from LocalStorage language key
+    const savedLang = localStorage.getItem('language') || 'en';
+    document.cookie = `googtrans=/en/${savedLang}; path=/`;
+    document.cookie = `googtrans=/en/${savedLang}; domain=${window.location.hostname}; path=/`;
+
+    // Initialize Google Translate Element Callback
+    window.googleTranslateElementInit = () => {
+      new window.google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,hi,bn,ta,te,mr,gu,pa,kn,ml',
+        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    };
+
+    // Append Google Translate Script dynamically
+    if (!document.getElementById('google-translate-script')) {
+      const script = document.createElement('script');
+      script.id = 'google-translate-script';
+      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.body.appendChild(script);
     }
   }, []);
 

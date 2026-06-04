@@ -133,9 +133,57 @@ const ProfileManagement = () => {
     return 'Normal Font';
   };
 
+  const getLanguageLabel = () => {
+    const code = localStorage.getItem('language');
+    const labelMap = {
+      'en': 'English',
+      'hi': 'Hindi',
+      'bn': 'Bengali',
+      'ta': 'Tamil',
+      'te': 'Telugu',
+      'mr': 'Marathi',
+      'gu': 'Gujarati',
+      'pa': 'Punjabi',
+      'kn': 'Kannada',
+      'ml': 'Malayalam'
+    };
+    return labelMap[code] || 'English';
+  };
+
+  const handleLanguageChange = (langLabel) => {
+    const langMap = {
+      'English': 'en',
+      'Hindi': 'hi',
+      'Bengali': 'bn',
+      'Tamil': 'ta',
+      'Telugu': 'te',
+      'Marathi': 'mr',
+      'Gujarati': 'gu',
+      'Punjabi': 'pa',
+      'Kannada': 'kn',
+      'Malayalam': 'ml'
+    };
+    const code = langMap[langLabel] || 'en';
+    localStorage.setItem('language', code);
+    
+    // Set cookie for persistence on page reload/refresh
+    document.cookie = `googtrans=/en/${code}; path=/`;
+    document.cookie = `googtrans=/en/${code}; domain=${window.location.hostname}; path=/`;
+
+    // Try to trigger live translation in the google translate widget
+    const combo = document.querySelector('.goog-te-combo');
+    if (combo) {
+      combo.value = code;
+      combo.dispatchEvent(new Event('change'));
+    } else {
+      // If translate has not finished loading, reload the page to apply via cookie on load
+      window.location.reload();
+    }
+  };
+
   // Account preferences state
   const [preferences, setPreferences] = useState({
-    language: 'English',
+    language: getLanguageLabel(),
     theme: localStorage.getItem('theme') === 'dark' ? 'Dark' : 'Light',
     accessibility: getAccessibilitySetting(),
     preferredComm: 'SMS + Email',
@@ -1768,16 +1816,23 @@ Ministry of Home Affairs, Government of India
                       <select 
                         value={preferences.language}
                         onChange={(e) => {
-                          setPreferences({...preferences, language: e.target.value});
-                          setSuccess(`Preferred interface language configured to ${e.target.value}`);
+                          const lang = e.target.value;
+                          setPreferences({...preferences, language: lang});
+                          handleLanguageChange(lang);
+                          setSuccess(`Preferred interface language configured to ${lang}`);
                         }}
                         className="w-full text-xs font-semibold px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-primary"
                       >
-                        <option value="English">English (United Kingdom)</option>
+                        <option value="English">English</option>
                         <option value="Hindi">हिन्दी (Hindi)</option>
+                        <option value="Bengali">বাংলা (Bengali)</option>
                         <option value="Tamil">தமிழ் (Tamil)</option>
                         <option value="Telugu">తెలుగు (Telugu)</option>
-                        <option value="Bengali">বাংলা (Bengali)</option>
+                        <option value="Marathi">मराठी (Marathi)</option>
+                        <option value="Gujarati">ગુજરાતી (Gujarati)</option>
+                        <option value="Punjabi">ਪੰਜਾਬੀ (Punjabi)</option>
+                        <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
+                        <option value="Malayalam">മലയാളം (Malayalam)</option>
                       </select>
                     </div>
 
