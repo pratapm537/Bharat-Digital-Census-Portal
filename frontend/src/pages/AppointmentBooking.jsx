@@ -241,13 +241,13 @@ const AppointmentBooking = () => {
   };
 
   // Reset booking wizard to start again
-  const handleResetBooking = () => {
+  const handleResetBooking = (targetTab = 'wizard') => {
     setSelectedType('verification');
     setSelectedCenter(null);
     setSelectedDate('');
     setSelectedTimeSlot('');
     setBookingStep(1);
-    setActiveTab('dashboard');
+    setActiveTab(targetTab);
   };
 
   // Chat message submit
@@ -586,7 +586,7 @@ const AppointmentBooking = () => {
                 <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-6">
                   <h4 className="font-extrabold text-sm text-[#0b2447] mb-3">Quick Navigation Shortcuts</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                    <button onClick={() => setActiveTab('wizard')} className="p-3 bg-[#f8faff] hover:bg-slate-100 border border-slate-100 rounded-2xl flex flex-col items-center gap-1.5 transition-colors cursor-pointer text-xs font-bold">
+                    <button onClick={() => handleResetBooking('wizard')} className="p-3 bg-[#f8faff] hover:bg-[#f1f5f9] border border-slate-100 rounded-2xl flex flex-col items-center gap-1.5 transition-colors cursor-pointer text-xs font-bold">
                       <Plus className="w-5 h-5 text-blue-600" />
                       <span>Book New</span>
                     </button>
@@ -1069,7 +1069,7 @@ const AppointmentBooking = () => {
 
                     <div className="flex justify-end gap-3 pt-2">
                       <button
-                        onClick={handleResetBooking}
+                        onClick={() => handleResetBooking('dashboard')}
                         className="bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold py-2.5 px-6 rounded-xl transition-all cursor-pointer"
                       >
                         Cancel Booking
