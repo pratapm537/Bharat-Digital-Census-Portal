@@ -12,6 +12,7 @@ import FamilyDashboard from './pages/FamilyDashboard.jsx';
 import FamilyAnalytics from './pages/FamilyAnalytics.jsx';
 import BenefitsEligibility from './pages/BenefitsEligibility.jsx';
 import FamilyEmergencyProfile from './pages/FamilyEmergencyProfile.jsx';
+import CommunityInsights from './pages/CommunityInsights.jsx';
 import CertificateCenter from './pages/CertificateCenter.jsx';
 import AppointmentBooking from './pages/AppointmentBooking.jsx';
 import NotificationCenter from './pages/NotificationCenter.jsx';
@@ -105,6 +106,14 @@ const AppContent = () => {
           element={
             <CitizenRoute>
               <FamilyEmergencyProfile />
+            </CitizenRoute>
+          }
+        />
+        <Route
+          path="/community-insights"
+          element={
+            <CitizenRoute>
+              <CommunityInsights />
             </CitizenRoute>
           }
         />
