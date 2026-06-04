@@ -461,7 +461,8 @@ const Dashboard = () => {
                   { label: 'Family Analytics',      icon: BarChart2,    color: '#3b82f6', action: () => navigate('/family-analytics')   },
                   { label: 'Benefits Eligibility',  icon: Landmark,     color: '#138808', action: () => navigate('/benefits-eligibility') },
                   { label: 'Upload Documents',      icon: Upload,       color: '#8b5cf6', action: () => navigate('/wizard?step=7')             },
-                  { label: 'Certificate Center',  icon: Award,        color: '#f59e0b', action: () => navigate('/certificates')             },
+                  { label: 'Emergency Profile',     icon: AlertTriangle, color: '#ef4444', action: () => navigate('/family-emergency') },
+                  { label: 'Certificate Center',    icon: Award,        color: '#f59e0b', action: () => navigate('/certificates')             },
                   { label: 'Track Verification',    icon: Activity,     color: '#3b82f6', action: () => document.getElementById('verification-status')?.scrollIntoView({ behavior: 'smooth', block: 'center' }) },
                   { label: 'AI Census Assistant',   icon: Bot,          color: '#ef4444', action: () => setChatOpen(true)                     },
                 ].map((a, i) => {
