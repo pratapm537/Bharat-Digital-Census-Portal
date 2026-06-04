@@ -5,7 +5,7 @@ import {
   Search, Plus, CheckCircle, AlertTriangle, ChevronRight, Clock, ArrowLeft,
   Send, Star, UploadCloud, Trash2, HelpCircle, Phone, Mail, MessageSquare,
   Download, AlertCircle, Filter, ArrowUpRight, Sliders, X, Check,
-  UserCheck, RefreshCw, FileText
+  UserCheck, RefreshCw, FileText, Shield
 } from 'lucide-react';
 
 const GrievanceCenter = () => {
