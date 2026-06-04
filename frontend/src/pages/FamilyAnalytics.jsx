@@ -33,6 +33,12 @@ const FamilyAnalytics = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isDemoMode, setIsDemoMode] = useState(true); // Default to demo mode for rich data view
+  const userManuallySelectedMode = React.useRef(false); // Track if user explicitly toggled
+
+  const handleDemoModeToggle = (val) => {
+    userManuallySelectedMode.current = true;
+    setIsDemoMode(val);
+  };
 
   // Filter States
   const [filterAgeGroup, setFilterAgeGroup] = useState('All');
@@ -93,11 +99,13 @@ const FamilyAnalytics = () => {
       const dbFamily = response.data.family || [];
       setFamily(dbFamily);
 
-      // If backend family is empty, auto-switch to Demo mode to show something beautiful
-      if (dbFamily.length === 0) {
-        setIsDemoMode(true);
-      } else {
-        setIsDemoMode(false);
+      // Only auto-switch modes if user hasn't manually selected a mode
+      if (!userManuallySelectedMode.current) {
+        if (dbFamily.length === 0) {
+          setIsDemoMode(true);
+        } else {
+          setIsDemoMode(false);
+        }
       }
     } catch (err) {
       // Fallback to Demo Mode silently on network/auth issue
@@ -414,22 +422,56 @@ const FamilyAnalytics = () => {
     setSavedViews(prev => prev.filter(v => v.id !== id));
   };
 
-  // Custom donut calculations
+  // Custom donut calculations — each segment uses strokeDashoffset to position correctly
   const donutCircles = useMemo(() => {
     const total = ageDistribution.reduce((acc, curr) => acc + curr.count, 0);
+    const radius = 40;
+    const circumference = 2 * Math.PI * radius; // ~251.33
     let cumulativePercent = 0;
-    
+
     return ageDistribution.map(cat => {
       const percentage = total === 0 ? 0 : (cat.count / total) * 100;
-      const startAngle = (cumulativePercent / 100) * 360;
+      // strokeDasharray = [visible length, gap]
+      const dashLen = (percentage / 100) * circumference;
+      const gapLen = circumference - dashLen;
+      // offset moves the start of the dash around the circle;
+      // we start at top (-90deg via transform) and advance clockwise
+      const rotationDeg = (cumulativePercent / 100) * 360;
       cumulativePercent += percentage;
       return {
         ...cat,
-        startAngle,
+        dashLen,
+        gapLen,
+        rotationDeg,
         pct: Math.round(percentage)
       };
     });
   }, [ageDistribution]);
+
+  // SVG pie-slice path builder for employment chart
+  const buildPieSlices = useMemo(() => {
+    const cx = 80, cy = 80, r = 64;
+    const total = employmentDistribution.reduce((s, d) => s + d.count, 0) || 1;
+    let startAngle = -Math.PI / 2; // start at top
+
+    return employmentDistribution.map((slice, idx) => {
+      const fraction = slice.count / total;
+      const angle = fraction * 2 * Math.PI;
+      const endAngle = startAngle + angle;
+      const x1 = cx + r * Math.cos(startAngle);
+      const y1 = cy + r * Math.sin(startAngle);
+      const x2 = cx + r * Math.cos(endAngle);
+      const y2 = cy + r * Math.sin(endAngle);
+      const largeArc = angle > Math.PI ? 1 : 0;
+      const d = fraction === 0
+        ? ''
+        : fraction >= 1
+          ? `M ${cx} ${cy - r} A ${r} ${r} 0 1 1 ${cx - 0.001} ${cy - r} Z`
+          : `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`;
+      startAngle = endAngle;
+      return { ...slice, d, fraction };
+    });
+  }, [employmentDistribution]);
 
   // Custom line points calculation for trends
   const linePoints = useMemo(() => {
@@ -514,7 +556,7 @@ const FamilyAnalytics = () => {
                 <input 
                   type="checkbox" 
                   checked={isDemoMode}
-                  onChange={(e) => setIsDemoMode(e.target.checked)}
+                  onChange={(e) => handleDemoModeToggle(e.target.checked)}
                   className="sr-only peer" 
                 />
                 <div className="w-9 h-5 bg-slate-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[#ff9933]" />
@@ -713,15 +755,15 @@ const FamilyAnalytics = () => {
         {/* ══════════════════════════════════════════════════
             SECTION 3: FAMILY DEMOGRAPHICS & BREAKDOWN
         ══════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
           
-          {/* Donut Chart: Age Distribution (7 Columns) */}
-          <div className="lg:col-span-7 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
+          {/* Donut Chart: Age Distribution (7 of 12 Columns) */}
+          <div className="lg:col-span-7 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px] overflow-hidden">
             <div>
               <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-3.5">
                 <div>
-                  <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-                    Age Distribution breakdown
+                  <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider">
+                    Age Distribution Breakdown
                   </h3>
                   <p className="text-[10px] text-slate-400 mt-0.5">Demographic classification segments in your family.</p>
                 </div>
@@ -730,53 +772,51 @@ const FamilyAnalytics = () => {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6 mt-6">
+              <div className="flex flex-col sm:flex-row items-center gap-6 mt-6">
                 
                 {/* SVG Donut Chart */}
-                <div className="md:col-span-6 flex justify-center relative">
-                  <svg width="180" height="180" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="#f1f5f9" strokeWidth="12" />
-                    {donutCircles.map((circle, idx) => {
-                      const radius = 40;
-                      const circumference = 2 * Math.PI * radius; // ~251.3
-                      const offset = circumference - (circle.pct / 100) * circumference;
-                      const isHovered = hoveredAgeCategory === circle.name;
-                      
-                      return (
-                        <circle
-                          key={idx}
-                          cx="50"
-                          cy="50"
-                          r={radius}
-                          fill="none"
-                          stroke={circle.color}
-                          strokeWidth={isHovered ? 14 : 12}
-                          strokeDasharray={circumference}
-                          strokeDashoffset={offset}
-                          transform={`rotate(${circle.startAngle - 90} 50 50)`}
-                          strokeLinecap="round"
-                          className="transition-all duration-300 cursor-pointer origin-center"
-                          onMouseEnter={() => setHoveredAgeCategory(circle.name)}
-                          onMouseLeave={() => setHoveredAgeCategory(null)}
-                          onClick={() => {
-                            setSelectedAgeCategory(selectedAgeCategory === circle.name ? null : circle.name);
-                            setSelectedEducationCategory(null);
-                            setSelectedEmploymentCategory(null);
-                          }}
-                        />
-                      );
-                    })}
-                  </svg>
-                  
-                  {/* Central Text */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                    <span className="text-2xl font-extrabold text-[#0b2447] dark:text-white leading-none">{metrics.total}</span>
-                    <span className="text-[8px] text-slate-450 uppercase font-bold tracking-wider mt-0.5">Members</span>
+                <div className="flex justify-center shrink-0">
+                  <div className="relative" style={{ width: 180, height: 180 }}>
+                    <svg width="180" height="180" viewBox="0 0 100 100">
+                      {/* Track ring */}
+                      <circle cx="50" cy="50" r="40" fill="none" stroke="#f1f5f9" strokeWidth="12" className="dark:opacity-20" />
+                      {donutCircles.map((circle, idx) => {
+                        const isHovered = hoveredAgeCategory === circle.name;
+                        if (circle.dashLen < 0.1) return null;
+                        return (
+                          <circle
+                            key={idx}
+                            cx="50"
+                            cy="50"
+                            r="40"
+                            fill="none"
+                            stroke={circle.color}
+                            strokeWidth={isHovered ? 14 : 12}
+                            strokeDasharray={`${circle.dashLen} ${circle.gapLen}`}
+                            strokeDashoffset="0"
+                            transform={`rotate(${circle.rotationDeg - 90} 50 50)`}
+                            className="transition-all duration-300 cursor-pointer"
+                            onMouseEnter={() => setHoveredAgeCategory(circle.name)}
+                            onMouseLeave={() => setHoveredAgeCategory(null)}
+                            onClick={() => {
+                              setSelectedAgeCategory(selectedAgeCategory === circle.name ? null : circle.name);
+                              setSelectedEducationCategory(null);
+                              setSelectedEmploymentCategory(null);
+                            }}
+                          />
+                        );
+                      })}
+                    </svg>
+                    {/* Central Text overlay — anchored to SVG bounds */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+                      <span className="text-2xl font-extrabold text-[#0b2447] dark:text-white leading-none">{metrics.total}</span>
+                      <span className="text-[8px] text-slate-400 uppercase font-bold tracking-wider mt-0.5">Members</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Legend list */}
-                <div className="md:col-span-6 space-y-3">
+                <div className="flex-1 min-w-0 space-y-3">
                   {donutCircles.map((circle, idx) => {
                     const isHovered = hoveredAgeCategory === circle.name;
                     const isSelected = selectedAgeCategory === circle.name;
@@ -820,8 +860,8 @@ const FamilyAnalytics = () => {
             </div>
           </div>
 
-          {/* Horizontal Bar Chart: Education Distribution (5 Columns) */}
-          <div className="lg:col-span-5 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
+          {/* Horizontal Bar Chart: Education Distribution (5 of 12 Columns) */}
+          <div className="lg:col-span-5 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px] overflow-hidden">
             <div>
               <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-3.5">
                 <div>
@@ -937,10 +977,10 @@ const FamilyAnalytics = () => {
         {/* ══════════════════════════════════════════════════
             EMPLOYMENT DISTRIBUTION & RESOURCE COMPARISON
         ══════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           
-          {/* Employment Cards & Pie (6 Columns) */}
-          <div className="lg:col-span-6 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
+          {/* Employment Cards & Pie */}
+          <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm min-h-[380px]">
             <div>
               <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-3.5">
                 <div>
@@ -951,10 +991,10 @@ const FamilyAnalytics = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              <div className="flex gap-4 mt-6 w-full">
                 
                 {/* Visual Cards list */}
-                <div className="space-y-2.5">
+                <div className="flex-1 min-w-0 space-y-2">
                   {employmentDistribution.map((emp, idx) => {
                     const isHovered = hoveredEmploymentCategory === emp.name;
                     const isSelected = selectedEmploymentCategory === emp.name;
@@ -962,7 +1002,7 @@ const FamilyAnalytics = () => {
                     return (
                       <div 
                         key={idx}
-                        className={`p-3 rounded-2xl border transition-all cursor-pointer flex items-center justify-between ${
+                        className={`p-2.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
                           isHovered ? 'bg-[#f0f4fa]/50 dark:bg-blue-950/20 border-slate-200' : 
                           isSelected ? 'bg-[#0b2447] dark:bg-blue-950 text-white border-transparent' : 
                           'bg-slate-50/50 dark:bg-[#0d1e36]/30 border-slate-100 dark:border-white/5 hover:border-slate-200'
@@ -975,42 +1015,29 @@ const FamilyAnalytics = () => {
                           setSelectedEducationCategory(null);
                         }}
                       >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: emp.color }} />
-                          <span className="text-xs font-bold leading-none">{emp.name}</span>
+                        <div className="flex items-center gap-2 min-w-0">
+                          <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: emp.color }} />
+                          <span className="text-xs font-bold leading-none truncate">{emp.name}</span>
                         </div>
-                        <div className="text-right">
+                        <div className="text-right ml-2 shrink-0">
                           <span className="block text-xs font-extrabold font-mono leading-none">{emp.count}</span>
-                          <span className="text-[8px] text-slate-400 font-bold block mt-1">{emp.pct}%</span>
+                          <span className="text-[8px] text-slate-400 font-bold block mt-0.5">{emp.pct}%</span>
                         </div>
                       </div>
                     );
                   })}
                 </div>
 
-                {/* SVG Pie Chart */}
-                <div className="flex items-center justify-center">
-                  <svg width="160" height="160" viewBox="0 0 32 32" className="rotate-[-90deg]">
-                    {employmentDistribution.reduce((acc, slice, idx) => {
-                      const total = filteredMembers.length || 1;
-                      const size = slice.count;
-                      const percent = (size / total) * 100;
-                      const dashArray = `${percent} ${100 - percent}`;
-                      const dashOffset = 100 - acc.cumulative + 25; // adjust for rotation offset
-                      
-                      acc.elements.push(
-                        <circle
+                <div className="flex justify-center shrink-0">
+                  <svg width="150" height="150" viewBox="0 0 160 160">
+                    {buildPieSlices.map((slice, idx) => (
+                      slice.d ? (
+                        <path
                           key={idx}
-                          cx="16"
-                          cy="16"
-                          r="10"
-                          fill="transparent"
-                          stroke={slice.color}
-                          strokeWidth={hoveredEmploymentCategory === slice.name ? 10 : 8}
-                          strokeDasharray={dashArray}
-                          strokeDashoffset={dashOffset}
-                          className="transition-all duration-300 cursor-pointer origin-center"
-                          pathLength="100"
+                          d={slice.d}
+                          fill={slice.color}
+                          opacity={hoveredEmploymentCategory === slice.name ? 1 : 0.85}
+                          className="transition-all duration-300 cursor-pointer"
                           onMouseEnter={() => setHoveredEmploymentCategory(slice.name)}
                           onMouseLeave={() => setHoveredEmploymentCategory(null)}
                           onClick={() => {
@@ -1019,34 +1046,40 @@ const FamilyAnalytics = () => {
                             setSelectedEducationCategory(null);
                           }}
                         />
-                      );
-                      acc.cumulative += percent;
-                      return acc;
-                    }, { cumulative: 0, elements: [] }).elements}
-                    <circle cx="16" cy="16" r="6" fill="#ffffff" className="dark:fill-[#09172a]" />
+                      ) : null
+                    ))}
+                    {/* Center hole */}
+                    <circle cx="80" cy="80" r="36" fill="#ffffff" className="dark:fill-[#09172a]" />
+                    {/* Center label */}
+                    <text x="80" y="76" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0b2447" className="dark:fill-white">
+                      {filteredMembers.length}
+                    </text>
+                    <text x="80" y="90" textAnchor="middle" fontSize="7" fontWeight="700" fill="#94a3b8">
+                      MEMBERS
+                    </text>
                   </svg>
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-white/5 text-[11px] text-slate-450 dark:text-slate-400 italic">
+            <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-white/5 text-[11px] text-slate-400 italic">
               Insight: 50% of family members are currently employed.
             </div>
           </div>
 
-          {/* Household Resource Analytics (6 Columns) */}
-          <div className="lg:col-span-6 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
+          {/* Household Resource Analytics */}
+          <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm min-h-[380px]">
             <div>
               <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-3.5">
                 <div>
                   <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-                    Household Resource Analytics
+                    Household Resources
                   </h3>
                   <p className="text-[10px] text-slate-400 mt-0.5">Living standards, utilities access, and ownership profiles.</p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+              <div className="grid grid-cols-2 gap-3 mt-6">
                 {resourceMetrics.map((res, idx) => {
                   const isHovered = hoveredResource === res.name;
                   return (
@@ -1273,10 +1306,10 @@ const FamilyAnalytics = () => {
         {/* ══════════════════════════════════════════════════
             SECTION 6: AI FAMILY INSIGHTS & COMPARISON
         ══════════════════════════════════════════════════ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           
-          {/* AI insights list (6 Columns) */}
-          <div className="lg:col-span-6 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
+          {/* AI insights list */}
+          <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
             <div>
               <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-3.5">
                 <div>
@@ -1319,8 +1352,8 @@ const FamilyAnalytics = () => {
             </div>
           </div>
 
-          {/* FAMILY COMPARISON ANALYTICS (6 Columns) */}
-          <div className="lg:col-span-6 bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
+          {/* FAMILY COMPARISON ANALYTICS */}
+          <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm flex flex-col justify-between min-h-[380px]">
             <div>
               <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-3.5">
                 <div>
