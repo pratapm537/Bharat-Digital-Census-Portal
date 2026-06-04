@@ -93,6 +93,14 @@ const TopNavBar = () => {
               >
                 Grievances
               </Link>
+              <Link 
+                to="/profile" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/profile') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Profile
+              </Link>
             </>
           )}
 
@@ -209,6 +217,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/grievance') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Grievances
+              </Link>
+              <Link 
+                to="/profile" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/profile') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Profile
               </Link>
             </>
           )}

@@ -13,6 +13,7 @@ import CertificateCenter from './pages/CertificateCenter.jsx';
 import AppointmentBooking from './pages/AppointmentBooking.jsx';
 import NotificationCenter from './pages/NotificationCenter.jsx';
 import GrievanceCenter from './pages/GrievanceCenter.jsx';
+import ProfileManagement from './pages/ProfileManagement.jsx';
 
 // Guard for authenticated Citizen routes
 const CitizenRoute = ({ children }) => {
@@ -108,6 +109,14 @@ const AppContent = () => {
           element={
             <CitizenRoute>
               <GrievanceCenter />
+            </CitizenRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <CitizenRoute>
+              <ProfileManagement />
             </CitizenRoute>
           }
         />
