@@ -222,3 +222,76 @@
 .dark table td {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
+
+/* ══════════════════════════════════════════════════
+   HOME PAGE & PUBLIC ANNOUNCEMENTS DARK OVERRIDES
+   ══════════════════════════════════════════════════ */
+
+/* Home Page Backgrounds & Cards */
+.dark .bg-\[\#f7f9fb\] {
+  background-color: #030d1b !important;
+}
+
+.dark .group.bg-\[\#f7f9fb\] {
+  background-color: #09172a !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.dark .flex-1.bg-white {
+  background-color: #09172a !important;
+}
+
+/* Steps section circles */
+.dark .relative .w-14.h-14 {
+  background-color: #0d1e36 !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.dark .relative .w-14.h-14 span {
+  color: #ffffff !important;
+}
+
+/* Public Announcements Colored Cards */
+.dark .bg-red-50,
+.dark .bg-red-50\/50 {
+  background-color: rgba(239, 68, 68, 0.08) !important;
+}
+.dark .text-red-700 {
+  color: #fca5a5 !important;
+}
+.dark .border-red-200 {
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.dark .bg-blue-50,
+.dark .bg-blue-50\/50 {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+}
+.dark .text-blue-750 {
+  color: #93c5fd !important;
+}
+.dark .border-blue-200 {
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .bg-amber-50,
+.dark .bg-amber-50\/50 {
+  background-color: rgba(245, 158, 11, 0.08) !important;
+}
+.dark .text-amber-850 {
+  color: #fde047 !important;
+}
+.dark .border-amber-250 {
+  border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+.dark .bg-green-50,
+.dark .bg-green-50\/50 {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+}
+.dark .text-green-700 {
+  color: #86efac !important;
+}
+.dark .border-green-200 {
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
