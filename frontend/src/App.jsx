@@ -18,6 +18,7 @@ import AppointmentBooking from './pages/AppointmentBooking.jsx';
 import NotificationCenter from './pages/NotificationCenter.jsx';
 import GrievanceCenter from './pages/GrievanceCenter.jsx';
 import ProfileManagement from './pages/ProfileManagement.jsx';
+import OfficerManagement from './pages/OfficerManagement.jsx';
 
 // Guard for authenticated Citizen routes
 const CitizenRoute = ({ children }) => {
@@ -164,6 +165,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <Admin />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/officers"
+          element={
+            <OfficerRoute>
+              <OfficerManagement />
             </OfficerRoute>
           }
         />

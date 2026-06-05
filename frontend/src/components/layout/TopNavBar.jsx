@@ -113,14 +113,24 @@ const TopNavBar = () => {
           )}
 
           {user?.role === 'OFFICER' && (
-            <Link 
-              to="/admin" 
-              className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
-                isActive('/admin') ? 'border-primary text-primary' : 'border-transparent'
-              }`}
-            >
-              Officer Portal
-            </Link>
+            <>
+              <Link 
+                to="/admin" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/admin') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Verification Queue
+              </Link>
+              <Link 
+                to="/admin/officers" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/admin/officers') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Officer Management
+              </Link>
+            </>
           )}
         </nav>
 
@@ -244,13 +254,22 @@ const TopNavBar = () => {
           )}
 
           {user?.role === 'OFFICER' && (
-            <Link 
-              to="/admin" 
-              onClick={() => setMobileMenuOpen(false)}
-              className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin') ? 'text-primary' : 'text-onSurfaceVariant'}`}
-            >
-              Officer Portal
-            </Link>
+            <>
+              <Link 
+                to="/admin" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Verification Queue
+              </Link>
+              <Link 
+                to="/admin/officers" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/officers') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Officer Management
+              </Link>
+            </>
           )}
 
           {user ? (
