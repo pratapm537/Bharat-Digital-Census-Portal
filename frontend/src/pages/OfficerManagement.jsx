@@ -618,7 +618,7 @@ const OfficerManagement = () => {
         
         <div className="flex flex-col gap-2 relative z-10">
           <div className="flex items-center gap-2">
-            <span className="bg-secondary text-primary font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider shadow-sm">
+            <span className="bg-secondary text-primary-dark font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider shadow-sm">
               Workforce Command
             </span>
             <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
@@ -632,7 +632,7 @@ const OfficerManagement = () => {
         <div className="flex flex-wrap items-center gap-3 relative z-10 shrink-0">
           <button 
             onClick={() => setIsAddModalOpen(true)}
-            className="bg-secondary text-primary font-bold text-xs px-4 py-2.5 rounded-full hover:bg-secondary/90 transition-all flex items-center gap-1.5 active:scale-95 shadow-sm cursor-pointer"
+            className="bg-secondary text-primary-dark font-bold text-xs px-4 py-2.5 rounded-full hover:bg-secondary/90 transition-all flex items-center gap-1.5 active:scale-95 shadow-sm cursor-pointer"
           >
             <UserPlus className="w-3.5 h-3.5" /> Add New Officer
           </button>
@@ -956,7 +956,7 @@ const OfficerManagement = () => {
                 <div className="w-full h-64 border border-outlineVariant/20 rounded p-4 bg-surface-low relative">
                   <div className="absolute top-2 right-4 flex gap-4 text-[10px] font-bold text-onSurfaceVariant">
                     <div className="flex items-center gap-1.5">
-                      <span className="w-3 h-1 bg-primary inline-block" /> Verification Audits
+                      <span className="w-3 h-1 bg-primary dark:bg-secondary inline-block" /> Verification Audits
                     </div>
                     <div className="flex items-center gap-1.5">
                       <span className="w-3 h-1 bg-secondary inline-block" /> Household Visits
@@ -966,16 +966,16 @@ const OfficerManagement = () => {
                   {/* Raw SVG Chart Line & Bars */}
                   <svg viewBox="0 0 600 200" className="w-full h-full">
                     {/* Grid Lines */}
-                    <line x1="40" y1="20" x2="580" y2="20" stroke="#eceef0" strokeWidth="1" />
-                    <line x1="40" y1="70" x2="580" y2="70" stroke="#eceef0" strokeWidth="1" />
-                    <line x1="40" y1="120" x2="580" y2="120" stroke="#eceef0" strokeWidth="1" />
-                    <line x1="40" y1="170" x2="580" y2="170" stroke="#c4c6cf" strokeWidth="1" />
+                    <line x1="40" y1="20" x2="580" y2="20" stroke="currentColor" className="text-outlineVariant/25 dark:text-outlineVariant/10" strokeWidth="1" />
+                    <line x1="40" y1="70" x2="580" y2="70" stroke="currentColor" className="text-outlineVariant/25 dark:text-outlineVariant/10" strokeWidth="1" />
+                    <line x1="40" y1="120" x2="580" y2="120" stroke="currentColor" className="text-outlineVariant/25 dark:text-outlineVariant/10" strokeWidth="1" />
+                    <line x1="40" y1="170" x2="580" y2="170" stroke="currentColor" className="text-outlineVariant/50 dark:text-outlineVariant/20" strokeWidth="1" />
 
                     {/* Y Axis Labels */}
-                    <text x="10" y="25" fill="#74777f" fontSize="8" fontWeight="bold">600</text>
-                    <text x="10" y="75" fill="#74777f" fontSize="8" fontWeight="bold">300</text>
-                    <text x="10" y="125" fill="#74777f" fontSize="8" fontWeight="bold">100</text>
-                    <text x="10" y="175" fill="#74777f" fontSize="8" fontWeight="bold">0</text>
+                    <text x="10" y="25" fill="currentColor" className="text-onSurfaceVariant/70" fontSize="8" fontWeight="bold">600</text>
+                    <text x="10" y="75" fill="currentColor" className="text-onSurfaceVariant/70" fontSize="8" fontWeight="bold">300</text>
+                    <text x="10" y="125" fill="currentColor" className="text-onSurfaceVariant/70" fontSize="8" fontWeight="bold">100</text>
+                    <text x="10" y="175" fill="currentColor" className="text-onSurfaceVariant/70" fontSize="8" fontWeight="bold">0</text>
 
                     {/* Bars - Household Visits */}
                     <rect x="70" y="80" width="16" height="90" fill="#ffb77a" opacity="0.8" rx="2" />
@@ -987,24 +987,24 @@ const OfficerManagement = () => {
                     <rect x="490" y="45" width="16" height="125" fill="#ffb77a" opacity="0.8" rx="2" />
 
                     {/* Line Path - Verification Audits */}
-                    <path d="M 78 130 Q 148 90 218 50 T 358 100 T 498 60" fill="none" stroke="#0b2447" strokeWidth="3" />
+                    <path d="M 78 130 Q 148 90 218 50 T 358 100 T 498 60" fill="none" stroke="currentColor" className="text-primary dark:text-secondary" strokeWidth="3" />
                     {/* Line Points */}
-                    <circle cx="78" cy="130" r="4" fill="#0b2447" />
-                    <circle cx="148" cy="98" r="4" fill="#0b2447" />
-                    <circle cx="218" cy="50" r="4" fill="#0b2447" />
-                    <circle cx="288" cy="85" r="4" fill="#0b2447" />
-                    <circle cx="358" cy="100" r="4" fill="#0b2447" />
-                    <circle cx="428" cy="70" r="4" fill="#0b2447" />
-                    <circle cx="498" cy="60" r="4" fill="#0b2447" />
+                    <circle cx="78" cy="130" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
+                    <circle cx="148" cy="98" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
+                    <circle cx="218" cy="50" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
+                    <circle cx="288" cy="85" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
+                    <circle cx="358" cy="100" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
+                    <circle cx="428" cy="70" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
+                    <circle cx="498" cy="60" r="4" fill="currentColor" className="text-primary dark:text-secondary" />
 
                     {/* X Axis Labels */}
-                    <text x="65" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Mon</text>
-                    <text x="135" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Tue</text>
-                    <text x="205" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Wed</text>
-                    <text x="275" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Thu</text>
-                    <text x="345" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Fri</text>
-                    <text x="415" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Sat</text>
-                    <text x="485" y="190" fill="#44474e" fontSize="9" fontWeight="bold">Sun</text>
+                    <text x="65" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Mon</text>
+                    <text x="135" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Tue</text>
+                    <text x="205" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Wed</text>
+                    <text x="275" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Thu</text>
+                    <text x="345" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Fri</text>
+                    <text x="415" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Sat</text>
+                    <text x="485" y="190" fill="currentColor" className="text-onSurfaceVariant" fontSize="9" fontWeight="bold">Sun</text>
                   </svg>
                 </div>
               </div>

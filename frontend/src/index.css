@@ -89,6 +89,58 @@
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+.dark .bg-surface-low,
+.dark .hover\:bg-surface-low:hover {
+  background-color: #0d1e36 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .bg-surface-container {
+  background-color: #09172a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .bg-surface-high {
+  background-color: #12294a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .bg-surface-highest {
+  background-color: #173157 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .bg-surface-dim {
+  background-color: #071324 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .bg-primary-container {
+  background-color: rgba(255, 153, 51, 0.15) !important;
+  color: #ff9933 !important;
+}
+
+.dark .bg-primary:not(section):not(header) {
+  background-color: #ff9933 !important;
+  color: #0b2447 !important;
+}
+
+.dark .bg-primary:not(section):not(header).text-white {
+  color: #0b2447 !important;
+}
+
+.dark .border-primary {
+  border-color: #ff9933 !important;
+}
+
+.dark .stroke-primary {
+  stroke: #ff9933 !important;
+}
+
+.dark .fill-primary {
+  fill: #ff9933 !important;
+}
+
 /* Background utilities */
 .dark .bg-\[\#f8faff\],
 .dark .bg-slate-50,
