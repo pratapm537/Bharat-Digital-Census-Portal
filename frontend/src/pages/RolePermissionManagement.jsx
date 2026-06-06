@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldCheck, ShieldAlert, Key, Users, UserCheck, Settings, Lock, 
@@ -483,7 +483,7 @@ const RolePermissionManagement = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               Identity & Access Management (IAM)
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-2">
             <ShieldCheck className="w-7 h-7" /> Role & Permission Management
@@ -617,7 +617,7 @@ const RolePermissionManagement = () => {
               <div className="bg-primary text-white font-bold text-[10px] px-3.5 py-1 rounded-full border border-white/20 shadow-sm flex items-center gap-1">
                 <Globe className="w-3 h-3 text-secondary animate-spin" /> India Census System
               </div>
-              <div className="text-outlineVariant/60 text-xs">↓</div>
+              <div className="text-outlineVariant/60 text-xs">â†“</div>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 w-full text-center text-[9px] font-bold">
                 {[
@@ -638,7 +638,7 @@ const RolePermissionManagement = () => {
                 ))}
               </div>
 
-              <div className="text-outlineVariant/60 text-xs">↓</div>
+              <div className="text-outlineVariant/60 text-xs">â†“</div>
 
               <div className="grid grid-cols-3 gap-2.5 w-full text-center text-[9px] font-bold">
                 {[
@@ -764,7 +764,7 @@ const RolePermissionManagement = () => {
                       <td className="py-3 px-2 text-onSurfaceVariant">{user.territory}</td>
                       <td className="py-3 px-2">
                         <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                          user.status === 'Active' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                          user.status === 'Active' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
                         }`}>
                           {user.status}
                         </span>
@@ -970,11 +970,11 @@ const RolePermissionManagement = () => {
                       <div key={`${mod}-${act}`} className="py-1.5 flex justify-between gap-4 font-mono">
                         <span>{mod}.{act}</span>
                         <div className="flex items-center gap-2">
-                          <span className={`px-1 rounded ${valA ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                          <span className={`px-1 rounded ${valA ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}`}>
                             {compareRoleA}: {valA ? 'Yes' : 'No'}
                           </span>
                           <span>vs</span>
-                          <span className={`px-1 rounded ${valB ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                          <span className={`px-1 rounded ${valB ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}`}>
                             {compareRoleB}: {valB ? 'Yes' : 'No'}
                           </span>
                         </div>
@@ -1001,8 +1001,8 @@ const RolePermissionManagement = () => {
                       <span className="text-[10px] text-onSurfaceVariant block">{req.role}</span>
                     </div>
                     <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                      req.status === 'Pending' ? 'bg-amber-100 text-amber-700 animate-pulse' :
-                      req.status === 'Approved' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                      req.status === 'Pending' ? 'bg-amber-500 text-white animate-pulse' :
+                      req.status === 'Approved' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
                     }`}>
                       {req.status}
                     </span>
@@ -1045,7 +1045,7 @@ const RolePermissionManagement = () => {
                 <div key={alert.id} className="p-3 bg-red-500/5 border border-red-500/20 rounded-lg flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
                     <strong className="text-red-700 dark:text-red-300 font-bold">{alert.type}</strong>
-                    <span className="bg-red-100 text-red-700 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">
+                    <span className="bg-red-600 text-white font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">
                       {alert.severity} Risk
                     </span>
                   </div>
@@ -1089,7 +1089,7 @@ const RolePermissionManagement = () => {
                       setToast({ type: 'warning', message: `Conditional access policy toggled for ${selectedRestrictedResource}.` });
                     }}
                     className={`font-bold px-2 py-0.5 rounded text-[8px] uppercase ${
-                      conditionalAccessEnabled ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                      conditionalAccessEnabled ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
                     }`}
                   >
                     {conditionalAccessEnabled ? 'Enforced' : 'Disabled'}
@@ -1480,3 +1480,11 @@ const RolePermissionManagement = () => {
 };
 
 export default RolePermissionManagement;
+
+
+
+
+
+
+
+

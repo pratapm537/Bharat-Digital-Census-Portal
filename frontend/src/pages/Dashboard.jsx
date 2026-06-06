@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+﻿import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -11,7 +11,7 @@ import {
   Landmark
 } from 'lucide-react';
 
-/* ─── Helpers ──────────────────────────────────────────────── */
+/* â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const STEP_LABELS = [
   'Personal Details', 'Identity Proof', 'Contact Details',
   'Address Details', 'Family Structure', 'Education Details',
@@ -38,10 +38,10 @@ const NOTIFICATIONS = [
 ];
 
 const ACTIVITY = [
-  { label: 'Registration Started',    time: 'Jun 03, 2026 · 10:00 AM', icon: Flag,        done: true  },
-  { label: 'Personal Details Saved',  time: 'Jun 03, 2026 · 10:12 AM', icon: User,        done: true  },
-  { label: 'Identity Proof Verified', time: 'Jun 03, 2026 · 10:15 AM', icon: ShieldCheck, done: true  },
-  { label: 'Family Member Added',     time: 'Jun 03, 2026 · 10:22 AM', icon: Users,       done: true  },
+  { label: 'Registration Started',    time: 'Jun 03, 2026 Â· 10:00 AM', icon: Flag,        done: true  },
+  { label: 'Personal Details Saved',  time: 'Jun 03, 2026 Â· 10:12 AM', icon: User,        done: true  },
+  { label: 'Identity Proof Verified', time: 'Jun 03, 2026 Â· 10:15 AM', icon: ShieldCheck, done: true  },
+  { label: 'Family Member Added',     time: 'Jun 03, 2026 Â· 10:22 AM', icon: Users,       done: true  },
   { label: 'Document Uploaded',       time: 'Pending',                  icon: Upload,      done: false },
   { label: 'Verification Completed',  time: 'Pending',                  icon: CheckCircle, done: false },
 ];
@@ -56,11 +56,11 @@ const AI_SUGGESTIONS = [
 const AI_RESPONSES = {
   'How do I add a family member?': 'Go to Step 5 (Family Structure) in the Census Wizard. Click "Add Member", fill in the name, Aadhaar, date of birth, gender, and relationship, then save.',
   'What documents are required?': 'You need to upload: 1) Aadhaar Card scan (mandatory), 2) Address Proof such as a utility bill or rent agreement (recommended). Upload these in Step 7.',
-  'What is my verification status?': 'Your verification status is shown in the "Verification Status" card on this dashboard. Once submitted, a Census Officer will review and approve within 3–5 working days.',
+  'What is my verification status?': 'Your verification status is shown in the "Verification Status" card on this dashboard. Once submitted, a Census Officer will review and approve within 3â€“5 working days.',
   'How to download certificate?': 'Your certificate is available for download once your status changes to "Approved". Click the Download Certificate button that appears on your dashboard.',
 };
 
-/* ─── Sub-components ──────────────────────────────────────── */
+/* â”€â”€â”€ Sub-components â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Circular Progress Ring */
 const ProgressRing = ({ pct, size = 100, stroke = 8, color = '#0b2447' }) => {
@@ -122,7 +122,7 @@ const VerifTimeline = ({ status }) => {
   );
 };
 
-/* ─── Main Dashboard ──────────────────────────────────────── */
+/* â”€â”€â”€ Main Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const Dashboard = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -134,7 +134,7 @@ const Dashboard = () => {
   const [notifs, setNotifs]     = useState(NOTIFICATIONS);
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMsgs, setChatMsgs] = useState([
-    { from: 'bot', text: 'Namaste! 🙏 I\'m your Census AI Assistant. How can I help you today?' }
+    { from: 'bot', text: 'Namaste! ðŸ™ I\'m your Census AI Assistant. How can I help you today?' }
   ]);
   const [chatInput, setChatInput] = useState('');
   const chatEndRef = useRef(null);
@@ -218,16 +218,16 @@ const Dashboard = () => {
     <div className="flex-grow w-full bg-[#f0f4fa] min-h-screen">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 flex flex-col gap-7">
 
-        {/* ── ERROR ─────────────────────────────────────────── */}
+        {/* â”€â”€ ERROR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         {error && (
           <div className="bg-red-50 text-red-700 text-xs p-4 rounded-xl border border-red-200 flex items-center gap-2">
             <AlertTriangle className="w-4 h-4 shrink-0" /> {error}
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════════
-            SECTION 1 · WELCOME BANNER
-        ══════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            SECTION 1 Â· WELCOME BANNER
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div
           className="relative w-full rounded-2xl overflow-hidden"
           style={{
@@ -266,7 +266,7 @@ const Dashboard = () => {
                 </span>
               </div>
               <h1 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
-                Welcome back, {draft?.personal_fullName || user?.fullName || 'Citizen'} 👋
+                Welcome back, {draft?.personal_fullName || user?.fullName || 'Citizen'} ðŸ‘‹
               </h1>
               <div className="flex flex-wrap gap-4 mt-1">
                 {[
@@ -299,9 +299,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════════
-            SECTION 4 · QUICK STATISTICS (above fold)
-        ══════════════════════════════════════════════════════ */}
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+            SECTION 4 Â· QUICK STATISTICS (above fold)
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { label: 'Family Members',     value: family.length || 0,    unit: 'Members',   icon: Users,       color: '#0b2447', bg: '#0b2447' },
@@ -326,15 +326,15 @@ const Dashboard = () => {
           })}
         </div>
 
-        {/* ── TWO-COLUMN LAYOUT ─────────────────────────────── */}
+        {/* â”€â”€ TWO-COLUMN LAYOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
           {/* LEFT 2/3 */}
           <div className="lg:col-span-2 flex flex-col gap-6">
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 2 · REGISTRATION STATUS
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 2 Â· REGISTRATION STATUS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <div className="flex items-center justify-between mb-5">
                 <h2 className="font-extrabold text-base text-[#0b2447]">Registration Progress</h2>
@@ -399,9 +399,9 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 3 · VERIFICATION STATUS
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 3 Â· VERIFICATION STATUS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div id="verification-status" className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <h2 className="font-extrabold text-base text-[#0b2447] mb-4">Verification Status</h2>
 
@@ -449,9 +449,9 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 5 · QUICK ACTIONS
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 5 Â· QUICK ACTIONS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <h2 className="font-extrabold text-base text-[#0b2447] mb-4">Quick Actions</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -485,9 +485,9 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 9 · DOCUMENT STATUS
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 9 Â· DOCUMENT STATUS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-extrabold text-base text-[#0b2447]">Document Status</h2>
@@ -526,9 +526,9 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 8 · ACTIVITY TIMELINE
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 8 Â· ACTIVITY TIMELINE
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
               <h2 className="font-extrabold text-base text-[#0b2447] mb-5">Activity Timeline</h2>
               <div className="relative pl-6 flex flex-col gap-0">
@@ -561,9 +561,9 @@ const Dashboard = () => {
           {/* RIGHT 1/3 */}
           <div className="flex flex-col gap-6">
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 7 · NOTIFICATIONS
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 7 Â· NOTIFICATIONS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -605,9 +605,9 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 6 · FAMILY OVERVIEW
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 6 Â· FAMILY OVERVIEW
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-extrabold text-sm text-[#0b2447]">Family Overview</h2>
@@ -624,7 +624,7 @@ const Dashboard = () => {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-[#0b2447]">{draft?.personal_fullName || user?.fullName || 'Family Head'}</p>
-                  <p className="text-[9px] text-slate-400">Family Head · {draft?.housing_ownership || 'Owner'}</p>
+                  <p className="text-[9px] text-slate-400">Family Head Â· {draft?.housing_ownership || 'Owner'}</p>
                 </div>
               </div>
 
@@ -669,9 +669,9 @@ const Dashboard = () => {
               )}
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 11 · UPCOMING TASKS
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 11 Â· UPCOMING TASKS
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-5">
               <h2 className="font-extrabold text-sm text-[#0b2447] mb-4">Upcoming Tasks</h2>
               <div className="flex flex-col gap-2.5">
@@ -701,9 +701,9 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
-                SECTION 12 · FOOTER ACTION BAR (Card version)
-            ══════════════════════════════════════════════════ */}
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+                SECTION 12 Â· FOOTER ACTION BAR (Card version)
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-[#0b2447] rounded-2xl p-5 flex flex-col gap-3">
               <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Support & Actions</p>
               {[
@@ -732,9 +732,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════════════
-          SECTION 10 · AI CENSUS ASSISTANT (Floating Chat)
-      ══════════════════════════════════════════════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+          SECTION 10 Â· AI CENSUS ASSISTANT (Floating Chat)
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {/* Toggle Button */}
       <button
         onClick={() => setChatOpen(o => !o)}
@@ -837,3 +837,11 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+
+
+
+
+
+
+

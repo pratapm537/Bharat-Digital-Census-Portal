@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Search, Filter, ShieldCheck, Users, ClipboardCheck, AlertTriangle, 
@@ -50,7 +50,7 @@ const MOCK_CITIZENS = [
       voterId: { status: 'Verified', number: 'DL/98/045879', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80' },
       passport: { status: 'Not Provided', number: '-', url: null },
       addressProof: { status: 'Verified', name: 'Electricity Bill', url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80' },
-      incomeCert: { status: 'Verified', amount: '₹8,50,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
+      incomeCert: { status: 'Verified', amount: 'â‚¹8,50,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
     },
     activityTimeline: [
       { date: '2026-06-01 10:00 AM', event: 'Registration Created', desc: 'Digital portal application initialized by citizen.' },
@@ -105,7 +105,7 @@ const MOCK_CITIZENS = [
       voterId: { status: 'Pending Review', number: 'MH/12/099182', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80' },
       passport: { status: 'Verified', number: 'Z8749321', url: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80' },
       addressProof: { status: 'Verified', name: 'Rent Agreement', url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80' },
-      incomeCert: { status: 'Pending Review', amount: '₹12,40,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
+      incomeCert: { status: 'Pending Review', amount: 'â‚¹12,40,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
     },
     activityTimeline: [
       { date: '2026-06-05 11:00 AM', event: 'Registration Created', desc: 'Portal entry submitted under Colaba block.' },
@@ -158,7 +158,7 @@ const MOCK_CITIZENS = [
       voterId: { status: 'Verified', number: 'KA/04/879641', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80' },
       passport: { status: 'Verified', number: 'T9812490', url: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=400&q=80' },
       addressProof: { status: 'Verified', name: 'Tax Invoice Receipt', url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80' },
-      incomeCert: { status: 'Verified', amount: '₹4,20,000 p.a. (Pension)', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
+      incomeCert: { status: 'Verified', amount: 'â‚¹4,20,000 p.a. (Pension)', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
     },
     activityTimeline: [
       { date: '2026-06-10 09:30 AM', event: 'Registration Created', desc: 'Government officer verification submission.' },
@@ -210,7 +210,7 @@ const MOCK_CITIZENS = [
       voterId: { status: 'Verified', number: 'RJ/02/765412', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80' },
       passport: { status: 'Not Provided', number: '-', url: null },
       addressProof: { status: 'Pending Review', name: 'Land Revenue Stamp', url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80' },
-      incomeCert: { status: 'Verified', amount: '₹1,80,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
+      incomeCert: { status: 'Verified', amount: 'â‚¹1,80,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
     },
     activityTimeline: [
       { date: '2026-06-02 02:00 PM', event: 'Registration Created', desc: 'Rural agricultural registry uploaded.' },
@@ -261,7 +261,7 @@ const MOCK_CITIZENS = [
       voterId: { status: 'Verified', number: 'TN/01/992288', url: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80' },
       passport: { status: 'Not Provided', number: '-', url: null },
       addressProof: { status: 'Verified', name: 'Gas Connection Slip', url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=80' },
-      incomeCert: { status: 'Verified', amount: '₹5,60,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
+      incomeCert: { status: 'Verified', amount: 'â‚¹5,60,000 p.a.', url: 'https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&w=400&q=80' }
     },
     activityTimeline: [
       { date: '2026-06-08 10:30 AM', event: 'Registration Created', desc: 'Portal entry loaded by citizen.' },
@@ -673,7 +673,7 @@ const CitizenSearch = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider">
               National Citizen Registry
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Citizen Search Center</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -991,7 +991,7 @@ const CitizenSearch = () => {
                           {citizen.fullName}
                           {citizen.verificationStatus === 'Verified' && <ShieldCheck className="w-3.5 h-3.5 text-success" />}
                         </div>
-                        <span className="text-[9px] text-onSurfaceVariant">Ph: {citizen.mobile} • {citizen.gender}</span>
+                        <span className="text-[9px] text-onSurfaceVariant">Ph: {citizen.mobile} â€¢ {citizen.gender}</span>
                       </td>
                       <td className="py-3 px-3 font-mono font-semibold text-primary">{citizen.citizenId}</td>
                       <td className="py-3 px-3 font-mono text-onSurfaceVariant">{citizen.familyId}</td>
@@ -1233,8 +1233,8 @@ const CitizenSearch = () => {
                             </div>
                             <div className="flex items-center gap-1.5">
                               <span className={`text-[8px] font-extrabold px-1.5 py-0.2 rounded ${
-                                doc.value.status === 'Verified' ? 'bg-green-100 text-green-700' :
-                                doc.value.status === 'Pending Review' ? 'bg-amber-100 text-amber-700' :
+                                doc.value.status === 'Verified' ? 'bg-green-600 text-white' :
+                                doc.value.status === 'Pending Review' ? 'bg-amber-500 text-white' :
                                 'bg-slate-100 text-slate-500'
                               }`}>
                                 {doc.value.status}
@@ -1408,7 +1408,7 @@ const CitizenSearch = () => {
                     </button>
                     <button 
                       onClick={() => handleVerifyAction('escalate')}
-                      className="py-2 bg-red-100 text-red-700 font-bold rounded-full hover:bg-red-200 transition-all flex items-center justify-center gap-1 cursor-pointer"
+                      className="py-2 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all flex items-center justify-center gap-1 cursor-pointer"
                     >
                       <ShieldAlert className="w-3.5 h-3.5" /> Escalate Case
                     </button>
@@ -1709,8 +1709,8 @@ const CitizenSearch = () => {
               <div className="max-h-24 overflow-y-auto border border-outlineVariant/20 rounded divide-y divide-outlineVariant/10 p-2 bg-surface-low">
                 {editedFieldsLog.map((log, idx) => (
                   <div key={idx} className="py-1 text-[9px] flex justify-between items-center text-onSurfaceVariant">
-                    <span>Field: <strong className="text-primary">{log.field}</strong> ({log.oldValue} → {log.newValue})</span>
-                    <span className="font-semibold text-right">{log.timestamp} • {log.author}</span>
+                    <span>Field: <strong className="text-primary">{log.field}</strong> ({log.oldValue} â†’ {log.newValue})</span>
+                    <span className="font-semibold text-right">{log.timestamp} â€¢ {log.author}</span>
                   </div>
                 ))}
               </div>
@@ -1740,3 +1740,11 @@ const CitizenSearch = () => {
 };
 
 export default CitizenSearch;
+
+
+
+
+
+
+
+

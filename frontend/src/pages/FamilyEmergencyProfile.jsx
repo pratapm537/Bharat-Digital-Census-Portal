@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+﻿import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -221,7 +221,7 @@ const FamilyEmergencyProfile = () => {
   // Action Toggles
   const triggerSos = () => {
     setSosTriggered(true);
-    setToastMessage('🚨 EMERGENCY SOS INITIATED! Simulated GPS coordinates and family medical summaries shared with emergency units.');
+    setToastMessage('ðŸš¨ EMERGENCY SOS INITIATED! Simulated GPS coordinates and family medical summaries shared with emergency units.');
     setTimeout(() => {
       setSosTriggered(false);
     }, 6000);
@@ -249,7 +249,7 @@ const FamilyEmergencyProfile = () => {
   };
 
   const simulateCall = (name, phone) => {
-    setToastMessage(`📞 Connecting voice channel to ${name} (${phone})... Simulated call initiated.`);
+    setToastMessage(`ðŸ“ž Connecting voice channel to ${name} (${phone})... Simulated call initiated.`);
   };
 
   // Contacts Management Action handlers
@@ -416,9 +416,9 @@ const FamilyEmergencyProfile = () => {
         accept=".pdf,.png,.jpg,.jpeg"
       />
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER & BANNER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-12 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-red-500/30">
         <div className="absolute right-0 top-0 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/3 bottom-0 w-80 h-80 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
@@ -532,9 +532,9 @@ const FamilyEmergencyProfile = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: EMERGENCY OVERVIEW
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
           <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
@@ -602,7 +602,7 @@ const FamilyEmergencyProfile = () => {
                     }`}
                   >
                     <span className={`absolute right-3 top-3 text-[8px] font-bold uppercase px-2 py-0.5 rounded ${
-                      c.isPrimary ? 'bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-400' : 'bg-orange-100 text-orange-700 dark:bg-orange-950/40 dark:text-orange-400'
+                      c.isPrimary ? 'bg-red-600 text-white dark:bg-red-950/40 dark:text-red-400' : 'bg-orange-100 text-orange-700 dark:bg-orange-950/40 dark:text-orange-400'
                     }`}>
                       {c.isPrimary ? 'Primary SOS Contact' : 'Secondary Contact'}
                     </span>
@@ -850,7 +850,7 @@ const FamilyEmergencyProfile = () => {
                             </div>
                             <div>
                               <h4 className="font-bold text-xs text-[#0b2447] dark:text-white leading-tight">{s.fullName}</h4>
-                              <span className="text-[9px] text-[#ff9933] font-medium">{s.relationship} · Age {calculateAge(s.dob)}</span>
+                              <span className="text-[9px] text-[#ff9933] font-medium">{s.relationship} Â· Age {calculateAge(s.dob)}</span>
                             </div>
                           </div>
                           <span className="text-[8px] font-bold uppercase px-2 py-0.5 bg-red-50 text-red-700 rounded-full dark:bg-red-950/20 dark:text-red-400">
@@ -883,13 +883,13 @@ const FamilyEmergencyProfile = () => {
                 <span className="font-bold text-slate-400 uppercase tracking-widest text-[9px]"> Elder Care Badges</span>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2.5 py-1 bg-amber-100 text-amber-800 dark:bg-amber-950/20 dark:text-amber-400 border border-amber-200 dark:border-amber-800/40 rounded-lg font-semibold">
-                    ♿ Wheelchair Required (Rajesh)
+                    â™¿ Wheelchair Required (Rajesh)
                   </span>
                   <span className="px-2.5 py-1 bg-blue-100 text-blue-800 dark:bg-blue-950/20 dark:text-blue-400 border border-blue-200 dark:border-blue-800/40 rounded-lg font-semibold">
-                    🏠 Home Care Assistant visits weekly
+                    ðŸ  Home Care Assistant visits weekly
                   </span>
                   <span className="px-2.5 py-1 bg-green-100 text-green-800 dark:bg-green-950/20 dark:text-green-400 border border-green-200 dark:border-green-800/40 rounded-lg font-semibold">
-                    📅 Next ICU Visit: June 15, 2026
+                    ðŸ“… Next ICU Visit: June 15, 2026
                   </span>
                 </div>
               </div>
@@ -1157,7 +1157,7 @@ const FamilyEmergencyProfile = () => {
                     <div className="flex justify-between items-start gap-2">
                       <div>
                         <span className="block font-bold text-[10px] text-[#0b2447] dark:text-white leading-tight">{doc.name}</span>
-                        <span className="block text-[8px] text-slate-400">{doc.type} · {doc.size}</span>
+                        <span className="block text-[8px] text-slate-400">{doc.type} Â· {doc.size}</span>
                       </div>
                       <span className={`text-[8px] font-bold uppercase px-2 py-0.5 rounded ${
                         doc.status === 'Verified' ? 'bg-green-50 text-green-700 dark:bg-green-950/20' : 'bg-amber-50 text-amber-700 dark:bg-amber-950/20'
@@ -1338,3 +1338,11 @@ const FamilyEmergencyProfile = () => {
 };
 
 export default FamilyEmergencyProfile;
+
+
+
+
+
+
+
+

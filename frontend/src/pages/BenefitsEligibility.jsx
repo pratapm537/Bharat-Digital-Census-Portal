@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+﻿import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -48,7 +48,7 @@ const BenefitsEligibility = () => {
   // Chat/Advisor state
   const [advisorMessage, setAdvisorMessage] = useState('');
   const [chatLog, setChatLog] = useState([
-    { role: 'bot', text: 'Namaste! 🙏 I am your Welfare Benefits AI Advisor. Based on your census data, I can guide you through the government schemes you qualify for. Ask me anything!' }
+    { role: 'bot', text: 'Namaste! ðŸ™ I am your Welfare Benefits AI Advisor. Based on your census data, I can guide you through the government schemes you qualify for. Ask me anything!' }
   ]);
 
   // Comparison State
@@ -213,8 +213,8 @@ const BenefitsEligibility = () => {
         id: 'scheme-ayushman',
         name: 'Ayushman Bharat (PM-JAY)',
         category: 'Healthcare',
-        description: 'Free healthcare cover of ₹5 Lakh per family per year for secondary and tertiary hospitalizations.',
-        coverage: '₹5,00,000 Per Family Per Year',
+        description: 'Free healthcare cover of â‚¹5 Lakh per family per year for secondary and tertiary hospitalizations.',
+        coverage: 'â‚¹5,00,000 Per Family Per Year',
         criteria: ['Family Income below threshold', 'No concrete household fully owned', 'Vulnerable socio-economic status'],
         isEligible: isLowIncome || allMembers.length >= 4 
           ? (documentsList.find(d => d.name === 'Income Certificate')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Verify Income)')
@@ -228,14 +228,14 @@ const BenefitsEligibility = () => {
         id: 'scheme-kisan',
         name: 'PM Kisan Samman Nidhi',
         category: 'Agriculture',
-        description: 'Direct income support of ₹6,000 per year for landholding farmer families across the country.',
-        coverage: '₹6,000 Annually (3 Installments)',
+        description: 'Direct income support of â‚¹6,000 per year for landholding farmer families across the country.',
+        coverage: 'â‚¹6,000 Annually (3 Installments)',
         criteria: ['Small & Marginal Farmer status', 'Agricultural land ownership records verified', 'Not an income tax payer'],
         isEligible: (farmerStatusCount > 0 || activeHead.landOwnership === 'Yes')
           ? (documentsList.find(d => d.name === 'Land Ownership Proof')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Land Proof)')
           : 'Not Eligible',
         detailUrl: 'https://pmkisan.gov.in',
-        benefits: '₹2,000 directly credited to bank accounts every 4 months.',
+        benefits: 'â‚¹2,000 directly credited to bank accounts every 4 months.',
         requiredDocs: ['Land Ownership Proof', 'Aadhaar Card', 'Bank Passbook'],
         appStatus: 'Pending Verification'
       },
@@ -244,13 +244,13 @@ const BenefitsEligibility = () => {
         name: 'Old Age Pension Scheme (IGNOAPS)',
         category: 'Pension',
         description: 'Monthly assistance to senior citizens belonging to low income or below poverty line families.',
-        coverage: '₹2,00,005 BPL threshold',
+        coverage: 'â‚¹2,00,005 BPL threshold',
         criteria: ['Applicant age 60 years or above', 'BPL card holder or low income status', 'No regular pension source'],
         isEligible: seniorsCount > 0
           ? (documentsList.find(d => d.name === 'Age Proof (Birth Certificate)')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Age Proof)')
           : 'Not Eligible',
         detailUrl: 'https://nsap.nic.in',
-        benefits: 'Monthly direct benefit transfer to pension bank account of ₹2,000.',
+        benefits: 'Monthly direct benefit transfer to pension bank account of â‚¹2,000.',
         requiredDocs: ['Age Proof', 'Income Certificate', 'Aadhaar Card'],
         appStatus: 'Not Started'
       },
@@ -259,7 +259,7 @@ const BenefitsEligibility = () => {
         name: 'Widow Pension Scheme (IGNWPS)',
         category: 'Pension',
         description: 'Financial assistance to destitute widows to ensure a dignified livelihood.',
-        coverage: '₹1,500 Per Month',
+        coverage: 'â‚¹1,500 Per Month',
         criteria: ['Female family head or member', 'Widowed marital status', 'Age group of 40-79 years', 'Low income household'],
         isEligible: allMembers.some(m => m.gender === 'Female' && (m.relationship?.toLowerCase().includes('widow') || m.relationship?.toLowerCase().includes('grandmother')))
           ? (documentsList.find(d => d.name === 'Income Certificate')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Income Proof)')
@@ -274,8 +274,8 @@ const BenefitsEligibility = () => {
         name: 'National Scholarship Portal (NSP)',
         category: 'Education',
         description: 'Educational financial support for school and college students in pre-matric and post-matric courses.',
-        coverage: '₹20,000 Annually',
-        criteria: ['Active student enrollment status', 'Annual family income under ₹2.5 Lakhs', 'Previous class academic score > 50%'],
+        coverage: 'â‚¹20,000 Annually',
+        criteria: ['Active student enrollment status', 'Annual family income under â‚¹2.5 Lakhs', 'Previous class academic score > 50%'],
         isEligible: studentsCount > 0
           ? (documentsList.find(d => d.name === 'Income Certificate')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Income Proof)')
           : 'Not Eligible',
@@ -289,7 +289,7 @@ const BenefitsEligibility = () => {
         name: 'Disability Pension Scheme (IGNDPS)',
         category: 'Pension',
         description: 'Welfare assistance for severely disabled citizens to support their medical and livelihood needs.',
-        coverage: '₹1,500 Per Month',
+        coverage: 'â‚¹1,500 Per Month',
         criteria: ['Applicant age 18-79 years', 'Disability ratio 80% or higher', 'Low family income'],
         isEligible: hasDisabledMember
           ? (documentsList.find(d => d.name === 'Disability Certificate')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Disability Proof)')
@@ -304,7 +304,7 @@ const BenefitsEligibility = () => {
         name: 'Higher Education Scholarship',
         category: 'Education',
         description: 'Special incentives for pursuing technical, vocational, medical, or doctoral education in state institutes.',
-        coverage: '₹40,000 Annually',
+        coverage: 'â‚¹40,000 Annually',
         criteria: ['Enrolled in Graduate or Master course', 'Income level low/medium', 'Minimum educational marks matching limits'],
         isEligible: studentsCount > 0 && allMembers.some(m => ['Graduate / Bachelor', 'Post Graduate / Master'].includes(m.qualification) && m.employmentStatus === 'Student')
           ? (documentsList.find(d => d.name === 'Income Certificate')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Income Proof)')
@@ -319,7 +319,7 @@ const BenefitsEligibility = () => {
         name: 'PM Awas Yojana (Gramin/Urban)',
         category: 'Employment Programs',
         description: 'Financial assistance for construction of pucca houses with clean toilet facilities and utilities.',
-        coverage: '₹1,20,000 House Subsidy',
+        coverage: 'â‚¹1,20,000 House Subsidy',
         criteria: ['Houseless families', 'No concrete permanent household', 'Vulnerable demographic profile'],
         isEligible: isLowIncome
           ? (documentsList.find(d => d.name === 'Income Certificate')?.status === 'Verified' ? 'Eligible' : 'Partially Eligible (Upload Income Proof)')
@@ -405,13 +405,13 @@ const BenefitsEligibility = () => {
     const cleanUserText = userText.toLowerCase();
 
     if (cleanUserText.includes('healthcare') || cleanUserText.includes('ayushman') || cleanUserText.includes('health')) {
-      replyText += `your family size is ${allMembers.length} and you qualify for Ayushman Bharat (PM-JAY) with ₹5,00,000 cover. Your head income group is ${activeHead.incomeGroup}.`;
+      replyText += `your family size is ${allMembers.length} and you qualify for Ayushman Bharat (PM-JAY) with â‚¹5,00,000 cover. Your head income group is ${activeHead.incomeGroup}.`;
     } else if (cleanUserText.includes('farmer') || cleanUserText.includes('kisan') || cleanUserText.includes('land')) {
       replyText += `PM Kisan Samman Nidhi is available for land-owning farmers. We detected ${farmerStatusCount} agricultural occupations in your registry. Eligibility status is: ${farmerStatusCount > 0 ? 'Eligible' : 'Requires verification'}.`;
     } else if (cleanUserText.includes('student') || cleanUserText.includes('scholarship') || cleanUserText.includes('school')) {
-      replyText += `we detected ${studentsCount} students in your family. Under the National Scholarship Portal, they qualify for up to ₹20,000 annual assistance. Make sure to upload their latest marksheets.`;
+      replyText += `we detected ${studentsCount} students in your family. Under the National Scholarship Portal, they qualify for up to â‚¹20,000 annual assistance. Make sure to upload their latest marksheets.`;
     } else if (cleanUserText.includes('pension') || cleanUserText.includes('old age') || cleanUserText.includes('senior')) {
-      replyText += `destitute seniors can apply for Old Age Pension. There are ${seniorsCount} seniors registered in your house, making you ${seniorsCount > 0 ? 'fully eligible for ₹2,000/month Old Age Pension' : 'not eligible directly'}.`;
+      replyText += `destitute seniors can apply for Old Age Pension. There are ${seniorsCount} seniors registered in your house, making you ${seniorsCount > 0 ? 'fully eligible for â‚¹2,000/month Old Age Pension' : 'not eligible directly'}.`;
     } else {
       replyText += `your family registers ${allMembers.length} members. You are eligible for ${overviewStats.eligible} welfare benefits. I recommend ensuring Aadhaar cards are uploaded for all members to avoid application blocks.`;
     }
@@ -451,9 +451,9 @@ const BenefitsEligibility = () => {
         accept=".pdf,.png,.jpg,.jpeg"
       />
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER & BANNER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-12 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/3 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -532,9 +532,9 @@ const BenefitsEligibility = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-8 flex flex-col gap-6">
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SYSTEM MESSAGES / TOASTS
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {toastMessage && (
           <div className="bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-300 text-xs p-4 rounded-2xl border border-green-200 dark:border-green-800 flex items-start justify-between gap-2.5 shadow-sm animate-fade-in">
             <div className="flex items-start gap-2">
@@ -570,9 +570,9 @@ const BenefitsEligibility = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: ELIGIBILITY OVERVIEW (STAT STATISTICS)
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { label: 'Eligible Schemes', value: overviewStats.eligible, color: 'text-green-600 dark:text-green-400', bg: 'bg-green-50 dark:bg-green-950/20', desc: 'Schemes matched', statusText: 'Qualified' },
@@ -595,15 +595,15 @@ const BenefitsEligibility = () => {
           ))}
         </div>
 
-        {/* ── main content layout 2-cols (Left 8 Columns, Right 4 Columns) ── */}
+        {/* â”€â”€ main content layout 2-cols (Left 8 Columns, Right 4 Columns) â”€â”€ */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
           {/* LEFT 8-COLUMN MAIN BLOCK */}
           <div className="lg:col-span-8 flex flex-col gap-6">
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 3: GOVERNMENT SCHEME DISCOVERY
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/5 pb-4">
                 <div>
@@ -662,9 +662,9 @@ const BenefitsEligibility = () => {
                               {scheme.category}
                             </span>
                             <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
-                              isElig ? 'bg-green-100 text-green-700 dark:bg-green-950/20 dark:text-green-400' :
-                              isPartial ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/20 dark:text-amber-400' :
-                              'bg-red-100 text-red-700 dark:bg-red-950/20 dark:text-red-400'
+                              isElig ? 'bg-green-600 text-white dark:bg-green-950/20 dark:text-green-400' :
+                              isPartial ? 'bg-amber-500 text-white dark:bg-amber-950/20 dark:text-amber-400' :
+                              'bg-red-600 text-white dark:bg-red-950/20 dark:text-red-400'
                             }`}>
                               {scheme.isEligible}
                             </span>
@@ -721,9 +721,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 4 & 5: SPECIFIC FEATURED SCHEME DETAILS (AYUSHMAN & PM KISAN)
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Ayushman Bharat Scheme Card */}
@@ -774,7 +774,7 @@ const BenefitsEligibility = () => {
                   {/* Benefit Summary */}
                   <div className="mt-4 flex justify-between items-center text-[10px] py-1 border-b border-slate-100 dark:border-white/5">
                     <span className="text-slate-400 dark:text-slate-300 font-medium">Coverage Limit:</span>
-                    <span className="font-bold text-[#138808]">₹5,00,000 Per Family / Year</span>
+                    <span className="font-bold text-[#138808]">â‚¹5,00,000 Per Family / Year</span>
                   </div>
                 </div>
 
@@ -842,7 +842,7 @@ const BenefitsEligibility = () => {
                   {/* Benefit Summary */}
                   <div className="mt-4 flex justify-between items-center text-[10px] py-1 border-b border-slate-100 dark:border-white/5">
                     <span className="text-slate-450 font-medium">Annual Assistance:</span>
-                    <span className="font-bold text-[#ff9933]">₹6,000 / Farmer Family</span>
+                    <span className="font-bold text-[#ff9933]">â‚¹6,000 / Farmer Family</span>
                   </div>
                 </div>
 
@@ -864,9 +864,9 @@ const BenefitsEligibility = () => {
 
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 6: PENSION SCHEME ELIGIBILITY
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="border-b border-slate-100 dark:border-white/5 pb-3.5 mb-4">
                 <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-2">
@@ -877,9 +877,9 @@ const BenefitsEligibility = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { name: 'Old Age Pension (IGNOAPS)', desc: 'For senior citizens above BPL status.', criteria: 'Applicant age >= 60 yrs', eligible: seniorsCount > 0, cash: '₹2,000 / month' },
-                  { name: 'Widow Pension (IGNWPS)', desc: 'Livelihood help for destitute widows.', criteria: 'Widowed marital status, female applicant', eligible: allMembers.some(m => m.gender === 'Female' && (m.relationship?.toLowerCase().includes('widow') || m.relationship?.toLowerCase().includes('grandmother'))), cash: '₹1,500 / month' },
-                  { name: 'Disability Pension (IGNDPS)', desc: 'Direct transfer to differently-abled members.', criteria: 'Severe medical disability (80%+ Ratio)', eligible: hasDisabledMember, cash: '₹1,500 / month' },
+                  { name: 'Old Age Pension (IGNOAPS)', desc: 'For senior citizens above BPL status.', criteria: 'Applicant age >= 60 yrs', eligible: seniorsCount > 0, cash: 'â‚¹2,000 / month' },
+                  { name: 'Widow Pension (IGNWPS)', desc: 'Livelihood help for destitute widows.', criteria: 'Widowed marital status, female applicant', eligible: allMembers.some(m => m.gender === 'Female' && (m.relationship?.toLowerCase().includes('widow') || m.relationship?.toLowerCase().includes('grandmother'))), cash: 'â‚¹1,500 / month' },
+                  { name: 'Disability Pension (IGNDPS)', desc: 'Direct transfer to differently-abled members.', criteria: 'Severe medical disability (80%+ Ratio)', eligible: hasDisabledMember, cash: 'â‚¹1,500 / month' },
                   { name: 'Senior Citizen Care Assistance', desc: 'Medical subsidies and monthly welfare support.', criteria: 'Household has senior citizens', eligible: seniorsCount > 0, cash: 'Subsidized Medical care' }
                 ].map((pen, i) => (
                   <div key={i} className="border border-slate-100 dark:border-white/10 p-4 rounded-2xl flex flex-col justify-between bg-slate-50 dark:bg-[#0d1e36] text-slate-800 dark:text-white">
@@ -887,7 +887,7 @@ const BenefitsEligibility = () => {
                       <div className="flex justify-between items-start gap-2 mb-1.5">
                         <h4 className="font-bold text-xs text-[#0b2447] dark:text-white leading-tight">{pen.name}</h4>
                         <span className={`text-[8px] font-bold px-2 py-0.5 rounded ${
-                          pen.eligible ? 'bg-green-100 text-green-700 dark:bg-green-950/20' : 'bg-slate-100 text-slate-400'
+                          pen.eligible ? 'bg-green-600 text-white dark:bg-green-950/20' : 'bg-slate-500 text-white'
                         }`}>
                           {pen.eligible ? 'Eligible' : 'Not Eligible'}
                         </span>
@@ -915,9 +915,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 7: SCHOLARSHIP ELIGIBILITY
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="border-b border-slate-100 dark:border-white/5 pb-3.5 mb-4">
                 <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-2">
@@ -928,10 +928,10 @@ const BenefitsEligibility = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
-                  { name: 'School Education Scholarship', scope: 'Grades 1 to 10', benefit: '₹8,000 / Year', eligible: studentsCount > 0, deadline: 'Sep 30, 2026' },
-                  { name: 'National College Scholarship', scope: 'Graduate Bachelor Degrees', benefit: '₹20,000 / Year', eligible: studentsCount > 0 && allMembers.some(m => ['Graduate / Bachelor'].includes(m.qualification) && m.employmentStatus === 'Student'), deadline: 'Oct 15, 2026' },
-                  { name: 'Higher Education Scholarship', scope: 'Master & Doctorate Streams', benefit: '₹45,000 / Year', eligible: studentsCount > 0 && allMembers.some(m => ['Post Graduate / Master', 'Doctorate (PhD)'].includes(m.qualification) && m.employmentStatus === 'Student'), deadline: 'Oct 31, 2026' },
-                  { name: 'Technical & Skill Scholarship', scope: 'IT / Diploma Programs', benefit: '₹15,000 / Year', eligible: studentsCount > 0, deadline: 'Nov 15, 2026' }
+                  { name: 'School Education Scholarship', scope: 'Grades 1 to 10', benefit: 'â‚¹8,000 / Year', eligible: studentsCount > 0, deadline: 'Sep 30, 2026' },
+                  { name: 'National College Scholarship', scope: 'Graduate Bachelor Degrees', benefit: 'â‚¹20,000 / Year', eligible: studentsCount > 0 && allMembers.some(m => ['Graduate / Bachelor'].includes(m.qualification) && m.employmentStatus === 'Student'), deadline: 'Oct 15, 2026' },
+                  { name: 'Higher Education Scholarship', scope: 'Master & Doctorate Streams', benefit: 'â‚¹45,000 / Year', eligible: studentsCount > 0 && allMembers.some(m => ['Post Graduate / Master', 'Doctorate (PhD)'].includes(m.qualification) && m.employmentStatus === 'Student'), deadline: 'Oct 31, 2026' },
+                  { name: 'Technical & Skill Scholarship', scope: 'IT / Diploma Programs', benefit: 'â‚¹15,000 / Year', eligible: studentsCount > 0, deadline: 'Nov 15, 2026' }
                 ].map((sch, i) => (
                   <div key={i} className="border border-slate-100 dark:border-white/10 p-4 rounded-2xl flex flex-col justify-between bg-slate-50 dark:bg-[#0d1e36] text-slate-800 dark:text-white">
                     <div>
@@ -941,7 +941,7 @@ const BenefitsEligibility = () => {
                           <span className="text-[9px] text-[#ff9933] font-medium">{sch.scope}</span>
                         </div>
                         <span className={`text-[8px] font-bold px-2 py-0.5 rounded ${
-                          sch.eligible ? 'bg-green-100 text-green-700 dark:bg-green-950/20' : 'bg-slate-100 text-slate-400'
+                          sch.eligible ? 'bg-green-600 text-white dark:bg-green-950/20' : 'bg-slate-500 text-white'
                         }`}>
                           {sch.eligible ? 'Eligible' : 'Not Eligible'}
                         </span>
@@ -975,9 +975,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 9: ELIGIBILITY STATUS TABLE
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm overflow-hidden">
               <div className="border-b border-slate-100 dark:border-white/5 pb-3.5 mb-4">
                 <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider">
@@ -1033,9 +1033,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 11: BENEFITS COMPARISON TOOL
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="border-b border-slate-100 dark:border-white/5 pb-3.5 mb-4">
                 <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider">
@@ -1102,9 +1102,9 @@ const BenefitsEligibility = () => {
           {/* RIGHT 4-COLUMN SIDEBAR BLOCK */}
           <div className="lg:col-span-4 flex flex-col gap-6">
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 12: AI BENEFITS ADVISOR
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm flex flex-col justify-between min-h-[300px]">
               <div>
                 <div className="flex items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-3">
@@ -1161,9 +1161,9 @@ const BenefitsEligibility = () => {
               </form>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 8: RECOMMENDED SCHEMES (AI CARDS)
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Recommended For You
@@ -1188,9 +1188,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 10: REQUIRED DOCUMENTS CENTER
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Required Documents Center
@@ -1239,9 +1239,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 13: APPLICATION TRACKER
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Application Tracker
@@ -1269,9 +1269,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 14: BENEFITS TIMELINE
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-4">
                 Activity Logs
@@ -1294,9 +1294,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 15: EXPORT ELIGIBILITY REPORT
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Export Eligibility Report
@@ -1325,9 +1325,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 16: QUICK ACTIONS
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Quick Actions
@@ -1355,9 +1355,9 @@ const BenefitsEligibility = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 17: HELP & SUPPORT
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-[#0b2447] text-white rounded-3xl p-5 shadow-lg flex flex-col gap-4">
               <div>
                 <h3 className="font-extrabold text-xs uppercase tracking-widest text-[#ff9933]">Help & Live Support</h3>
@@ -1395,3 +1395,11 @@ const BenefitsEligibility = () => {
 };
 
 export default BenefitsEligibility;
+
+
+
+
+
+
+
+

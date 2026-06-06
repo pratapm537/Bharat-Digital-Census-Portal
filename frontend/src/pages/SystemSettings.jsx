@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Settings, ShieldCheck, Database, Globe, Sliders, Server, 
@@ -335,7 +335,7 @@ const SystemSettings = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               System Administration Panel
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-2">
             <Settings className="w-7 h-7" /> System Settings
@@ -484,7 +484,7 @@ const SystemSettings = () => {
                     <Sliders className="w-4 h-4 text-primary" /> Citizen Registration Period
                   </h3>
                   <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                    isRegOpen ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                    isRegOpen ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
                   }`}>
                     Registration {isRegOpen ? 'Open' : 'Closed'}
                   </span>
@@ -764,7 +764,7 @@ const SystemSettings = () => {
                     <Smartphone className="w-4 h-4 text-primary" /> Aadhaar UIDAI Verification Gateway
                   </h3>
                   <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                    aadhaarStatus === 'Connected' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700 animate-pulse'
+                    aadhaarStatus === 'Connected' ? 'bg-green-600 text-white' : 'bg-red-600 text-white animate-pulse'
                   }`}>
                     {aadhaarStatus}
                   </span>
@@ -794,7 +794,7 @@ const SystemSettings = () => {
                   <h3 className="font-bold text-xs text-primary uppercase tracking-wider flex items-center gap-1.5">
                     <Mail className="w-4 h-4 text-primary" /> Transactional SMS Dispatcher
                   </h3>
-                  <span className="bg-green-100 text-green-700 font-extrabold text-[8px] uppercase px-2 py-0.5 rounded">
+                  <span className="bg-green-600 text-white font-extrabold text-[8px] uppercase px-2 py-0.5 rounded">
                     {smsStatus}
                   </span>
                 </div>
@@ -839,7 +839,7 @@ const SystemSettings = () => {
                   <h3 className="font-bold text-xs text-primary uppercase tracking-wider flex items-center gap-1.5">
                     <Bell className="w-4 h-4 text-primary" /> SMTP Email Gateway Provider
                   </h3>
-                  <span className="bg-green-100 text-green-700 font-extrabold text-[8px] uppercase px-2 py-0.5 rounded">
+                  <span className="bg-green-600 text-white font-extrabold text-[8px] uppercase px-2 py-0.5 rounded">
                     {emailStatus}
                   </span>
                 </div>
@@ -942,7 +942,7 @@ const SystemSettings = () => {
                   <h3 className="font-bold text-xs text-primary uppercase tracking-wider flex items-center gap-1.5">
                     <HardDrive className="w-4 h-4 text-primary" /> Platform Database Backup & recovery
                   </h3>
-                  <span className="bg-green-100 text-green-700 font-extrabold text-[8px] uppercase px-2 py-0.5 rounded">
+                  <span className="bg-green-600 text-white font-extrabold text-[8px] uppercase px-2 py-0.5 rounded">
                     {backupStatus}
                   </span>
                 </div>
@@ -1169,3 +1169,11 @@ const SystemSettings = () => {
 };
 
 export default SystemSettings;
+
+
+
+
+
+
+
+

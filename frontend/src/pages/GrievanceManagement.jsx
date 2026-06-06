@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldAlert, AlertTriangle, Check, X, Shield, Lock, Eye, Download, 
@@ -515,7 +515,7 @@ const GrievanceManagement = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               National Grievance Portal
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• CPGRAMS Dashboard Interface</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ CPGRAMS Dashboard Interface</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Grievance Management</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -640,7 +640,7 @@ const GrievanceManagement = () => {
                         <td className="py-3 px-2 text-[11px] text-onSurfaceVariant">{grv.category}</td>
                         <td className="py-3 px-2">
                           <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                            grv.priority === 'Critical' ? 'bg-red-200 text-red-800' :
+                            grv.priority === 'Critical' ? 'bg-red-700 text-red-800' :
                             grv.priority === 'High' ? 'bg-red-50 text-red-700' :
                             'bg-amber-50 text-amber-700'
                           }`}>
@@ -793,7 +793,7 @@ const GrievanceManagement = () => {
                   </div>
                   <span className={`px-2.5 py-0.5 rounded font-extrabold uppercase text-[8px] ${
                     selectedGrievance.status === 'Resolved' ? 'bg-green-100 text-green-800' :
-                    selectedGrievance.status === 'Escalated' ? 'bg-red-200 text-red-800' :
+                    selectedGrievance.status === 'Escalated' ? 'bg-red-700 text-red-800' :
                     selectedGrievance.status === 'In Progress' ? 'bg-primary-container/20 text-primary' :
                     'bg-amber-100 text-amber-800'
                   }`}>
@@ -846,7 +846,7 @@ const GrievanceManagement = () => {
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-bold text-primary uppercase text-[8px]">SLA Monitoring Status</span>
                     <span className={`px-2 py-0.5 rounded font-bold text-[9px] uppercase ${
-                      selectedGrievance.slaStatus === 'Overdue' ? 'bg-red-100 text-red-700 animate-pulse' : 'bg-green-100 text-green-700'
+                      selectedGrievance.slaStatus === 'Overdue' ? 'bg-red-600 text-white animate-pulse' : 'bg-green-600 text-white'
                     }`}>
                       {selectedGrievance.slaStatus}
                     </span>
@@ -963,7 +963,7 @@ const GrievanceManagement = () => {
                           : 'bg-surface border border-outlineVariant/25 text-onSurface mr-auto rounded-tl-none'
                       }`}
                     >
-                      <span className="font-semibold text-[8px] opacity-80">{msg.sender} • {msg.time}</span>
+                      <span className="font-semibold text-[8px] opacity-80">{msg.sender} â€¢ {msg.time}</span>
                       <p className="leading-relaxed">{msg.text}</p>
                     </div>
                   ))}
@@ -1296,7 +1296,7 @@ const GrievanceManagement = () => {
                       <div className="text-right">
                         <div className="font-bold text-xs">{o.openCases} Open Cases</div>
                         <span className={`text-[8px] font-extrabold uppercase px-1.5 py-0.5 rounded ${
-                          o.availability === 'Available' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'
+                          o.availability === 'Available' ? 'bg-green-600 text-white' : 'bg-amber-500 text-white'
                         }`}>
                           {o.availability}
                         </span>
@@ -1332,3 +1332,11 @@ const GrievanceManagement = () => {
 };
 
 export default GrievanceManagement;
+
+
+
+
+
+
+
+

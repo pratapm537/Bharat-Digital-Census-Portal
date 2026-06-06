@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+﻿import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import {
@@ -30,8 +30,8 @@ const AppointmentBooking = () => {
 
   // Notifications state
   const [notifications, setNotifications] = useState([
-    { id: 1, text: 'Upcoming Appointment: Document Verification on 15 June 2026, 10:00 AM.', date: 'Today · 09:30 AM', read: false, type: 'reminder' },
-    { id: 2, text: 'Officer Amit Sharma has been assigned to your verification profile.', date: 'Yesterday · 04:15 PM', read: true, type: 'assignment' },
+    { id: 1, text: 'Upcoming Appointment: Document Verification on 15 June 2026, 10:00 AM.', date: 'Today Â· 09:30 AM', read: false, type: 'reminder' },
+    { id: 2, text: 'Officer Amit Sharma has been assigned to your verification profile.', date: 'Yesterday Â· 04:15 PM', read: true, type: 'assignment' },
     { id: 3, text: 'Support Ticket #TIC-9085 solved: Slot corrections synced successfully.', date: '2 Jun 2026', read: true, type: 'system' }
   ]);
 
@@ -339,9 +339,9 @@ const AppointmentBooking = () => {
   return (
     <div className="flex-grow w-full bg-[#f8faff] min-h-screen pb-16 relative">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-10 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/2 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -402,9 +402,9 @@ const AppointmentBooking = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: APPOINTMENT OVERVIEW
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
             { label: 'Total Appointments', value: statsOverview.total, icon: Calendar, color: '#0b2447', bg: 'rgba(11,36,71,0.06)' },
@@ -456,9 +456,9 @@ const AppointmentBooking = () => {
           })}
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             MAIN CONTENT AREA GRID
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT COL: TAB CONTENT (8 Columns) */}
@@ -885,7 +885,7 @@ const AppointmentBooking = () => {
                                     : ''
                                 } ${
                                   dayInfo.status === 'holiday' || dayInfo.status === 'weekend' || dayInfo.status === 'full' 
-                                    ? 'opacity-40 cursor-not-allowed bg-slate-100 text-slate-400 border-slate-200' 
+                                    ? 'opacity-40 cursor-not-allowed bg-slate-500 text-white border-slate-200' 
                                     : ''
                                 }`}
                               >
@@ -1447,9 +1447,9 @@ const AppointmentBooking = () => {
 
       </div>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           RESCHEDULE APPOINTMENT MODAL (SECTION 14)
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {rescheduleTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
           <div className="bg-white rounded-3xl border border-slate-100 shadow-2xl p-6 w-full max-w-md space-y-5 animate-fade-in">
@@ -1467,7 +1467,7 @@ const AppointmentBooking = () => {
 
             <div className="bg-slate-50 p-4 border border-slate-150 rounded-2xl text-[10px] space-y-1.5 font-bold text-slate-650">
               <p><span className="text-slate-450 block text-[8px] uppercase">Service Type</span> {rescheduleTarget.typeLabel}</p>
-              <p><span className="text-slate-450 block text-[8px] uppercase">Current Date / Time</span> {rescheduleTarget.date} · {rescheduleTarget.time}</p>
+              <p><span className="text-slate-450 block text-[8px] uppercase">Current Date / Time</span> {rescheduleTarget.date} Â· {rescheduleTarget.time}</p>
             </div>
 
             <form onSubmit={handleRescheduleSubmit} className="space-y-4">
@@ -1525,9 +1525,9 @@ const AppointmentBooking = () => {
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           CANCEL APPOINTMENT MODAL (SECTION 15)
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {cancelTarget && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
           <div className="bg-white rounded-3xl border border-slate-100 shadow-2xl p-6 w-full max-w-md space-y-5 animate-fade-in">
@@ -1545,7 +1545,7 @@ const AppointmentBooking = () => {
 
             <div className="bg-slate-50 p-4 border border-slate-150 rounded-2xl text-[10px] space-y-1.5 font-bold text-slate-650">
               <p><span className="text-slate-450 block text-[8px] uppercase">Service Type</span> {cancelTarget.typeLabel}</p>
-              <p><span className="text-slate-450 block text-[8px] uppercase">Scheduled Time</span> {cancelTarget.date} · {cancelTarget.time}</p>
+              <p><span className="text-slate-450 block text-[8px] uppercase">Scheduled Time</span> {cancelTarget.date} Â· {cancelTarget.time}</p>
             </div>
 
             <form onSubmit={handleCancelAppointmentSubmit} className="space-y-4">
@@ -1623,3 +1623,11 @@ const AppointmentBooking = () => {
 };
 
 export default AppointmentBooking;
+
+
+
+
+
+
+
+

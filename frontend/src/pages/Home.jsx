@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import WorldMap from '../components/dashboard/WorldMap.jsx';
@@ -7,7 +7,7 @@ import {
   Lock, Smartphone, Clock, ChevronRight, TrendingUp, Database, Globe
 } from 'lucide-react';
 
-/* ─── Static Data ─────────────────────────────────────────── */
+/* â”€â”€â”€ Static Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const STATS = [
   { label: 'Registered Citizens',  value: '32.5M+', icon: Users,       color: '#ff9933' },
   { label: 'States & UTs Covered', value: '36',     icon: Globe,       color: '#138808' },
@@ -37,13 +37,13 @@ const FEATURES = [
   {
     icon: Clock,
     title: 'Save & Resume Drafts',
-    desc: '10-step wizard with auto-save. Pick up exactly where you left off — no progress is ever lost.',
+    desc: '10-step wizard with auto-save. Pick up exactly where you left off â€” no progress is ever lost.',
     accent: '#a855f7',
   },
   {
     icon: Award,
     title: 'Digital Certificate',
-    desc: 'Receive an official census completion certificate instantly upon submission — download anytime.',
+    desc: 'Receive an official census completion certificate instantly upon submission â€” download anytime.',
     accent: '#ef4444',
   },
   {
@@ -62,7 +62,7 @@ const STEPS = [
   { num: '05', title: 'Submit & Download',   desc: 'Submit your census form and download your official digital certificate instantly.' },
 ];
 
-/* ─── Component ───────────────────────────────────────────── */
+/* â”€â”€â”€ Component â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 const Home = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -91,7 +91,7 @@ const Home = () => {
   return (
     <div className="flex-grow w-full bg-[#f7f9fb] text-[#191c1e] flex flex-col">
 
-      {/* ── HERO ──────────────────────────────────────────────── */}
+      {/* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="relative w-full bg-gradient-to-br from-[#0b2447] via-[#0d2e5a] to-[#0b2447] text-white overflow-hidden">
 
         {/* Subtle dot-grid backdrop */}
@@ -116,7 +116,7 @@ const Home = () => {
 
         <div className="relative max-w-7xl mx-auto px-6 py-14 md:py-20 flex flex-col lg:flex-row items-center gap-10 lg:gap-6">
 
-          {/* ── LEFT COLUMN: Copy ── */}
+          {/* â”€â”€ LEFT COLUMN: Copy â”€â”€ */}
           <div
             className="flex-1 flex flex-col gap-7 lg:max-w-[460px]"
             style={{
@@ -129,7 +129,7 @@ const Home = () => {
             <div className="flex items-center gap-2 bg-[#ff9933]/10 border border-[#ff9933]/25 px-4 py-1.5 rounded-full w-max">
               <span className="w-2 h-2 rounded-full bg-[#ff9933] animate-pulse" />
               <span className="text-[11px] font-bold tracking-widest text-[#ff9933] uppercase">
-                Government of India — Ministry of Home Affairs
+                Government of India â€” Ministry of Home Affairs
               </span>
             </div>
 
@@ -168,7 +168,7 @@ const Home = () => {
                 {fmt(livePopulation)}
               </span>
               <span className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
-                Updating every second · National Census Bureau
+                Updating every second Â· National Census Bureau
               </span>
             </div>
 
@@ -215,7 +215,7 @@ const Home = () => {
             </div>
           </div>
 
-          {/* ── RIGHT COLUMN: Interactive World Map ── */}
+          {/* â”€â”€ RIGHT COLUMN: Interactive World Map â”€â”€ */}
           <div
             className="flex-1 w-full"
             style={{
@@ -243,7 +243,7 @@ const Home = () => {
                   </span>
                 </div>
                 <span className="text-[9px] text-slate-500 font-semibold uppercase tracking-wider">
-                  World · 2026 Estimate
+                  World Â· 2026 Estimate
                 </span>
               </div>
 
@@ -255,11 +255,11 @@ const Home = () => {
               {/* Bottom rank strip */}
               <div className="px-5 py-3 border-t border-white/5 flex items-center gap-4 overflow-x-auto">
                 {[
-                  { flag: '🇮🇳', name: 'India',     pop: '1.46B', rank: '#1', active: true  },
-                  { flag: '🇨🇳', name: 'China',     pop: '1.41B', rank: '#2', active: false },
-                  { flag: '🇺🇸', name: 'USA',       pop: '340M',  rank: '#3', active: false },
-                  { flag: '🇮🇩', name: 'Indonesia', pop: '277M',  rank: '#4', active: false },
-                  { flag: '🇵🇰', name: 'Pakistan',  pop: '240M',  rank: '#5', active: false },
+                  { flag: 'ðŸ‡®ðŸ‡³', name: 'India',     pop: '1.46B', rank: '#1', active: true  },
+                  { flag: 'ðŸ‡¨ðŸ‡³', name: 'China',     pop: '1.41B', rank: '#2', active: false },
+                  { flag: 'ðŸ‡ºðŸ‡¸', name: 'USA',       pop: '340M',  rank: '#3', active: false },
+                  { flag: 'ðŸ‡®ðŸ‡©', name: 'Indonesia', pop: '277M',  rank: '#4', active: false },
+                  { flag: 'ðŸ‡µðŸ‡°', name: 'Pakistan',  pop: '240M',  rank: '#5', active: false },
                 ].map((c) => (
                   <div
                     key={c.name}
@@ -285,7 +285,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── FEATURES ──────────────────────────────────────────── */}
+      {/* â”€â”€ FEATURES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="w-full bg-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -324,7 +324,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ──────────────────────────────────────── */}
+      {/* â”€â”€ HOW IT WORKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="w-full bg-[#f7f9fb] border-t border-slate-100 py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-14">
@@ -371,7 +371,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── TRUST STRIP ───────────────────────────────────────── */}
+      {/* â”€â”€ TRUST STRIP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="w-full bg-[#0b2447] text-white py-12">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
@@ -404,3 +404,11 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+
+

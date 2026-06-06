@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import {
@@ -81,7 +81,7 @@ const ProfileManagement = () => {
     state: 'Delhi',
     pinCode: '110001',
     lastVerified: '12 January 2026',
-    gps: '28.6139° N, 77.2090° E'
+    gps: '28.6139Â° N, 77.2090Â° E'
   });
 
   const [familyMembers, setFamilyMembers] = useState([
@@ -116,13 +116,13 @@ const ProfileManagement = () => {
 
   const [activeSessions, setActiveSessions] = useState([
     { id: 1, device: 'Chrome Browser (Current)', location: 'Delhi, India', time: 'Active Now', current: true },
-    { id: 2, device: 'Vite Native App', location: 'Delhi, India', time: '15 June 2026 · 10:45 AM', current: false },
-    { id: 3, device: 'Safari Browser - iPhone', location: 'Mumbai, India', time: '12 June 2026 · 09:12 PM', current: false }
+    { id: 2, device: 'Vite Native App', location: 'Delhi, India', time: '15 June 2026 Â· 10:45 AM', current: false },
+    { id: 3, device: 'Safari Browser - iPhone', location: 'Mumbai, India', time: '12 June 2026 Â· 09:12 PM', current: false }
   ]);
 
   const [securityLogs, setSecurityLogs] = useState([
-    { id: 1, title: 'Profile Updated', detail: 'Address details updated successfully.', time: 'Today · 12:40 PM', type: 'info' },
-    { id: 2, title: 'New Login Detected', detail: 'Successful credentials sign-in from Dwarka.', time: 'Yesterday · 10:45 AM', type: 'warning' },
+    { id: 1, title: 'Profile Updated', detail: 'Address details updated successfully.', time: 'Today Â· 12:40 PM', type: 'info' },
+    { id: 2, title: 'New Login Detected', detail: 'Successful credentials sign-in from Dwarka.', time: 'Yesterday Â· 10:45 AM', type: 'warning' },
     { id: 3, title: 'Password Changed', detail: 'Credential security renewal completed.', time: '15 May 2026', type: 'success' }
   ]);
 
@@ -194,11 +194,11 @@ const ProfileManagement = () => {
 
   // Activity History timeline
   const [activityHistory, setActivityHistory] = useState([
-    { id: 1, title: 'Profile Created', desc: 'Citizen registration completed with AADHAAR verification.', date: '12 Jan 2024 · 09:30 AM', icon: 'UserCheck', color: 'bg-green-100 text-green-700' },
-    { id: 2, title: 'Address Updated', desc: 'Dwarka residence mapped to national census grid.', date: '12 Jan 2026 · 11:20 AM', icon: 'MapPin', color: 'bg-blue-100 text-blue-700' },
-    { id: 3, title: 'Password Changed', desc: 'Secure security credential rotation.', date: '15 May 2026 · 04:50 PM', icon: 'Lock', color: 'bg-amber-100 text-amber-700' },
-    { id: 4, title: 'Family Member Added', desc: 'Amit Mehra (Son) linked to household registry.', date: '28 May 2026 · 02:15 PM', icon: 'Plus', color: 'bg-purple-100 text-purple-700' },
-    { id: 5, title: 'Document Uploaded', desc: 'Official passport credential synced with vault.', date: '05 Jun 2026 · 10:30 AM', icon: 'FileText', color: 'bg-indigo-100 text-indigo-700' }
+    { id: 1, title: 'Profile Created', desc: 'Citizen registration completed with AADHAAR verification.', date: '12 Jan 2024 Â· 09:30 AM', icon: 'UserCheck', color: 'bg-green-600 text-white' },
+    { id: 2, title: 'Address Updated', desc: 'Dwarka residence mapped to national census grid.', date: '12 Jan 2026 Â· 11:20 AM', icon: 'MapPin', color: 'bg-blue-600 text-white' },
+    { id: 3, title: 'Password Changed', desc: 'Secure security credential rotation.', date: '15 May 2026 Â· 04:50 PM', icon: 'Lock', color: 'bg-amber-500 text-white' },
+    { id: 4, title: 'Family Member Added', desc: 'Amit Mehra (Son) linked to household registry.', date: '28 May 2026 Â· 02:15 PM', icon: 'Plus', color: 'bg-purple-100 text-purple-700' },
+    { id: 5, title: 'Document Uploaded', desc: 'Official passport credential synced with vault.', date: '05 Jun 2026 Â· 10:30 AM', icon: 'FileText', color: 'bg-indigo-100 text-indigo-700' }
   ]);
 
   // Help desk support ticket state
@@ -383,9 +383,9 @@ Ministry of Home Affairs, Government of India
         id: Date.now(),
         title: 'Profile Updated',
         desc: 'Personal basic records updated by citizen.',
-        date: 'Today · Just now',
+        date: 'Today Â· Just now',
         icon: 'User',
-        color: 'bg-blue-100 text-blue-700'
+        color: 'bg-blue-600 text-white'
       },
       ...prev
     ]);
@@ -419,9 +419,9 @@ Ministry of Home Affairs, Government of India
           id: Date.now(),
           title: 'Avatar Image Updated',
           desc: 'Citizen uploaded new identity biometric snapshot.',
-          date: 'Today · Just now',
+          date: 'Today Â· Just now',
           icon: 'User',
-          color: 'bg-green-100 text-green-700'
+          color: 'bg-green-600 text-white'
         },
         ...prev
       ]);
@@ -444,9 +444,9 @@ Ministry of Home Affairs, Government of India
         id: Date.now(),
         title: 'Address Sync Request',
         desc: 'New residential registration coordinates requested.',
-        date: 'Today · Just now',
+        date: 'Today Â· Just now',
         icon: 'MapPin',
-        color: 'bg-amber-100 text-amber-700'
+        color: 'bg-amber-500 text-white'
       },
       ...prev
     ]);
@@ -456,7 +456,7 @@ Ministry of Home Affairs, Government of India
   const handleUploadDoc = (docId) => {
     setDocuments(prev => prev.map(doc => {
       if (doc.id === docId) {
-        return { ...doc, status: 'Uploaded', date: 'Today · Just now' };
+        return { ...doc, status: 'Uploaded', date: 'Today Â· Just now' };
       }
       return doc;
     }));
@@ -480,7 +480,7 @@ Ministry of Home Affairs, Government of India
     }
     setPasswords({ current: '', newPass: '', confirm: '' });
     setSecurityLogs(prev => [
-      { id: Date.now(), title: 'Password Changed', detail: 'Citizen reset dashboard credentials.', time: 'Today · Just now', type: 'success' },
+      { id: Date.now(), title: 'Password Changed', detail: 'Citizen reset dashboard credentials.', time: 'Today Â· Just now', type: 'success' },
       ...prev
     ]);
     setActivityHistory(prev => [
@@ -488,9 +488,9 @@ Ministry of Home Affairs, Government of India
         id: Date.now(),
         title: 'Password Changed',
         desc: 'Security credentials renewed successfully.',
-        date: 'Today · Just now',
+        date: 'Today Â· Just now',
         icon: 'Lock',
-        color: 'bg-amber-100 text-amber-700'
+        color: 'bg-amber-500 text-white'
       },
       ...prev
     ]);
@@ -503,7 +503,7 @@ Ministry of Home Affairs, Government of India
       const next = !prev;
       setSuccess(`Two-Factor Authentication (2FA) is now ${next ? 'ENABLED' : 'DISABLED'}.`);
       setSecurityLogs(logs => [
-        { id: Date.now(), title: next ? '2FA Enabled' : '2FA Disabled', detail: `Two factor validation ${next ? 'activated' : 'deactivated'}.`, time: 'Today · Just now', type: next ? 'success' : 'warning' },
+        { id: Date.now(), title: next ? '2FA Enabled' : '2FA Disabled', detail: `Two factor validation ${next ? 'activated' : 'deactivated'}.`, time: 'Today Â· Just now', type: next ? 'success' : 'warning' },
         ...logs
       ]);
       return next;
@@ -515,7 +515,7 @@ Ministry of Home Affairs, Government of India
     setActiveSessions(prev => prev.filter(s => s.id !== sessionId));
     setSuccess('Selected login session terminated.');
     setSecurityLogs(logs => [
-      { id: Date.now(), title: 'Session Terminated', detail: 'Revoked access token for selected device.', time: 'Today · Just now', type: 'info' },
+      { id: Date.now(), title: 'Session Terminated', detail: 'Revoked access token for selected device.', time: 'Today Â· Just now', type: 'info' },
       ...logs
     ]);
   };
@@ -525,7 +525,7 @@ Ministry of Home Affairs, Government of India
     setActiveSessions(prev => prev.filter(s => s.current));
     setSuccess('All secondary device credentials terminated.');
     setSecurityLogs(logs => [
-      { id: Date.now(), title: 'Multiple Sessions Revoked', detail: 'Cleared access sessions globally.', time: 'Today · Just now', type: 'warning' },
+      { id: Date.now(), title: 'Multiple Sessions Revoked', detail: 'Cleared access sessions globally.', time: 'Today Â· Just now', type: 'warning' },
       ...logs
     ]);
   };
@@ -553,7 +553,7 @@ Ministry of Home Affairs, Government of India
         id: Date.now(),
         title: 'Family Member Added',
         desc: `${newMember.name} (${newMember.relation}) connected to household portal.`,
-        date: 'Today · Just now',
+        date: 'Today Â· Just now',
         icon: 'Plus',
         color: 'bg-purple-100 text-purple-700'
       },
@@ -631,9 +631,9 @@ Ministry of Home Affairs, Government of India
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-10 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/2 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -729,9 +729,9 @@ Ministry of Home Affairs, Government of India
         {/* Main Grid Content */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
 
-          {/* ══════════════════════════════════════════════════
+          {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
               LEFT SIDEBAR: PROGRESS & NAVIGATION TABS
-          ══════════════════════════════════════════════════ */}
+          â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
           <div className="lg:col-span-1 space-y-6">
 
             {/* SECTION 2: PROFILE COMPLETION STATUS */}
@@ -865,9 +865,9 @@ Ministry of Home Affairs, Government of India
 
           </div>
 
-          {/* ══════════════════════════════════════════════════
+          {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
               RIGHT MAIN AREA: DYNAMIC TAB CONTENTS
-          ══════════════════════════════════════════════════ */}
+          â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
           <div id="tab-content-anchor" className="lg:col-span-3 space-y-6">
 
             {/* TAB CONTENT: 1. OVERVIEW HUB */}
@@ -1123,7 +1123,7 @@ Ministry of Home Affairs, Government of India
                       </div>
                       <button 
                         onClick={() => toggleMask('aadhaar')}
-                        className="p-2 bg-white hover:bg-slate-100 text-slate-600 rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
+                        className="p-2 bg-white hover:bg-slate-600 text-white rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
                         title={maskIdentities.aadhaar ? "Unmask Aadhaar" : "Mask Aadhaar"}
                       >
                         {maskIdentities.aadhaar ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
@@ -1145,7 +1145,7 @@ Ministry of Home Affairs, Government of India
                       </div>
                       <button 
                         onClick={() => toggleMask('voterId')}
-                        className="p-2 bg-white hover:bg-slate-100 text-slate-600 rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
+                        className="p-2 bg-white hover:bg-slate-600 text-white rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
                       >
                         {maskIdentities.voterId ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                       </button>
@@ -1166,7 +1166,7 @@ Ministry of Home Affairs, Government of India
                       </div>
                       <button 
                         onClick={() => toggleMask('pan')}
-                        className="p-2 bg-white hover:bg-slate-100 text-slate-600 rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
+                        className="p-2 bg-white hover:bg-slate-600 text-white rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
                       >
                         {maskIdentities.pan ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                       </button>
@@ -1187,7 +1187,7 @@ Ministry of Home Affairs, Government of India
                       </div>
                       <button 
                         onClick={() => toggleMask('passport')}
-                        className="p-2 bg-white hover:bg-slate-100 text-slate-600 rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
+                        className="p-2 bg-white hover:bg-slate-600 text-white rounded-lg shadow-sm transition-colors border border-slate-200 cursor-pointer"
                       >
                         {maskIdentities.passport ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                       </button>
@@ -1683,7 +1683,7 @@ Ministry of Home Affairs, Government of India
                         <label className="block text-[10px] font-bold text-slate-600 uppercase mb-1">Current Password</label>
                         <input 
                           type="password" 
-                          placeholder="••••••••"
+                          placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                           value={passwords.current}
                           onChange={(e) => setPasswords({...passwords, current: e.target.value})}
                           className="w-full text-xs font-semibold px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-primary"
@@ -1756,7 +1756,7 @@ Ministry of Home Affairs, Government of India
                           </div>
                           <div>
                             <p className="text-xs font-bold text-slate-800">{session.device}</p>
-                            <p className="text-[10px] text-slate-500 font-light mt-0.5">{session.location} · {session.time}</p>
+                            <p className="text-[10px] text-slate-500 font-light mt-0.5">{session.location} Â· {session.time}</p>
                           </div>
                         </div>
                         
@@ -1824,15 +1824,15 @@ Ministry of Home Affairs, Government of India
                         className="w-full text-xs font-semibold px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-primary"
                       >
                         <option value="English">English</option>
-                        <option value="Hindi">हिन्दी (Hindi)</option>
-                        <option value="Bengali">বাংলা (Bengali)</option>
-                        <option value="Tamil">தமிழ் (Tamil)</option>
-                        <option value="Telugu">తెలుగు (Telugu)</option>
-                        <option value="Marathi">मराठी (Marathi)</option>
-                        <option value="Gujarati">ગુજરાતી (Gujarati)</option>
-                        <option value="Punjabi">ਪੰਜਾਬੀ (Punjabi)</option>
-                        <option value="Kannada">ಕನ್ನಡ (Kannada)</option>
-                        <option value="Malayalam">മലയാളം (Malayalam)</option>
+                        <option value="Hindi">à¤¹à¤¿à¤¨à¥à¤¦à¥€ (Hindi)</option>
+                        <option value="Bengali">à¦¬à¦¾à¦‚à¦²à¦¾ (Bengali)</option>
+                        <option value="Tamil">à®¤à®®à®¿à®´à¯ (Tamil)</option>
+                        <option value="Telugu">à°¤à±†à°²à±à°—à± (Telugu)</option>
+                        <option value="Marathi">à¤®à¤°à¤¾à¤ à¥€ (Marathi)</option>
+                        <option value="Gujarati">àª—à«àªœàª°àª¾àª¤à«€ (Gujarati)</option>
+                        <option value="Punjabi">à¨ªà©°à¨œà¨¾à¨¬à©€ (Punjabi)</option>
+                        <option value="Kannada">à²•à²¨à³à²¨à²¡ (Kannada)</option>
+                        <option value="Malayalam">à´®à´²à´¯à´¾à´³à´‚ (Malayalam)</option>
                       </select>
                     </div>
 
@@ -1927,7 +1927,7 @@ Ministry of Home Affairs, Government of India
                           <FileText className="w-5 h-5 text-slate-450 shrink-0" />
                           <div>
                             <p className="font-bold text-slate-800">{doc.name}</p>
-                            <p className="text-[10px] text-slate-400 mt-0.5">{doc.type} · {doc.date}</p>
+                            <p className="text-[10px] text-slate-400 mt-0.5">{doc.type} Â· {doc.date}</p>
                           </div>
                         </div>
 
@@ -2000,9 +2000,9 @@ Ministry of Home Affairs, Government of India
               </div>
             )}
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 12: HELP & SUPPORT WIDGET
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-6">
               
               <div className="border-b border-slate-100 pb-3.5">
@@ -2117,7 +2117,7 @@ Ministry of Home Affairs, Government of India
                   ))}
                   {chatTyping && (
                     <div className="flex justify-start">
-                      <div className="p-3 bg-slate-100 text-slate-400 rounded-xl text-xs flex items-center gap-1.5">
+                      <div className="p-3 bg-slate-500 text-white rounded-xl text-xs flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce" />
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.2s]" />
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.4s]" />
@@ -2151,9 +2151,9 @@ Ministry of Home Affairs, Government of India
         </div>
       </div>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           DIALOG / MODAL POPUPS (Simulated Views)
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       
       {/* 1. EDIT PROFILE MODAL */}
       {isEditingPersonal && (
@@ -2399,3 +2399,11 @@ Ministry of Home Affairs, Government of India
 };
 
 export default ProfileManagement;
+
+
+
+
+
+
+
+

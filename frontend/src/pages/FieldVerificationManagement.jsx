@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, Users, ClipboardCheck, AlertTriangle, Search, Filter, 
   MapPin, Check, X, ShieldAlert, Clock, ArrowRight, Download, Eye, 
@@ -438,7 +438,7 @@ const FieldVerificationManagement = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider">
               Verification command center
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Field Verification Management</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -590,7 +590,7 @@ const FieldVerificationManagement = () => {
                     >
                       <td className="py-3 px-4">
                         <div className="font-semibold text-primary">{v.citizenName}</div>
-                        <span className="text-[10px] text-onSurfaceVariant">DOB: {v.dob} • {v.gender}</span>
+                        <span className="text-[10px] text-onSurfaceVariant">DOB: {v.dob} â€¢ {v.gender}</span>
                       </td>
                       <td className="py-3 px-4">
                         <div className="font-semibold text-primary">{v.id}</div>
@@ -602,9 +602,9 @@ const FieldVerificationManagement = () => {
                       </td>
                       <td className="py-3 px-4 text-center">
                         <span className={`px-2 py-0.5 rounded font-bold uppercase text-[9px] ${
-                          v.priority === 'Critical' ? 'bg-red-100 text-red-700 dark:bg-red-950/45 dark:text-red-300' :
-                          v.priority === 'High' ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/45 dark:text-amber-300' :
-                          v.priority === 'Medium' ? 'bg-blue-100 text-blue-700 dark:bg-blue-950/45 dark:text-blue-300' :
+                          v.priority === 'Critical' ? 'bg-red-600 text-white dark:bg-red-950/45 dark:text-red-300' :
+                          v.priority === 'High' ? 'bg-amber-500 text-white dark:bg-amber-950/45 dark:text-amber-300' :
+                          v.priority === 'Medium' ? 'bg-blue-600 text-white dark:bg-blue-950/45 dark:text-blue-300' :
                           'bg-slate-100 text-slate-700 dark:bg-slate-950/45 dark:text-slate-300'
                         }`}>
                           {v.priority}
@@ -784,13 +784,13 @@ const FieldVerificationManagement = () => {
                     </button>
                     <button 
                       onClick={() => setActiveAction('revisit')}
-                      className="flex-1 py-2 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 font-bold text-xs rounded-full cursor-pointer transition-all active:scale-95 text-center flex items-center justify-center gap-1"
+                      className="flex-1 py-2 bg-amber-50 hover:bg-amber-500 text-white border border-amber-200 font-bold text-xs rounded-full cursor-pointer transition-all active:scale-95 text-center flex items-center justify-center gap-1"
                     >
                       <Clock className="w-3.5 h-3.5" /> Revisit
                     </button>
                     <button 
                       onClick={() => setActiveAction('escalate')}
-                      className="flex-1 py-2 bg-red-100 hover:bg-red-200 text-red-700 font-bold text-xs rounded-full cursor-pointer transition-all active:scale-95 text-center flex items-center justify-center gap-1"
+                      className="flex-1 py-2 bg-red-100 hover:bg-red-700 text-red-700 font-bold text-xs rounded-full cursor-pointer transition-all active:scale-95 text-center flex items-center justify-center gap-1"
                     >
                       <ShieldAlert className="w-3.5 h-3.5" /> Escalate
                     </button>
@@ -947,8 +947,8 @@ const FieldVerificationManagement = () => {
               
               {/* Coordinates tracker */}
               <div className="absolute top-4 left-4 z-20 bg-surface/85 backdrop-blur border border-outlineVariant/50 rounded-lg p-2 shadow-sm text-[10px] font-mono">
-                Lat: <strong>28.6139° N</strong><br />
-                Lng: <strong>77.2090° E</strong>
+                Lat: <strong>28.6139Â° N</strong><br />
+                Lng: <strong>77.2090Â° E</strong>
               </div>
 
               {/* Map Canvas */}
@@ -1083,8 +1083,8 @@ const FieldVerificationManagement = () => {
                   <div className="flex justify-between items-center">
                     <span className="font-bold text-primary text-xs">{risk.type}</span>
                     <span className={`px-2 py-0.5 rounded font-bold uppercase text-[8px] ${
-                      risk.status === 'Critical' ? 'bg-red-100 text-red-700' :
-                      risk.status === 'High' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'
+                      risk.status === 'Critical' ? 'bg-red-600 text-white' :
+                      risk.status === 'High' ? 'bg-amber-500 text-white' : 'bg-blue-600 text-white'
                     }`}>
                       {risk.status}
                     </span>
@@ -1283,3 +1283,11 @@ const FieldVerificationManagement = () => {
 };
 
 export default FieldVerificationManagement;
+
+
+
+
+
+
+
+

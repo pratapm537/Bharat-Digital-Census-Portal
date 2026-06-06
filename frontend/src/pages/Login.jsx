@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { authAPI } from '../services/api.js';
@@ -372,7 +372,7 @@ const Login = () => {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                 className="w-full px-4 py-2 bg-surface border border-outlineVariant rounded-md text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
               />
               <p className="text-[10px] text-onSurfaceVariant mt-1">Default demo: <strong>admin</strong> / <strong>admin123</strong></p>
@@ -394,3 +394,11 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
+
+
+
+

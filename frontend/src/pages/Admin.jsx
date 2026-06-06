@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { adminAPI } from '../services/api.js';
 import { 
   Users, CheckCircle2, Clock, XCircle, Search, Filter, Eye, FileText, Check, X, 
@@ -322,7 +322,7 @@ const Admin = () => {
                     <button 
                       onClick={() => handleReviewAction('REJECT')}
                       disabled={reviewLoading}
-                      className="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 py-2 rounded-full font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all cursor-pointer"
+                      className="bg-red-50 hover:bg-red-600 text-white border border-red-200 py-2 rounded-full font-bold text-xs flex items-center justify-center gap-1 active:scale-95 transition-all cursor-pointer"
                     >
                       <X className="w-3.5 h-3.5" /> Reject Revision
                     </button>
@@ -357,3 +357,11 @@ const Admin = () => {
 };
 
 export default Admin;
+
+
+
+
+
+
+
+

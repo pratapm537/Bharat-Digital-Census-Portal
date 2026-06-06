@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+﻿import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -422,7 +422,7 @@ const FamilyAnalytics = () => {
     setSavedViews(prev => prev.filter(v => v.id !== id));
   };
 
-  // Custom donut calculations — each segment uses strokeDashoffset to position correctly
+  // Custom donut calculations â€” each segment uses strokeDashoffset to position correctly
   const donutCircles = useMemo(() => {
     const total = ageDistribution.reduce((acc, curr) => acc + curr.count, 0);
     const radius = 40;
@@ -508,9 +508,9 @@ const FamilyAnalytics = () => {
   return (
     <div className="flex-grow w-full bg-[#f8faff] dark:bg-[#030d1b] min-h-screen pb-16 relative transition-colors duration-300">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER & BANNER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-12 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/3 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -582,9 +582,9 @@ const FamilyAnalytics = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-8">
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SYSTEM MESSAGES / TOASTS
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {successMessage && (
           <div className="bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-300 text-xs p-4 rounded-2xl border border-green-200 dark:border-green-800 mb-6 flex items-start justify-between gap-2.5 shadow-sm animate-fade-in">
             <div className="flex items-start gap-2">
@@ -607,9 +607,9 @@ const FamilyAnalytics = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: FAMILY OVERVIEW SUMMARY (Metric Cards)
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           {[
             { label: 'Total Family Members', value: metrics.total, desc: 'Registered count', color: '#0b2447', text: 'text-[#0b2447] dark:text-white', icon: Users, bg: 'bg-[#0b2447]/5 dark:bg-blue-950/20' },
@@ -638,9 +638,9 @@ const FamilyAnalytics = () => {
           })}
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 9: FILTERS & CUSTOMIZATION PANEL
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-2xl p-5 mb-8 shadow-sm">
           <div className="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-white/5 pb-3">
             <h2 className="text-xs uppercase font-extrabold text-[#0b2447] dark:text-white flex items-center gap-1.5">
@@ -752,9 +752,9 @@ const FamilyAnalytics = () => {
           )}
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 3: FAMILY DEMOGRAPHICS & BREAKDOWN
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
           
           {/* Donut Chart: Age Distribution (7 of 12 Columns) */}
@@ -807,7 +807,7 @@ const FamilyAnalytics = () => {
                         );
                       })}
                     </svg>
-                    {/* Central Text overlay — anchored to SVG bounds */}
+                    {/* Central Text overlay â€” anchored to SVG bounds */}
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
                       <span className="text-2xl font-extrabold text-[#0b2447] dark:text-white leading-none">{metrics.total}</span>
                       <span className="text-[8px] text-slate-400 uppercase font-bold tracking-wider mt-0.5">Members</span>
@@ -914,9 +914,9 @@ const FamilyAnalytics = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             DRILL DOWN DISPLAY FOR ACTIVE SELECTIONS
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {(selectedAgeCategory || selectedEducationCategory || selectedEmploymentCategory) && (
           <div className="bg-[#eff4ff] dark:bg-[#091d38]/50 border border-[#3b82f6]/20 rounded-3xl p-5 mb-8 animate-fade-in flex flex-col gap-4">
             <div className="flex items-center justify-between">
@@ -965,7 +965,7 @@ const FamilyAnalytics = () => {
                   </div>
                   <div className="min-w-0">
                     <h5 className="text-xs font-extrabold text-[#0b2447] dark:text-white truncate">{member.fullName}</h5>
-                    <p className="text-[9px] text-slate-400 truncate mt-0.5">{member.relationship} · Age {calculateAge(member.dob)}</p>
+                    <p className="text-[9px] text-slate-400 truncate mt-0.5">{member.relationship} Â· Age {calculateAge(member.dob)}</p>
                     <p className="text-[9px] text-[#ff9933] font-semibold truncate mt-0.5">{member.qualification}</p>
                   </div>
                 </div>
@@ -974,9 +974,9 @@ const FamilyAnalytics = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             EMPLOYMENT DISTRIBUTION & RESOURCE COMPARISON
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           
           {/* Employment Cards & Pie */}
@@ -1114,9 +1114,9 @@ const FamilyAnalytics = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 4: HOUSEHOLD INSIGHTS (Trends Over Time)
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm mb-8">
           <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-4">
             <div>
@@ -1303,9 +1303,9 @@ const FamilyAnalytics = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 6: AI FAMILY INSIGHTS & COMPARISON
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           
           {/* AI insights list */}
@@ -1419,9 +1419,9 @@ const FamilyAnalytics = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 8: REPORT EXPORT CENTER
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="bg-white dark:bg-[#09172a] border border-slate-100 dark:border-white/10 rounded-3xl p-6 shadow-sm mb-8">
           <div className="border-b border-slate-100 dark:border-white/5 pb-3.5 mb-5">
             <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-1.5">
@@ -1478,9 +1478,9 @@ const FamilyAnalytics = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 10: QUICK ACTIONS & CUSTOM VIEWS SHORTCUTS
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Quick Actions (7 Columns) */}
@@ -1604,3 +1604,11 @@ const FamilyAnalytics = () => {
 };
 
 export default FamilyAnalytics;
+
+
+
+
+
+
+
+

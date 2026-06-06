@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { 
   UserPlus, Upload, Download, FileSpreadsheet, Printer, Users, CheckCircle2, 
   AlertTriangle, Play, Clock, Search, Filter, Eye, Edit, ShieldAlert, 
@@ -621,7 +621,7 @@ const OfficerManagement = () => {
             <span className="bg-secondary text-primary-dark font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider shadow-sm">
               Workforce Command
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Officer Management Hub</h2>
           <p className="text-xs text-white/80 max-w-lg leading-relaxed">
@@ -935,7 +935,7 @@ const OfficerManagement = () => {
                       <span className="absolute text-[10px] font-bold text-primary">95%</span>
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-primary leading-tight">4.8★</h4>
+                      <h4 className="text-xs font-bold text-primary leading-tight">4.8â˜…</h4>
                       <p className="text-[10px] text-onSurfaceVariant uppercase font-bold">Citizen Score</p>
                     </div>
                   </div>
@@ -1591,14 +1591,14 @@ const OfficerManagement = () => {
                     <div key={msg.id} className="p-3 bg-surface-low border border-outlineVariant/20 rounded flex flex-col gap-1">
                       <div className="flex items-center justify-between">
                         <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${
-                          msg.type === 'Emergency Alert' ? 'bg-red-100 text-red-700' : 'bg-primary-container text-primary'
+                          msg.type === 'Emergency Alert' ? 'bg-red-600 text-white' : 'bg-primary-container text-primary'
                         }`}>
                           {msg.type}
                         </span>
                         <span className="text-[9px] text-onSurfaceVariant">{msg.date}</span>
                       </div>
                       <p className="text-xs font-semibold text-primary mt-1">{msg.content}</p>
-                      <span className="text-[9px] text-onSurfaceVariant italic">Target: {msg.target} • Issued by: {msg.sender}</span>
+                      <span className="text-[9px] text-onSurfaceVariant italic">Target: {msg.target} â€¢ Issued by: {msg.sender}</span>
                     </div>
                   ))}
                 </div>
@@ -2236,3 +2236,11 @@ const BarChart2IconSVG = ({ size = 24 }) => (
 );
 
 export default OfficerManagement;
+
+
+
+
+
+
+
+

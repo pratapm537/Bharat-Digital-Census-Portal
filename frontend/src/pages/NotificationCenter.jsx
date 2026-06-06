@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+﻿import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import {
@@ -45,9 +45,9 @@ const NotificationCenter = () => {
 
   // Master Notifications State
   const [appNotifications, setAppNotifications] = useState([
-    { id: 'APP-101', title: 'Certificate Available', content: 'Your official household registration certificate is ready for download.', date: 'Today · 10:30 AM', read: false, type: 'approval', badgeColor: 'bg-green-50 text-green-600 border border-green-150' },
-    { id: 'APP-102', title: 'Field Verification Scheduled', content: 'Census Field Supervisor Amit Sharma will visit your address on 15 June 2026.', date: 'Today · 09:15 AM', read: false, type: 'verification', badgeColor: 'bg-blue-50 text-blue-600 border border-blue-150' },
-    { id: 'APP-103', title: 'Document Required', content: 'Please upload your updated address proof to verify your local credentials.', date: 'Yesterday · 04:20 PM', read: true, type: 'request', badgeColor: 'bg-amber-50 text-amber-600 border border-amber-250', actionRequired: true },
+    { id: 'APP-101', title: 'Certificate Available', content: 'Your official household registration certificate is ready for download.', date: 'Today Â· 10:30 AM', read: false, type: 'approval', badgeColor: 'bg-green-50 text-green-600 border border-green-150' },
+    { id: 'APP-102', title: 'Field Verification Scheduled', content: 'Census Field Supervisor Amit Sharma will visit your address on 15 June 2026.', date: 'Today Â· 09:15 AM', read: false, type: 'verification', badgeColor: 'bg-blue-50 text-blue-600 border border-blue-150' },
+    { id: 'APP-103', title: 'Document Required', content: 'Please upload your updated address proof to verify your local credentials.', date: 'Yesterday Â· 04:20 PM', read: true, type: 'request', badgeColor: 'bg-amber-50 text-amber-600 border border-amber-250', actionRequired: true },
     { id: 'APP-104', title: 'Biometrics Linked', content: 'Aadhaar biometric parameters synced successfully with National Census Registry.', date: '3 Jun 2026', read: true, type: 'verification', badgeColor: 'bg-blue-50 text-blue-600 border border-blue-150' },
     { id: 'APP-105', title: 'Support Ticket Solved', content: 'Helpdesk solved Ticket #TIC-2895 concerning slot alignment errors.', date: '1 Jun 2026', read: true, type: 'system', badgeColor: 'bg-slate-50 text-slate-600 border border-slate-200' }
   ]);
@@ -251,9 +251,9 @@ const NotificationCenter = () => {
   return (
     <div className="flex-grow w-full bg-[#f8faff] min-h-screen pb-16 relative">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-10 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/2 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -315,9 +315,9 @@ const NotificationCenter = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: NOTIFICATION OVERVIEW
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
             { label: 'Total Logs', value: statsOverview.total, icon: Bell, color: '#0b2447', bg: 'rgba(11,36,71,0.06)' },
@@ -345,9 +345,9 @@ const NotificationCenter = () => {
           })}
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 7: NOTIFICATION PREFERENCES TOGGLES (COLLAPSIBLE)
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {settingsOpen && (
           <div className="bg-white rounded-3xl border border-slate-200 shadow-md p-6 mb-8 animate-fade-in">
             <div className="flex justify-between items-center border-b border-slate-150 pb-3 mb-4">
@@ -417,9 +417,9 @@ const NotificationCenter = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             MAIN CONTENT AREA GRID
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT COL: ALERTS, CHRONOLOGY & SEARCH HISTORY LOGS (8 Columns) */}
@@ -567,7 +567,7 @@ const NotificationCenter = () => {
                     filteredSMS.map((sms) => (
                       <div key={sms.id} className="p-4 bg-slate-50/50 border border-slate-150 rounded-2xl space-y-2">
                         <div className="flex justify-between items-center text-[8px] font-bold text-slate-400">
-                          <span>{sms.date} · Delivery ID: {sms.id}</span>
+                          <span>{sms.date} Â· Delivery ID: {sms.id}</span>
                           <span className="text-green-600 bg-green-50 px-2 py-0.5 rounded font-extrabold">{sms.status}</span>
                         </div>
                         <p className="leading-relaxed text-[#0b2447] text-xs font-mono">{sms.content}</p>
@@ -802,9 +802,9 @@ const NotificationCenter = () => {
 
       </div>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           EMAIL VIEWER MODAL DIALOG (SECTION 4 MODAL)
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {activeEmailView && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
           <div className="bg-white rounded-3xl border border-slate-100 shadow-2xl p-6 w-full max-w-lg space-y-5 animate-fade-in text-slate-650 font-bold">
@@ -869,3 +869,11 @@ const NotificationCenter = () => {
 };
 
 export default NotificationCenter;
+
+
+
+
+
+
+
+

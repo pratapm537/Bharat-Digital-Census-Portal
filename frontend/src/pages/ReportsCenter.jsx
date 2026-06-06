@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldAlert, AlertTriangle, Check, X, Shield, Lock, Eye, Download, 
@@ -258,7 +258,7 @@ const ReportsCenter = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               National Intelligence Observatories
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Reports Center</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -1051,3 +1051,11 @@ const ReportsCenter = () => {
 };
 
 export default ReportsCenter;
+
+
+
+
+
+
+
+

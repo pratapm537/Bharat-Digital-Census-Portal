@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { 
   BarChart2, Globe, TrendingUp, Users, BookOpen, Briefcase, 
   Map, Download, ArrowRight, CheckCircle2, ChevronRight, HelpCircle, 
@@ -20,22 +20,22 @@ const INITIAL_STATES = [
 ];
 
 const AGE_GROUPS_PYRAMID = [
-  { cohort: '0–4', male: 4.5, female: 4.2 },
-  { cohort: '5–9', male: 4.8, female: 4.5 },
-  { cohort: '10–14', male: 5.1, female: 4.8 },
-  { cohort: '15–19', male: 5.5, female: 5.1 },
-  { cohort: '20–24', male: 6.2, female: 5.8 },
-  { cohort: '25–29', male: 6.5, female: 6.1 },
-  { cohort: '30–34', male: 6.0, female: 5.6 },
-  { cohort: '35–39', male: 5.2, female: 4.9 },
-  { cohort: '40–44', male: 4.8, female: 4.5 },
-  { cohort: '45–49', male: 4.2, female: 3.9 },
-  { cohort: '50–54', male: 3.8, female: 3.5 },
-  { cohort: '55–59', male: 3.1, female: 2.9 },
-  { cohort: '60–64', male: 2.5, female: 2.3 },
-  { cohort: '65–69', male: 1.8, female: 1.7 },
-  { cohort: '70–74', male: 1.2, female: 1.1 },
-  { cohort: '75–79', male: 0.8, female: 0.7 },
+  { cohort: '0â€“4', male: 4.5, female: 4.2 },
+  { cohort: '5â€“9', male: 4.8, female: 4.5 },
+  { cohort: '10â€“14', male: 5.1, female: 4.8 },
+  { cohort: '15â€“19', male: 5.5, female: 5.1 },
+  { cohort: '20â€“24', male: 6.2, female: 5.8 },
+  { cohort: '25â€“29', male: 6.5, female: 6.1 },
+  { cohort: '30â€“34', male: 6.0, female: 5.6 },
+  { cohort: '35â€“39', male: 5.2, female: 4.9 },
+  { cohort: '40â€“44', male: 4.8, female: 4.5 },
+  { cohort: '45â€“49', male: 4.2, female: 3.9 },
+  { cohort: '50â€“54', male: 3.8, female: 3.5 },
+  { cohort: '55â€“59', male: 3.1, female: 2.9 },
+  { cohort: '60â€“64', male: 2.5, female: 2.3 },
+  { cohort: '65â€“69', male: 1.8, female: 1.7 },
+  { cohort: '70â€“74', male: 1.2, female: 1.1 },
+  { cohort: '75â€“79', male: 0.8, female: 0.7 },
   { cohort: '80+', male: 0.5, female: 0.5 }
 ];
 
@@ -48,7 +48,7 @@ const MOCK_MIGRATIONS = [
 ];
 
 const AI_INSIGHTS = [
-  { title: 'Demographic Youth Dividend', desc: 'The largest population concentration rests within the 20–35 age cohort. High urban concentrations suggest accelerating labor demands.', category: 'Demographics' },
+  { title: 'Demographic Youth Dividend', desc: 'The largest population concentration rests within the 20â€“35 age cohort. High urban concentrations suggest accelerating labor demands.', category: 'Demographics' },
   { title: 'Literacy Transition Acceleration', desc: 'National literacy rates have increased significantly over the last decade, with youth literacy peaking at 89%. Female literacy is growing at 1.4x the rate of male literacy.', category: 'Education' },
   { title: 'Employment Migration Drivers', desc: 'Interstate migration patterns remain heavily employment-driven, with Delhi, Maharashtra, and Karnataka acting as primary economic sinks.', category: 'Migration' },
   { title: 'Digital Housing Footprint', desc: 'Internet adoption within households has reached 78%, showing a direct correlation with municipal sanitary access levels.', category: 'Housing' }
@@ -174,7 +174,7 @@ const PopulationAnalytics = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider">
               National Observatory
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Population Analytics</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -457,9 +457,9 @@ const PopulationAnalytics = () => {
               
               <div className="space-y-3 text-xs">
                 {[
-                  { label: 'Children (0–14)', percentage: 25, color: 'bg-primary' },
-                  { label: 'Youth (15–34)', percentage: 32, color: 'bg-sky-500' },
-                  { label: 'Adults (35–59)', percentage: 33, color: 'bg-emerald-500' },
+                  { label: 'Children (0â€“14)', percentage: 25, color: 'bg-primary' },
+                  { label: 'Youth (15â€“34)', percentage: 32, color: 'bg-sky-500' },
+                  { label: 'Adults (35â€“59)', percentage: 33, color: 'bg-emerald-500' },
                   { label: 'Senior Citizens (60+)', percentage: 10, color: 'bg-amber-500' }
                 ].map(item => (
                   <div key={item.label} className="space-y-1">
@@ -1071,3 +1071,11 @@ const PopulationAnalytics = () => {
 };
 
 export default PopulationAnalytics;
+
+
+
+
+
+
+
+

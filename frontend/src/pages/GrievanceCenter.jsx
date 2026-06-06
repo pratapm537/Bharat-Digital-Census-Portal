@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+﻿import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import {
@@ -39,13 +39,13 @@ const GrievanceCenter = () => {
       assignedOfficer: 'Rahul Sharma',
       expectedResolutionDate: '10 June 2026',
       timeline: [
-        { title: 'Complaint Submitted', desc: 'Grievance recorded in national portal.', date: '15 May 2026 · 09:00 AM', status: 'success' },
-        { title: 'Officer Assigned', desc: 'Field Inspector Rahul Sharma mapped to ticket.', date: '16 May 2026 · 11:30 AM', status: 'info' },
-        { title: 'Investigation Started', desc: 'Audit review of address logs initiated.', date: '17 May 2026 · 02:15 PM', status: 'success' }
+        { title: 'Complaint Submitted', desc: 'Grievance recorded in national portal.', date: '15 May 2026 Â· 09:00 AM', status: 'success' },
+        { title: 'Officer Assigned', desc: 'Field Inspector Rahul Sharma mapped to ticket.', date: '16 May 2026 Â· 11:30 AM', status: 'info' },
+        { title: 'Investigation Started', desc: 'Audit review of address logs initiated.', date: '17 May 2026 Â· 02:15 PM', status: 'success' }
       ],
       chatHistory: [
-        { id: 1, text: 'My verification has been pending for 15 days.', sender: 'citizen', timestamp: '15 May 2026 · 09:05 AM' },
-        { id: 2, text: 'We are reviewing your application.', sender: 'officer', timestamp: '16 May 2026 · 02:30 PM' }
+        { id: 1, text: 'My verification has been pending for 15 days.', sender: 'citizen', timestamp: '15 May 2026 Â· 09:05 AM' },
+        { id: 2, text: 'We are reviewing your application.', sender: 'officer', timestamp: '16 May 2026 Â· 02:30 PM' }
       ],
       resolution: null,
       escalated: false,
@@ -62,17 +62,17 @@ const GrievanceCenter = () => {
       assignedOfficer: 'Priya Patel',
       expectedResolutionDate: '24 May 2026',
       timeline: [
-        { title: 'Complaint Submitted', desc: 'Profile error ticket lodged.', date: '20 May 2026 · 10:00 AM', status: 'success' },
-        { title: 'Officer Assigned', desc: 'Technical analyst Priya Patel assigned.', date: '21 May 2026 · 11:00 AM', status: 'info' },
-        { title: 'Investigation Started', desc: 'Server stack traces analysis in progress.', date: '22 May 2026 · 03:00 PM', status: 'success' },
-        { title: 'Resolution Proposed', desc: 'Database cache cleared for applicant session.', date: '23 May 2026 · 01:00 PM', status: 'success' },
-        { title: 'Complaint Closed', desc: 'Ticket closed after citizen confirmation.', date: '23 May 2026 · 05:00 PM', status: 'approval' }
+        { title: 'Complaint Submitted', desc: 'Profile error ticket lodged.', date: '20 May 2026 Â· 10:00 AM', status: 'success' },
+        { title: 'Officer Assigned', desc: 'Technical analyst Priya Patel assigned.', date: '21 May 2026 Â· 11:00 AM', status: 'info' },
+        { title: 'Investigation Started', desc: 'Server stack traces analysis in progress.', date: '22 May 2026 Â· 03:00 PM', status: 'success' },
+        { title: 'Resolution Proposed', desc: 'Database cache cleared for applicant session.', date: '23 May 2026 Â· 01:00 PM', status: 'success' },
+        { title: 'Complaint Closed', desc: 'Ticket closed after citizen confirmation.', date: '23 May 2026 Â· 05:00 PM', status: 'approval' }
       ],
       chatHistory: [
-        { id: 1, text: 'Unable to save profile, page keeps freezing.', sender: 'citizen', timestamp: '20 May 2026 · 10:05 AM' },
-        { id: 2, text: 'Checking server logs for your session.', sender: 'officer', timestamp: '21 May 2026 · 11:15 AM' },
-        { id: 3, text: 'The database issue is fixed. Please refresh your browser and try again.', sender: 'officer', timestamp: '23 May 2026 · 12:45 PM' },
-        { id: 4, text: 'It works now, thank you!', sender: 'citizen', timestamp: '23 May 2026 · 03:00 PM' }
+        { id: 1, text: 'Unable to save profile, page keeps freezing.', sender: 'citizen', timestamp: '20 May 2026 Â· 10:05 AM' },
+        { id: 2, text: 'Checking server logs for your session.', sender: 'officer', timestamp: '21 May 2026 Â· 11:15 AM' },
+        { id: 3, text: 'The database issue is fixed. Please refresh your browser and try again.', sender: 'officer', timestamp: '23 May 2026 Â· 12:45 PM' },
+        { id: 4, text: 'It works now, thank you!', sender: 'citizen', timestamp: '23 May 2026 Â· 03:00 PM' }
       ],
       resolution: {
         summary: 'Database session deadlock cleared.',
@@ -99,16 +99,16 @@ const GrievanceCenter = () => {
       assignedOfficer: 'Amit Sharma (Supervisor)',
       expectedResolutionDate: '18 May 2026',
       timeline: [
-        { title: 'Complaint Submitted', desc: 'Officer conduct grievance filed.', date: '13 May 2026 · 08:30 AM', status: 'success' },
-        { title: 'Officer Assigned', desc: 'Supervisor Amit Sharma mapped to case.', date: '14 May 2026 · 09:30 AM', status: 'info' },
-        { title: 'Investigation Started', desc: 'Audit checking tracking logs for missed visits.', date: '15 May 2026 · 04:00 PM', status: 'success' },
-        { title: 'Resolution Proposed', desc: 'Visit rescheduled with alternative inspector.', date: '16 May 2026 · 10:00 AM', status: 'success' },
-        { title: 'Complaint Closed', desc: 'Ticket marked resolved.', date: '16 May 2026 · 02:00 PM', status: 'approval' }
+        { title: 'Complaint Submitted', desc: 'Officer conduct grievance filed.', date: '13 May 2026 Â· 08:30 AM', status: 'success' },
+        { title: 'Officer Assigned', desc: 'Supervisor Amit Sharma mapped to case.', date: '14 May 2026 Â· 09:30 AM', status: 'info' },
+        { title: 'Investigation Started', desc: 'Audit checking tracking logs for missed visits.', date: '15 May 2026 Â· 04:00 PM', status: 'success' },
+        { title: 'Resolution Proposed', desc: 'Visit rescheduled with alternative inspector.', date: '16 May 2026 Â· 10:00 AM', status: 'success' },
+        { title: 'Complaint Closed', desc: 'Ticket marked resolved.', date: '16 May 2026 Â· 02:00 PM', status: 'approval' }
       ],
       chatHistory: [
-        { id: 1, text: 'I waited all day yesterday but no officer came.', sender: 'citizen', timestamp: '13 May 2026 · 08:35 AM' },
-        { id: 2, text: 'I am investigating this issue with the assigned field officer.', sender: 'officer', timestamp: '14 May 2026 · 10:15 AM' },
-        { id: 3, text: 'The field officer had a medical emergency. I have rescheduled your visit for 22 May with a different officer. Apologies for the inconvenience.', sender: 'officer', timestamp: '16 May 2026 · 09:45 AM' }
+        { id: 1, text: 'I waited all day yesterday but no officer came.', sender: 'citizen', timestamp: '13 May 2026 Â· 08:35 AM' },
+        { id: 2, text: 'I am investigating this issue with the assigned field officer.', sender: 'officer', timestamp: '14 May 2026 Â· 10:15 AM' },
+        { id: 3, text: 'The field officer had a medical emergency. I have rescheduled your visit for 22 May with a different officer. Apologies for the inconvenience.', sender: 'officer', timestamp: '16 May 2026 Â· 09:45 AM' }
       ],
       resolution: {
         summary: 'Appointment rescheduled with new officer.',
@@ -129,14 +129,14 @@ const GrievanceCenter = () => {
       assignedOfficer: 'Senior Desk Officer Verma',
       expectedResolutionDate: '08 Jun 2026',
       timeline: [
-        { title: 'Complaint Submitted', desc: 'Portal uploading issue registered.', date: '01 Jun 2026 · 11:30 AM', status: 'success' },
-        { title: 'Under Review', desc: 'Technicians verifying cloud bucket parameters.', date: '02 Jun 2026 · 02:00 PM', status: 'success' },
-        { title: 'Officer Assigned', desc: 'Technician desk officer assigned.', date: '03 Jun 2026 · 09:00 AM', status: 'info' },
-        { title: 'Escalated to Senior Officer', desc: 'Case transferred to senior inspector for core patch verification.', date: '04 Jun 2026 · 10:00 AM', status: 'warning' }
+        { title: 'Complaint Submitted', desc: 'Portal uploading issue registered.', date: '01 Jun 2026 Â· 11:30 AM', status: 'success' },
+        { title: 'Under Review', desc: 'Technicians verifying cloud bucket parameters.', date: '02 Jun 2026 Â· 02:00 PM', status: 'success' },
+        { title: 'Officer Assigned', desc: 'Technician desk officer assigned.', date: '03 Jun 2026 Â· 09:00 AM', status: 'info' },
+        { title: 'Escalated to Senior Officer', desc: 'Case transferred to senior inspector for core patch verification.', date: '04 Jun 2026 Â· 10:00 AM', status: 'warning' }
       ],
       chatHistory: [
-        { id: 1, text: 'PDF upload is failing repeatedly. Please fix.', sender: 'citizen', timestamp: '01 Jun 2026 · 11:35 AM' },
-        { id: 2, text: 'This file format issue is being audited by our core engineering desk. We have escalated the priority.', sender: 'officer', timestamp: '04 Jun 2026 · 10:10 AM' }
+        { id: 1, text: 'PDF upload is failing repeatedly. Please fix.', sender: 'citizen', timestamp: '01 Jun 2026 Â· 11:35 AM' },
+        { id: 2, text: 'This file format issue is being audited by our core engineering desk. We have escalated the priority.', sender: 'officer', timestamp: '04 Jun 2026 Â· 10:10 AM' }
       ],
       resolution: null,
       escalated: true,
@@ -310,10 +310,10 @@ const GrievanceCenter = () => {
       assignedOfficer: 'Pending Officer Assignment',
       expectedResolutionDate: '09 June 2026',
       timeline: [
-        { title: 'Complaint Submitted', desc: 'Grievance recorded in national portal.', date: '04 Jun 2026 · 03:34 PM', status: 'success' }
+        { title: 'Complaint Submitted', desc: 'Grievance recorded in national portal.', date: '04 Jun 2026 Â· 03:34 PM', status: 'success' }
       ],
       chatHistory: [
-        { id: 1, text: `Complaint registered under category "${newCategory}". An officer will contact you shortly.`, sender: 'officer', timestamp: '04 Jun 2026 · 03:34 PM' }
+        { id: 1, text: `Complaint registered under category "${newCategory}". An officer will contact you shortly.`, sender: 'officer', timestamp: '04 Jun 2026 Â· 03:34 PM' }
       ],
       resolution: null,
       escalated: false,
@@ -490,7 +490,7 @@ const GrievanceCenter = () => {
     }
 
     let escalatedTimeline = [...activeComplaint.timeline];
-    let dateStr = '04 Jun 2026 · 03:34 PM';
+    let dateStr = '04 Jun 2026 Â· 03:34 PM';
     
     escalatedTimeline.push({
       title: type === 'appeal' ? 'Resolution Appealed' : 'Escalated to Senior Desk',
@@ -635,9 +635,9 @@ Verified Registry Vault Sync: Hash_F89E23B
   return (
     <div className="flex-grow w-full bg-[#f8faff] min-h-screen pb-20 relative">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-12 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/2 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -705,9 +705,9 @@ Verified Registry Vault Sync: Hash_F89E23B
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: GRIEVANCE OVERVIEW
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           {[
             { label: 'Total Complaints', value: statsOverview.total, icon: FileText, color: '#0b2447', bg: 'rgba(11,36,71,0.06)' },
@@ -735,9 +735,9 @@ Verified Registry Vault Sync: Hash_F89E23B
           })}
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             PAGE SUB-NAVIGATION TABS
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="flex gap-2 border-b border-slate-200 pb-3 mb-6 flex-wrap">
           {[
             { id: 'overview', label: 'Grievance Dashboard' },
@@ -759,9 +759,9 @@ Verified Registry Vault Sync: Hash_F89E23B
           ))}
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             TAB PANEL 1: OVERVIEW DASHBOARD
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
@@ -1048,9 +1048,9 @@ Verified Registry Vault Sync: Hash_F89E23B
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             TAB PANEL 2: RAISE COMPLAINT FORM WIZARD
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {activeTab === 'raise' && (
           <div className="max-w-3xl mx-auto bg-white border border-slate-100 rounded-3xl shadow-sm p-6 sm:p-8">
             <div className="border-b border-slate-150 pb-4 mb-6">
@@ -1328,9 +1328,9 @@ Verified Registry Vault Sync: Hash_F89E23B
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             TAB PANEL 3: COMPLAINT HISTORY LOGS
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {activeTab === 'history' && (
           <div className="bg-white border border-slate-100 rounded-3xl shadow-sm p-6 space-y-6">
             <div className="flex justify-between items-center border-b border-slate-150 pb-4 flex-wrap gap-4">
@@ -1443,9 +1443,9 @@ Verified Registry Vault Sync: Hash_F89E23B
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             TAB PANEL 4: ACTIVE COMPLAINT DETAILS & CHAT PIPELINE
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         {activeTab === 'details' && (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
@@ -1869,3 +1869,11 @@ Verified Registry Vault Sync: Hash_F89E23B
 };
 
 export default GrievanceCenter;
+
+
+
+
+
+
+
+

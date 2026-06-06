@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldAlert, AlertTriangle, Check, X, Shield, Lock, Eye, Download, 
@@ -264,7 +264,7 @@ const AuditLogs = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               Security Operations Center
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-2">
             <Terminal className="w-7 h-7" /> Audit Logs
@@ -433,7 +433,7 @@ const AuditLogs = () => {
                         </td>
                         <td className="py-3 px-2 text-right">
                           <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                            log.status.includes('Successful') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700 animate-pulse'
+                            log.status.includes('Successful') ? 'bg-green-600 text-white' : 'bg-red-600 text-white animate-pulse'
                           }`}>
                             {log.status}
                           </span>
@@ -500,9 +500,9 @@ const AuditLogs = () => {
                         <td className="py-3 px-2 font-mono text-onSurfaceVariant">{ver.timestamp}</td>
                         <td className="py-3 px-2 text-right">
                           <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                            ver.status === 'Approved' ? 'bg-green-100 text-green-700' :
-                            ver.status === 'Escalated' ? 'bg-red-200 text-red-800 animate-pulse' :
-                            'bg-amber-100 text-amber-700'
+                            ver.status === 'Approved' ? 'bg-green-600 text-white' :
+                            ver.status === 'Escalated' ? 'bg-red-700 text-red-800 animate-pulse' :
+                            'bg-amber-500 text-white'
                           }`}>
                             {ver.status}
                           </span>
@@ -592,7 +592,7 @@ const AuditLogs = () => {
                 <div key={alert.id} className="p-3 bg-red-50/10 border border-red-500/20 rounded-lg flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
                     <strong className="text-red-700 dark:text-red-300 font-bold">{alert.type}</strong>
-                    <span className="bg-red-100 text-red-700 font-bold px-1.5 py-0.5 rounded text-[8px] uppercase">
+                    <span className="bg-red-600 text-white font-bold px-1.5 py-0.5 rounded text-[8px] uppercase">
                       {alert.risk} Risk
                     </span>
                   </div>
@@ -616,7 +616,7 @@ const AuditLogs = () => {
                     <p className="text-[10px] text-onSurfaceVariant mt-0.5">{rule.desc}</p>
                   </div>
                   <span className={`px-2 py-0.5 rounded font-extrabold text-[8px] uppercase ${
-                    rule.status === 'Compliant' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700 animate-pulse'
+                    rule.status === 'Compliant' ? 'bg-green-600 text-white' : 'bg-amber-500 text-white animate-pulse'
                   }`}>
                     {rule.status}
                   </span>
@@ -920,3 +920,11 @@ const AuditLogs = () => {
 };
 
 export default AuditLogs;
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Zap, Brain, TrendingUp, Compass, Sliders, AlertTriangle, 
@@ -207,7 +207,7 @@ const AiInsights = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               AI Decision Support System
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight flex items-center gap-2">
             <Brain className="w-7 h-7" /> AI Insights Dashboard
@@ -514,7 +514,7 @@ const AiInsights = () => {
                     <div key={idx} className="p-3 bg-surface border border-outlineVariant/20 rounded-lg flex flex-col gap-1.5 text-[10px]">
                       <div className="flex justify-between items-center">
                         <strong className="text-primary block font-bold">{low.area}</strong>
-                        <span className="bg-red-100 text-red-700 font-extrabold px-1 rounded text-[7px] uppercase">
+                        <span className="bg-red-600 text-white font-extrabold px-1 rounded text-[7px] uppercase">
                           {low.priority}
                         </span>
                       </div>
@@ -719,7 +719,7 @@ const AiInsights = () => {
                 <div key={alert.id} className="p-3 bg-red-500/5 border border-red-500/20 rounded-lg flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
                     <strong className="text-red-700 dark:text-red-300 font-bold">{alert.msg}</strong>
-                    <span className="bg-red-100 text-red-700 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">
+                    <span className="bg-red-600 text-white font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">
                       {alert.priority}
                     </span>
                   </div>
@@ -748,7 +748,7 @@ const AiInsights = () => {
                 <div key={anm.id} className="p-3 bg-surface-low border border-outlineVariant/20 rounded-lg flex flex-col gap-1.5">
                   <div className="flex justify-between items-center">
                     <strong className="text-primary font-bold">{anm.type}</strong>
-                    <span className="bg-amber-100 text-amber-700 font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">
+                    <span className="bg-amber-500 text-white font-extrabold px-1.5 py-0.5 rounded text-[8px] uppercase">
                       {anm.risk} Risk
                     </span>
                   </div>
@@ -881,3 +881,11 @@ const AiInsights = () => {
 };
 
 export default AiInsights;
+
+
+
+
+
+
+
+

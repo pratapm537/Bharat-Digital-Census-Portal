@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldAlert, AlertTriangle, Check, X, Shield, Lock, Eye, Download, 
@@ -355,7 +355,7 @@ const CommunicationCenter = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               National Broadcast Center
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Communication Center</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -524,7 +524,7 @@ const CommunicationCenter = () => {
                     <span className="text-[8px] text-onSurfaceVariant uppercase font-bold">Live Mobile SMS Simulator</span>
                     <div className="max-w-xs mx-auto border-4 border-slate-700 bg-slate-900 rounded-2xl p-3 shadow-md text-white text-[11px] font-sans">
                       <div className="bg-slate-800 text-[9px] py-1 rounded text-center mb-2 font-semibold text-slate-300">
-                        💬 +91 BHARAT-CEN
+                        ðŸ’¬ +91 BHARAT-CEN
                       </div>
                       <div className="bg-blue-600 text-white p-2.5 rounded-lg text-[10px] leading-relaxed relative">
                         {smsText}
@@ -623,7 +623,7 @@ const CommunicationCenter = () => {
                     <div className="max-w-xs mx-auto border-4 border-slate-700 bg-slate-950 rounded-2xl p-4 shadow-md text-white text-[11px] font-sans">
                       <div className="bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 flex items-start gap-2.5 shadow-sm">
                         <div className="w-6 h-6 rounded bg-primary flex items-center justify-center shrink-0 text-white font-bold text-[10px]">
-                          🇮🇳
+                          ðŸ‡®ðŸ‡³
                         </div>
                         <div className="flex-grow">
                           <div className="flex justify-between items-center text-[9px] font-bold text-slate-300">
@@ -685,8 +685,8 @@ const CommunicationCenter = () => {
                       <h4 className="font-bold text-xs text-primary mt-1.5">{cmp.name}</h4>
                     </div>
                     <span className={`px-2 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                      cmp.status === 'Active' ? 'bg-green-100 text-green-700' :
-                      cmp.status === 'Paused' ? 'bg-amber-100 text-amber-700' :
+                      cmp.status === 'Active' ? 'bg-green-600 text-white' :
+                      cmp.status === 'Paused' ? 'bg-amber-500 text-white' :
                       'bg-slate-100 text-slate-500'
                     }`}>
                       {cmp.status}
@@ -732,7 +732,7 @@ const CommunicationCenter = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className={`px-1.5 py-0.5 rounded text-[8px] font-extrabold uppercase ${
-                        upd.priority === 'High' ? 'bg-red-100 text-red-700 animate-pulse' : 'bg-slate-100 text-slate-500'
+                        upd.priority === 'High' ? 'bg-red-600 text-white animate-pulse' : 'bg-slate-100 text-slate-500'
                       }`}>
                         {upd.priority} Priority
                       </span>
@@ -1261,13 +1261,13 @@ const CommunicationCenter = () => {
                 onClick={() => handleTriggerEmergencyBroadcast('citizens')}
                 className="w-full bg-[#ef4444] text-white hover:bg-red-700 font-bold py-3 rounded-lg cursor-pointer flex items-center justify-center gap-2"
               >
-                🚨 Broadcast to ALL Citizens (25 Million+)
+                ðŸš¨ Broadcast to ALL Citizens (25 Million+)
               </button>
               <button 
                 onClick={() => handleTriggerEmergencyBroadcast('officers')}
                 className="w-full border border-red-600 text-red-600 hover:bg-red-50 font-bold py-3 rounded-lg cursor-pointer flex items-center justify-center gap-2"
               >
-                🚨 Broadcast to ALL Census Officers (5000+)
+                ðŸš¨ Broadcast to ALL Census Officers (5000+)
               </button>
             </div>
 
@@ -1289,3 +1289,11 @@ const CommunicationCenter = () => {
 };
 
 export default CommunicationCenter;
+
+
+
+
+
+
+
+

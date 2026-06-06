@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+﻿import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft, Search, BarChart2, Download, Landmark,
@@ -186,9 +186,9 @@ const CommunityInsights = () => {
   return (
     <div className="flex-grow w-full bg-[#f8faff] dark:bg-[#030d1b] min-h-screen pb-16 relative transition-colors duration-300">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SECTION 1: PAGE HEADER & BANNER
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-12 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/3 bottom-0 w-80 h-80 bg-[#ff9933]/10 rounded-full blur-3xl pointer-events-none" />
@@ -293,9 +293,9 @@ const CommunityInsights = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: COMMUNITY OVERVIEW
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-2xl p-5 shadow-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-600 rounded-xl flex items-center justify-center shrink-0">
@@ -306,7 +306,7 @@ const CommunityInsights = () => {
                 {areaData.name}
               </h2>
               <p className="text-[10px] text-slate-400 mt-0.5">
-                District: {areaData.district} · State: {areaData.state}
+                District: {areaData.district} Â· State: {areaData.state}
               </p>
             </div>
           </div>
@@ -371,9 +371,9 @@ const CommunityInsights = () => {
           {/* LEFT 8-COLUMN MAIN BLOCK */}
           <div className="lg:col-span-8 flex flex-col gap-6">
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 3: LOCAL STATISTICS
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="border-b border-slate-100 dark:border-white/5 pb-4 mb-4">
                 <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-2">
@@ -556,9 +556,9 @@ const CommunityInsights = () => {
 
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 4: AREA DEVELOPMENT INDICATORS
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="border-b border-slate-100 dark:border-white/5 pb-3.5 mb-4">
                 <h3 className="font-extrabold text-sm text-[#0b2447] dark:text-white uppercase tracking-wider flex items-center gap-2">
@@ -625,9 +625,9 @@ const CommunityInsights = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 6: INTERACTIVE COMMUNITY MAP
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-sm">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/5 pb-4 mb-4">
                 <div>
@@ -719,9 +719,9 @@ const CommunityInsights = () => {
           {/* RIGHT 4-COLUMN SIDEBAR BLOCK */}
           <div className="lg:col-span-4 flex flex-col gap-6">
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 9: AI COMMUNITY INSIGHTS
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 AI Community Insights
@@ -744,9 +744,9 @@ const CommunityInsights = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 5: COMMUNITY REPORTS
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Community Reports
@@ -762,7 +762,7 @@ const CommunityInsights = () => {
                     <div className="flex justify-between items-start gap-2">
                       <div>
                         <span className="block font-bold text-[10px] text-[#0b2447] dark:text-white leading-tight">{rep.name}</span>
-                        <span className="block text-[8px] text-slate-400">{rep.type} · {rep.size}</span>
+                        <span className="block text-[8px] text-slate-400">{rep.type} Â· {rep.size}</span>
                       </div>
                       <span className="text-[8px] font-bold uppercase px-2 py-0.5 rounded bg-cyan-50 text-cyan-700 dark:bg-cyan-950/20">
                         {rep.date}
@@ -782,9 +782,9 @@ const CommunityInsights = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 10: COMMUNITY FEEDBACK
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-2">
                 Citizen Feedback Center
@@ -840,17 +840,17 @@ const CommunityInsights = () => {
               </form>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 12: COMMUNITY ACHIEVEMENTS
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-[#0b2447] text-white rounded-3xl p-5 shadow-lg flex flex-col gap-3">
               <h3 className="font-extrabold text-xs uppercase tracking-widest text-[#ff9933]">Area Achievements</h3>
               
               <div className="flex flex-col gap-3 mt-1">
                 {[
-                  { title: 'Top Literacy Zone', desc: 'Central Delhi Area Category award.', badge: '🏆 Literacy Leader' },
-                  { title: 'Highest Employment Area', desc: 'Recognized for high-yield private sector jobs.', badge: '🌟 Job Center' },
-                  { title: 'Digital Adoption Leader', desc: 'Awarded for online public services registration.', badge: '⚡ Digital First' }
+                  { title: 'Top Literacy Zone', desc: 'Central Delhi Area Category award.', badge: 'ðŸ† Literacy Leader' },
+                  { title: 'Highest Employment Area', desc: 'Recognized for high-yield private sector jobs.', badge: 'ðŸŒŸ Job Center' },
+                  { title: 'Digital Adoption Leader', desc: 'Awarded for online public services registration.', badge: 'âš¡ Digital First' }
                 ].map((ach, i) => (
                   <div key={i} className="bg-white/5 border border-white/10 p-3 rounded-xl flex flex-col gap-1 text-[10px]">
                     <div className="flex justify-between items-center">
@@ -863,9 +863,9 @@ const CommunityInsights = () => {
               </div>
             </div>
 
-            {/* ══════════════════════════════════════════════════
+            {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
                 SECTION 13: HELP & SUPPORT FAQ
-            ══════════════════════════════════════════════════ */}
+            â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
             <div className="bg-white dark:bg-[#09172a] border border-slate-200 dark:border-white/10 rounded-3xl p-5 shadow-sm">
               <h3 className="font-extrabold text-xs text-[#0b2447] dark:text-white uppercase tracking-wider mb-3">
                 Help & support
@@ -904,3 +904,11 @@ const CommunityInsights = () => {
 };
 
 export default CommunityInsights;
+
+
+
+
+
+
+
+

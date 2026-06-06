@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldAlert, AlertTriangle, Check, X, Shield, Lock, Eye, Download, 
@@ -376,7 +376,7 @@ const FraudDetection = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider animate-pulse">
               National Security Center
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Fraud Detection Center</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -556,7 +556,7 @@ const FraudDetection = () => {
                       <div className="font-semibold text-primary">{selectedCase.citizenName} has {selectedCase.suspiciousActivities.registrations} registries</div>
                       <span className="text-[10px] text-onSurfaceVariant">State jurisdictions: {selectedCase.suspiciousActivities.locations}</span>
                     </div>
-                    <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold text-[9px] uppercase">
+                    <span className="bg-red-600 text-white px-2 py-0.5 rounded font-bold text-[9px] uppercase">
                       {selectedCase.riskCategory} Flag
                     </span>
                   </div>
@@ -571,7 +571,7 @@ const FraudDetection = () => {
                       <span className="text-[10px] text-onSurfaceVariant">Details: {selectedCase.suspiciousActivities.docTampering}</span>
                     </div>
                     <span className={`px-2 py-0.5 rounded font-bold text-[9px] uppercase ${
-                      selectedCase.suspiciousActivities.fakeDocScore > 70 ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-600'
+                      selectedCase.suspiciousActivities.fakeDocScore > 70 ? 'bg-red-600 text-white' : 'bg-slate-600 text-white'
                     }`}>
                       {selectedCase.suspiciousActivities.fakeDocScore > 70 ? 'Flagged' : 'Passed'}
                     </span>
@@ -702,7 +702,7 @@ const FraudDetection = () => {
                     <span className="text-[9px] text-onSurfaceVariant font-mono">Index ref: CEN-{selectedCase.caseId.split('-')[2]}</span>
                   </div>
                   <span className={`px-2 py-0.5 rounded font-extrabold uppercase text-[8px] ${
-                    selectedCase.riskCategory === 'Critical' ? 'bg-red-200 text-red-800' :
+                    selectedCase.riskCategory === 'Critical' ? 'bg-red-700 text-red-800' :
                     selectedCase.riskCategory === 'High' ? 'bg-red-50 text-red-700' :
                     'bg-amber-50 text-amber-700'
                   }`}>
@@ -808,7 +808,7 @@ const FraudDetection = () => {
                     </button>
                     <button 
                       onClick={() => handleUpdateStatus('Escalated')}
-                      className="py-1.5 bg-red-100 text-red-700 font-bold rounded-full hover:bg-red-200 transition-all flex items-center justify-center gap-1 cursor-pointer text-[10px]"
+                      className="py-1.5 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all flex items-center justify-center gap-1 cursor-pointer text-[10px]"
                     >
                       <ShieldAlert className="w-3.5 h-3.5" /> Escalate Case
                     </button>
@@ -1000,3 +1000,11 @@ const FraudDetection = () => {
 };
 
 export default FraudDetection;
+
+
+
+
+
+
+
+

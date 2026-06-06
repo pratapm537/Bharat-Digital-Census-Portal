@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { 
   Globe, Map, MapPin, Navigation, Compass, Layers, ZoomIn, ZoomOut, Maximize, 
   Plus, Check, X, Search, ChevronRight, ChevronDown, Users, ShieldAlert, 
@@ -165,7 +165,7 @@ const TerritoryManagement = () => {
   });
   const [mapMode, setMapMode] = useState('standard'); // 'standard', 'heatmap', 'satellite', 'terrain'
   const [heatmapType, setHeatmapType] = useState('coverage'); // 'coverage', 'population', 'verification'
-  const [cursorCoords, setCursorCoords] = useState({ lat: '20.5937° N', lng: '78.9629° E' });
+  const [cursorCoords, setCursorCoords] = useState({ lat: '20.5937Â° N', lng: '78.9629Â° E' });
   const mapContainerRef = useRef(null);
 
   // Assignment Modal
@@ -235,7 +235,7 @@ const TerritoryManagement = () => {
       // Map arbitrary pixel bounds to India Lat/Lng
       const lat = (35.5 - (y / rect.height) * 29).toFixed(4);
       const lng = (68.1 + (x / rect.width) * 29).toFixed(4);
-      setCursorCoords({ lat: `${lat}° N`, lng: `${lng}° E` });
+      setCursorCoords({ lat: `${lat}Â° N`, lng: `${lng}Â° E` });
     }
   };
 
@@ -564,7 +564,7 @@ const TerritoryManagement = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider">
               GIS Command Console
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Territory Management</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -2242,7 +2242,7 @@ const TerritoryManagement = () => {
                   >
                     <div>
                       <strong className="text-primary font-bold block">{o.name}</strong>
-                      <span className="text-[10px] text-onSurfaceVariant">{o.designation} • {o.district}</span>
+                      <span className="text-[10px] text-onSurfaceVariant">{o.designation} â€¢ {o.district}</span>
                     </div>
                     <span className="text-[10px] font-bold text-success bg-green-50 px-2 py-0.5 rounded-full dark:bg-green-950/20">{o.accuracy}% Acc</span>
                   </div>
@@ -2267,3 +2267,11 @@ const TerritoryManagement = () => {
 };
 
 export default TerritoryManagement;
+
+
+
+
+
+
+
+

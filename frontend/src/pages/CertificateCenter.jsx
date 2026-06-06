@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+﻿import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -53,7 +53,7 @@ const CertificateCenter = () => {
   const [printOrientation, setPrintOrientation] = useState('portrait'); // 'portrait' | 'landscape'
   const [printPaperFormat, setPrintPaperFormat] = useState('a4'); // 'a4' | 'letter'
   const [printHistory, setPrintHistory] = useState([
-    { id: 1, docName: 'Census Registration Certificate', date: 'Jan 15, 2026 · 11:20 AM', format: 'A4 Portrait', status: 'Success' }
+    { id: 1, docName: 'Census Registration Certificate', date: 'Jan 15, 2026 Â· 11:20 AM', format: 'A4 Portrait', status: 'Success' }
   ]);
 
   // Support State
@@ -63,10 +63,10 @@ const CertificateCenter = () => {
 
   // Mock Timeline logs
   const [activityTimeline, setActivityTimeline] = useState([
-    { id: 1, action: 'Certificate Generated', time: 'Jan 15, 2026 · 10:45 AM', icon: Award, color: '#3b82f6' },
-    { id: 2, action: 'Certificate Downloaded', time: 'Jan 15, 2026 · 11:02 AM', icon: Download, color: '#10b981' },
-    { id: 3, action: 'Certificate Printed', time: 'Jan 15, 2026 · 11:20 AM', icon: Printer, color: '#f59e0b' },
-    { id: 4, action: 'QR Verification Conducted', time: 'Jan 16, 2026 · 02:15 PM', icon: ShieldCheck, color: '#8b5cf6' }
+    { id: 1, action: 'Certificate Generated', time: 'Jan 15, 2026 Â· 10:45 AM', icon: Award, color: '#3b82f6' },
+    { id: 2, action: 'Certificate Downloaded', time: 'Jan 15, 2026 Â· 11:02 AM', icon: Download, color: '#10b981' },
+    { id: 3, action: 'Certificate Printed', time: 'Jan 15, 2026 Â· 11:20 AM', icon: Printer, color: '#f59e0b' },
+    { id: 4, action: 'QR Verification Conducted', time: 'Jan 16, 2026 Â· 02:15 PM', icon: ShieldCheck, color: '#8b5cf6' }
   ]);
 
   // Load actual database draft
@@ -424,9 +424,9 @@ const CertificateCenter = () => {
   return (
     <div className="flex-grow w-full bg-[#f8faff] min-h-screen pb-16 relative">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           HERO PAGE HEADER (Section 1)
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-10 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/2 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -503,9 +503,9 @@ const CertificateCenter = () => {
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 2: CERTIFICATE OVERVIEW TILES
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           {[
             { label: 'Total Certificates', value: overviewMetrics.total, unit: 'Issued Documents', icon: Award, color: '#0b2447', bg: 'rgba(11,36,71,0.06)' },
@@ -562,9 +562,9 @@ const CertificateCenter = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             MAIN SECURE GRID CONTENT
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT AREA: CERTIFICATE CARDS LIST & CONTROLS (5 columns) */}
@@ -789,7 +789,7 @@ const CertificateCenter = () => {
                   <button 
                     onClick={() => setRotation(prev => (prev + 90) % 360)} 
                     className="p-1 text-slate-500 hover:text-[#0b2447] hover:bg-slate-50 rounded-lg transition-colors cursor-pointer"
-                    title="Rotate 90°"
+                    title="Rotate 90Â°"
                   >
                     <RotateCw className="w-3.5 h-3.5" />
                   </button>
@@ -1320,3 +1320,11 @@ This is an authentic document archive from the Ministry of Home Affairs.`;
 };
 
 export default CertificateCenter;
+
+
+
+
+
+
+
+

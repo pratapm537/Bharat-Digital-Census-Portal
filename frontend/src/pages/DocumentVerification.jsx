@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ShieldCheck, ClipboardCheck, AlertTriangle, Check, X, ShieldAlert, 
@@ -472,7 +472,7 @@ const DocumentVerification = () => {
             <span className="bg-[#ff9933]/20 border border-[#ff9933]/30 text-[#ff9933] font-bold uppercase text-[9px] px-2.5 py-0.5 rounded-full tracking-wider">
               AI Verification Division
             </span>
-            <span className="text-[10px] text-white/70 font-semibold">• Ministry of Home Affairs</span>
+            <span className="text-[10px] text-white/70 font-semibold">â€¢ Ministry of Home Affairs</span>
           </div>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Document Verification Center</h2>
           <p className="text-xs text-white/80 max-w-xl leading-relaxed">
@@ -598,8 +598,8 @@ const DocumentVerification = () => {
                       <td className="py-3 px-3 text-center font-bold text-primary">{doc.aiScore}%</td>
                       <td className="py-3 px-3 text-center">
                         <span className={`px-2 py-0.5 rounded font-bold uppercase text-[8px] ${
-                          doc.priority === 'Critical' ? 'bg-red-100 text-red-700 dark:bg-red-950/40 dark:text-red-300' :
-                          doc.priority === 'High' ? 'bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300' :
+                          doc.priority === 'Critical' ? 'bg-red-600 text-white dark:bg-red-950/40 dark:text-red-300' :
+                          doc.priority === 'High' ? 'bg-amber-500 text-white dark:bg-amber-950/40 dark:text-amber-300' :
                           'bg-slate-100 text-slate-700 dark:bg-slate-950/40 dark:text-slate-300'
                         }`}>
                           {doc.priority}
@@ -873,7 +873,7 @@ const DocumentVerification = () => {
                               </div>
                             </div>
                             {mismatch && (
-                              <span className="bg-red-100 text-red-700 px-1.5 py-0.2 rounded font-extrabold text-[8px] uppercase">
+                              <span className="bg-red-600 text-white px-1.5 py-0.2 rounded font-extrabold text-[8px] uppercase">
                                 Mismatch
                               </span>
                             )}
@@ -925,7 +925,7 @@ const DocumentVerification = () => {
                     <button 
                       onClick={() => setRotateDeg(prev => (prev + 90) % 360)} 
                       className="p-1 border hover:bg-surface-low rounded"
-                      title="Rotate 90°"
+                      title="Rotate 90Â°"
                     >
                       <RotateCw className="w-4 h-4" />
                     </button>
@@ -1014,7 +1014,7 @@ const DocumentVerification = () => {
                     </button>
                     <button 
                       onClick={() => handleVerifySubmit('escalate')}
-                      className="py-2 bg-red-100 text-red-700 font-bold rounded-full hover:bg-red-200 transition-all flex items-center justify-center gap-1 cursor-pointer"
+                      className="py-2 bg-red-600 text-white font-bold rounded-full hover:bg-red-700 transition-all flex items-center justify-center gap-1 cursor-pointer"
                     >
                       <ShieldAlert className="w-3.5 h-3.5" /> Escalate Case
                     </button>
@@ -1134,3 +1134,11 @@ const DocumentVerification = () => {
 };
 
 export default DocumentVerification;
+
+
+
+
+
+
+
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+﻿import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { censusAPI } from '../services/api.js';
@@ -110,7 +110,7 @@ const FamilyDashboard = () => {
   // AI Family Assistant states
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMsgs, setChatMsgs] = useState([
-    { from: 'bot', text: 'Namaste! 🙏 I am your Digital Family Register Assistant. I can help you manage your household members, check verification status, or guide you on uploading documents. How can I assist you today?' }
+    { from: 'bot', text: 'Namaste! ðŸ™ I am your Digital Family Register Assistant. I can help you manage your household members, check verification status, or guide you on uploading documents. How can I assist you today?' }
   ]);
   const [chatInput, setChatInput] = useState('');
   const [chatLanguage, setChatLanguage] = useState('en');
@@ -166,16 +166,16 @@ const FamilyDashboard = () => {
       'default': 'I have received your query. You can manage all family structures, census forms, and uploaded documents in this digital profile. If you have a specific operational question, you can chat with me or contact your local census registrar.'
     },
     hi: {
-      'How do I add a spouse?': 'जीवनसाथी (Spouse) को जोड़ने के लिए, त्वरित क्रियाओं (Quick Actions) में "सदस्य जोड़ें" पर क्लिक करें, या परिवार वृक्ष (Family Tree) में "+ जीवनसाथी जोड़ें" कार्ड पर क्लिक करें। उनके विवरण भरें और आवश्यक दस्तावेज़ अपलोड करें।',
-      'How do I update my child\'s information?': 'बच्चे की जानकारी अपडेट करने के लिए, "सदस्य निर्देशिका" (Directory) पर जाएं, बच्चे का नाम ढूंढें और "संपादित करें" (Edit) पर क्लिक करें। आप परिवार वृक्ष में बच्चे के कार्ड पर क्लिक करके भी विवरण बदल सकते हैं।',
-      'Which documents are missing?': 'आपके वर्तमान रिकॉर्ड के अनुसार, सदस्य दीया मेहरा के लिए "योग्यता प्रमाण पत्र" (Qualification Proof) सत्यापन के लिए लंबित है। कृपया दस्तावेज़ स्थिति पैनल (Document Status Panel) में जाकर लंबित फ़ाइलें पुनः अपलोड करें।',
-      'How do I change family head?': 'परिवार के मुखिया को बदलने के लिए आपको सरकारी नियमों के अनुसार एक शपथ पत्र (Affidavit) जमा करना होगा। कृपया सहायता केंद्र के माध्यम से आवेदन करें।',
-      'default': 'नमस्ते! मुझे आपका प्रश्न प्राप्त हुआ। डिजिटल परिवार पोर्टल में आप सदस्य जोड़ने, हटाने या उनके दस्तावेजों को सत्यापित करने की जानकारी पा सकते हैं।'
+      'How do I add a spouse?': 'à¤œà¥€à¤µà¤¨à¤¸à¤¾à¤¥à¥€ (Spouse) à¤•à¥‹ à¤œà¥‹à¤¡à¤¼à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤, à¤¤à¥à¤µà¤°à¤¿à¤¤ à¤•à¥à¤°à¤¿à¤¯à¤¾à¤“à¤‚ (Quick Actions) à¤®à¥‡à¤‚ "à¤¸à¤¦à¤¸à¥à¤¯ à¤œà¥‹à¤¡à¤¼à¥‡à¤‚" à¤ªà¤° à¤•à¥à¤²à¤¿à¤• à¤•à¤°à¥‡à¤‚, à¤¯à¤¾ à¤ªà¤°à¤¿à¤µà¤¾à¤° à¤µà¥ƒà¤•à¥à¤· (Family Tree) à¤®à¥‡à¤‚ "+ à¤œà¥€à¤µà¤¨à¤¸à¤¾à¤¥à¥€ à¤œà¥‹à¤¡à¤¼à¥‡à¤‚" à¤•à¤¾à¤°à¥à¤¡ à¤ªà¤° à¤•à¥à¤²à¤¿à¤• à¤•à¤°à¥‡à¤‚à¥¤ à¤‰à¤¨à¤•à¥‡ à¤µà¤¿à¤µà¤°à¤£ à¤­à¤°à¥‡à¤‚ à¤”à¤° à¤†à¤µà¤¶à¥à¤¯à¤• à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œà¤¼ à¤…à¤ªà¤²à¥‹à¤¡ à¤•à¤°à¥‡à¤‚à¥¤',
+      'How do I update my child\'s information?': 'à¤¬à¤šà¥à¤šà¥‡ à¤•à¥€ à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€ à¤…à¤ªà¤¡à¥‡à¤Ÿ à¤•à¤°à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤, "à¤¸à¤¦à¤¸à¥à¤¯ à¤¨à¤¿à¤°à¥à¤¦à¥‡à¤¶à¤¿à¤•à¤¾" (Directory) à¤ªà¤° à¤œà¤¾à¤à¤‚, à¤¬à¤šà¥à¤šà¥‡ à¤•à¤¾ à¤¨à¤¾à¤® à¤¢à¥‚à¤‚à¤¢à¥‡à¤‚ à¤”à¤° "à¤¸à¤‚à¤ªà¤¾à¤¦à¤¿à¤¤ à¤•à¤°à¥‡à¤‚" (Edit) à¤ªà¤° à¤•à¥à¤²à¤¿à¤• à¤•à¤°à¥‡à¤‚à¥¤ à¤†à¤ª à¤ªà¤°à¤¿à¤µà¤¾à¤° à¤µà¥ƒà¤•à¥à¤· à¤®à¥‡à¤‚ à¤¬à¤šà¥à¤šà¥‡ à¤•à¥‡ à¤•à¤¾à¤°à¥à¤¡ à¤ªà¤° à¤•à¥à¤²à¤¿à¤• à¤•à¤°à¤•à¥‡ à¤­à¥€ à¤µà¤¿à¤µà¤°à¤£ à¤¬à¤¦à¤² à¤¸à¤•à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤',
+      'Which documents are missing?': 'à¤†à¤ªà¤•à¥‡ à¤µà¤°à¥à¤¤à¤®à¤¾à¤¨ à¤°à¤¿à¤•à¥‰à¤°à¥à¤¡ à¤•à¥‡ à¤…à¤¨à¥à¤¸à¤¾à¤°, à¤¸à¤¦à¤¸à¥à¤¯ à¤¦à¥€à¤¯à¤¾ à¤®à¥‡à¤¹à¤°à¤¾ à¤•à¥‡ à¤²à¤¿à¤ "à¤¯à¥‹à¤—à¥à¤¯à¤¤à¤¾ à¤ªà¥à¤°à¤®à¤¾à¤£ à¤ªà¤¤à¥à¤°" (Qualification Proof) à¤¸à¤¤à¥à¤¯à¤¾à¤ªà¤¨ à¤•à¥‡ à¤²à¤¿à¤ à¤²à¤‚à¤¬à¤¿à¤¤ à¤¹à¥ˆà¥¤ à¤•à¥ƒà¤ªà¤¯à¤¾ à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œà¤¼ à¤¸à¥à¤¥à¤¿à¤¤à¤¿ à¤ªà¥ˆà¤¨à¤² (Document Status Panel) à¤®à¥‡à¤‚ à¤œà¤¾à¤•à¤° à¤²à¤‚à¤¬à¤¿à¤¤ à¤«à¤¼à¤¾à¤‡à¤²à¥‡à¤‚ à¤ªà¥à¤¨à¤ƒ à¤…à¤ªà¤²à¥‹à¤¡ à¤•à¤°à¥‡à¤‚à¥¤',
+      'How do I change family head?': 'à¤ªà¤°à¤¿à¤µà¤¾à¤° à¤•à¥‡ à¤®à¥à¤–à¤¿à¤¯à¤¾ à¤•à¥‹ à¤¬à¤¦à¤²à¤¨à¥‡ à¤•à¥‡ à¤²à¤¿à¤ à¤†à¤ªà¤•à¥‹ à¤¸à¤°à¤•à¤¾à¤°à¥€ à¤¨à¤¿à¤¯à¤®à¥‹à¤‚ à¤•à¥‡ à¤…à¤¨à¥à¤¸à¤¾à¤° à¤à¤• à¤¶à¤ªà¤¥ à¤ªà¤¤à¥à¤° (Affidavit) à¤œà¤®à¤¾ à¤•à¤°à¤¨à¤¾ à¤¹à¥‹à¤—à¤¾à¥¤ à¤•à¥ƒà¤ªà¤¯à¤¾ à¤¸à¤¹à¤¾à¤¯à¤¤à¤¾ à¤•à¥‡à¤‚à¤¦à¥à¤° à¤•à¥‡ à¤®à¤¾à¤§à¥à¤¯à¤® à¤¸à¥‡ à¤†à¤µà¥‡à¤¦à¤¨ à¤•à¤°à¥‡à¤‚à¥¤',
+      'default': 'à¤¨à¤®à¤¸à¥à¤¤à¥‡! à¤®à¥à¤à¥‡ à¤†à¤ªà¤•à¤¾ à¤ªà¥à¤°à¤¶à¥à¤¨ à¤ªà¥à¤°à¤¾à¤ªà¥à¤¤ à¤¹à¥à¤†à¥¤ à¤¡à¤¿à¤œà¤¿à¤Ÿà¤² à¤ªà¤°à¤¿à¤µà¤¾à¤° à¤ªà¥‹à¤°à¥à¤Ÿà¤² à¤®à¥‡à¤‚ à¤†à¤ª à¤¸à¤¦à¤¸à¥à¤¯ à¤œà¥‹à¤¡à¤¼à¤¨à¥‡, à¤¹à¤Ÿà¤¾à¤¨à¥‡ à¤¯à¤¾ à¤‰à¤¨à¤•à¥‡ à¤¦à¤¸à¥à¤¤à¤¾à¤µà¥‡à¤œà¥‹à¤‚ à¤•à¥‹ à¤¸à¤¤à¥à¤¯à¤¾à¤ªà¤¿à¤¤ à¤•à¤°à¤¨à¥‡ à¤•à¥€ à¤œà¤¾à¤¨à¤•à¤¾à¤°à¥€ à¤ªà¤¾ à¤¸à¤•à¤¤à¥‡ à¤¹à¥ˆà¤‚à¥¤'
     },
     ta: {
-      'How do I add a spouse?': 'துணையைச் சேர்க்க, "Add Family Member" பொத்தானைக் கிளிக் செய்யவும், அல்லது குடும்ப மரத்தில் உள்ள "+ Add Spouse" கார்டைக் கிளிக் செய்யவும்.',
-      'How do I update my child\'s information?': 'குழந்தையின் தகவலை மாற்ற, உறுப்பினர் அடைவு (Directory) பகுதிக்குச் சென்று திருத்தவும்.',
-      'default': 'வணக்கம்! உங்களது கேள்வி எனக்குப் புரிந்தது. கணக்கெடுப்புத் தரவு மற்றும் குடும்ப உறுப்பினர்களைப் பற்றி ஏதேனும் உதவி தேவைப்படின் கேட்கலாம்.'
+      'How do I add a spouse?': 'à®¤à¯à®£à¯ˆà®¯à¯ˆà®šà¯ à®šà¯‡à®°à¯à®•à¯à®•, "Add Family Member" à®ªà¯Šà®¤à¯à®¤à®¾à®©à¯ˆà®•à¯ à®•à®¿à®³à®¿à®•à¯ à®šà¯†à®¯à¯à®¯à®µà¯à®®à¯, à®…à®²à¯à®²à®¤à¯ à®•à¯à®Ÿà¯à®®à¯à®ª à®®à®°à®¤à¯à®¤à®¿à®²à¯ à®‰à®³à¯à®³ "+ Add Spouse" à®•à®¾à®°à¯à®Ÿà¯ˆà®•à¯ à®•à®¿à®³à®¿à®•à¯ à®šà¯†à®¯à¯à®¯à®µà¯à®®à¯.',
+      'How do I update my child\'s information?': 'à®•à¯à®´à®¨à¯à®¤à¯ˆà®¯à®¿à®©à¯ à®¤à®•à®µà®²à¯ˆ à®®à®¾à®±à¯à®±, à®‰à®±à¯à®ªà¯à®ªà®¿à®©à®°à¯ à®…à®Ÿà¯ˆà®µà¯ (Directory) à®ªà®•à¯à®¤à®¿à®•à¯à®•à¯à®šà¯ à®šà¯†à®©à¯à®±à¯ à®¤à®¿à®°à¯à®¤à¯à®¤à®µà¯à®®à¯.',
+      'default': 'à®µà®£à®•à¯à®•à®®à¯! à®‰à®™à¯à®•à®³à®¤à¯ à®•à¯‡à®³à¯à®µà®¿ à®Žà®©à®•à¯à®•à¯à®ªà¯ à®ªà¯à®°à®¿à®¨à¯à®¤à®¤à¯. à®•à®£à®•à¯à®•à¯†à®Ÿà¯à®ªà¯à®ªà¯à®¤à¯ à®¤à®°à®µà¯ à®®à®±à¯à®±à¯à®®à¯ à®•à¯à®Ÿà¯à®®à¯à®ª à®‰à®±à¯à®ªà¯à®ªà®¿à®©à®°à¯à®•à®³à¯ˆà®ªà¯ à®ªà®±à¯à®±à®¿ à®à®¤à¯‡à®©à¯à®®à¯ à®‰à®¤à®µà®¿ à®¤à¯‡à®µà¯ˆà®ªà¯à®ªà®Ÿà®¿à®©à¯ à®•à¯‡à®Ÿà¯à®•à®²à®¾à®®à¯.'
     }
   };
 
@@ -541,9 +541,9 @@ const FamilyDashboard = () => {
   return (
     <div className="flex-grow w-full bg-[#f8faff] min-h-screen pb-16 relative">
       
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           HERO BANNER SECTION
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <div className="bg-[#0b2447] text-white py-10 px-6 sm:px-12 relative overflow-hidden shadow-lg border-b border-white/5">
         <div className="absolute right-0 top-0 w-96 h-96 bg-[#ff9933]/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute left-1/2 bottom-0 w-80 h-80 bg-[#138808]/15 rounded-full blur-3xl pointer-events-none" />
@@ -636,14 +636,14 @@ const FamilyDashboard = () => {
             <Info className="w-4 h-4 shrink-0 mt-0.5 text-amber-600" />
             <div>
               <p className="font-bold">Genealogy Demo Mode Active</p>
-              <p className="text-amber-700 mt-0.5">Showing mock family data (Grandparents ➔ Parents ➔ Citizen ➔ Children) to demonstrate visualization capabilities. Turn off the toggle in the banner to view your live registry.</p>
+              <p className="text-amber-700 mt-0.5">Showing mock family data (Grandparents âž” Parents âž” Citizen âž” Children) to demonstrate visualization capabilities. Turn off the toggle in the banner to view your live registry.</p>
             </div>
           </div>
         )}
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             SECTION 1: FAMILY OVERVIEW METRIC TILES
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           
           {/* Family Head Info Card */}
@@ -654,7 +654,7 @@ const FamilyDashboard = () => {
             <div className="min-w-0">
               <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Family Head</span>
               <h3 className="text-sm font-extrabold text-[#0b2447] truncate">{activeHead.fullName}</h3>
-              <p className="text-[10px] text-slate-500 mt-0.5">Age: {calculateAge(activeHead.dob)} yrs · {activeHead.gender}</p>
+              <p className="text-[10px] text-slate-500 mt-0.5">Age: {calculateAge(activeHead.dob)} yrs Â· {activeHead.gender}</p>
             </div>
           </div>
 
@@ -716,9 +716,9 @@ const FamilyDashboard = () => {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════════
+        {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
             MAIN CONTENT AREA GRID
-        ══════════════════════════════════════════════════ */}
+        â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT AREA: INTERACTIVE VISUAL PANELS (8 Columns) */}
@@ -781,9 +781,9 @@ const FamilyDashboard = () => {
             {/* TAB CONTAINER SCREEN */}
             <div className="bg-white rounded-3xl border border-slate-100 shadow-sm overflow-hidden min-h-[480px] flex flex-col relative bg-dot-pattern">
               
-              {/* ──────────────────────────────────────────────────
+              {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   TAB A: GENEALOGY FAMILY TREE
-              ────────────────────────────────────────────────── */}
+              â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
               {activeTab === 'tree' && (
                 <div className="flex-grow flex flex-col p-6 overflow-auto">
                   <div className="flex items-center justify-between mb-4 border-b border-slate-150/70 pb-3">
@@ -988,9 +988,9 @@ const FamilyDashboard = () => {
                 </div>
               )}
 
-              {/* ──────────────────────────────────────────────────
+              {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   TAB B: RELATIONSHIP RADIAL MAPPING GRAPH
-              ────────────────────────────────────────────────── */}
+              â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
               {activeTab === 'map' && (
                 <div className="flex-grow flex flex-col p-6 items-center justify-center">
                   <div className="w-full border-b border-slate-100 pb-3 mb-6">
@@ -1093,9 +1093,9 @@ const FamilyDashboard = () => {
                 </div>
               )}
 
-              {/* ──────────────────────────────────────────────────
+              {/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
                   TAB C: SEARCHABLE MEMBER DIRECTORY
-              ────────────────────────────────────────────────── */}
+              â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
               {activeTab === 'directory' && (
                 <div className="flex-grow flex flex-col p-6">
                   
@@ -1169,7 +1169,7 @@ const FamilyDashboard = () => {
                               </span>
                             </td>
                             <td className="p-3 text-slate-500 font-semibold">
-                              {calculateAge(m.dob)} yrs · {m.gender}
+                              {calculateAge(m.dob)} yrs Â· {m.gender}
                             </td>
                             <td className="p-3">
                               <span className={`inline-flex items-center gap-1 text-[9px] font-bold uppercase px-2 py-0.5 rounded-full ${
@@ -1498,9 +1498,9 @@ const FamilyDashboard = () => {
 
       </div>
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           AI FAMILY ASSISTANT FLOATING CHAT SCREEN
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <button 
         onClick={() => setChatOpen(prev => !prev)}
         className="fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-105 active:scale-95 transition-all z-50 cursor-pointer text-white"
@@ -1536,8 +1536,8 @@ const FamilyDashboard = () => {
                 className="bg-transparent text-[10px] font-bold text-white border-none outline-none cursor-pointer"
               >
                 <option value="en" className="text-slate-800">English</option>
-                <option value="hi" className="text-slate-800">हिन्दी</option>
-                <option value="ta" className="text-slate-800">தமிழ்</option>
+                <option value="hi" className="text-slate-800">à¤¹à¤¿à¤¨à¥à¤¦à¥€</option>
+                <option value="ta" className="text-slate-800">à®¤à®®à®¿à®´à¯</option>
               </select>
             </div>
           </div>
@@ -1605,9 +1605,9 @@ const FamilyDashboard = () => {
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           MODAL 1: REGISTER NEW MEMBER FORM (Add modal)
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {isAddModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl shadow-2xl border border-slate-150 w-full max-w-xl overflow-hidden animate-scale-in">
@@ -1815,9 +1815,9 @@ const FamilyDashboard = () => {
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           MODAL 2: EDIT HOUSEHOLD PROPERTY SUMMARY
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {isEditHouseholdOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl shadow-2xl border border-slate-150 w-full max-w-md overflow-hidden animate-scale-in">
@@ -1901,9 +1901,9 @@ const FamilyDashboard = () => {
         </div>
       )}
 
-      {/* ══════════════════════════════════════════════════
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
           SIDEBAR SLIDEOUT PANEL: INDIVIDUAL PROFILE VIEW
-      ══════════════════════════════════════════════════ */}
+      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       {selectedMember && (
         <div className="fixed inset-0 z-50 flex justify-end bg-slate-900/40 backdrop-blur-xs">
           {/* Overlay dismissal */}
@@ -2046,3 +2046,11 @@ const FamilyDashboard = () => {
 };
 
 export default FamilyDashboard;
+
+
+
+
+
+
+
+
