@@ -31,6 +31,8 @@ import ReportsCenter from './pages/ReportsCenter.jsx';
 import AuditLogs from './pages/AuditLogs.jsx';
 import RolePermissionManagement from './pages/RolePermissionManagement.jsx';
 import SystemSettings from './pages/SystemSettings.jsx';
+import AiInsights from './pages/AiInsights.jsx';
+
 
 
 
@@ -284,6 +286,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <SystemSettings />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/ai-insights"
+          element={
+            <OfficerRoute>
+              <AiInsights />
             </OfficerRoute>
           }
         />

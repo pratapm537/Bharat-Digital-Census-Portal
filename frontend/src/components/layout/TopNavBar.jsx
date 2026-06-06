@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
-import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck, ShieldAlert, LifeBuoy, Mail, Clipboard, Terminal, Settings } from 'lucide-react';
+import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck, ShieldAlert, LifeBuoy, Mail, Clipboard, Terminal, Settings, Brain } from 'lucide-react';
 
 const TopNavBar = () => {
   const { user, logout } = useAuth();
@@ -147,7 +147,7 @@ const TopNavBar = () => {
               >
                 <button 
                   className={`flex items-center gap-1.5 h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 cursor-pointer outline-none ${
-                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/search') || isActive('/admin/document-verification') || isActive('/admin/fraud-detection') || isActive('/admin/grievance-management') || isActive('/admin/communication-center') || isActive('/admin/reports-center') || isActive('/admin/audit-logs') || isActive('/admin/roles-permissions') || isActive('/admin/system-settings')
+                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/ai-insights') || isActive('/admin/search') || isActive('/admin/document-verification') || isActive('/admin/fraud-detection') || isActive('/admin/grievance-management') || isActive('/admin/communication-center') || isActive('/admin/reports-center') || isActive('/admin/audit-logs') || isActive('/admin/roles-permissions') || isActive('/admin/system-settings')
                       ? 'border-primary text-primary' 
                       : 'border-transparent'
                   }`}
@@ -173,6 +173,15 @@ const TopNavBar = () => {
                       }`}
                     >
                       <BarChart2 className="w-4 h-4 text-primary" /> Population Analytics
+                    </Link>
+                    <Link 
+                      to="/admin/ai-insights" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/ai-insights') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <Brain className="w-4 h-4 text-primary" /> AI Insights Dashboard
                     </Link>
                     <Link 
                       to="/admin/search" 
@@ -426,6 +435,13 @@ const TopNavBar = () => {
                     className={`font-semibold py-1.5 text-xs ${isActive('/admin/analytics') ? 'text-primary' : 'text-onSurfaceVariant'}`}
                   >
                     Population Analytics
+                  </Link>
+                  <Link 
+                    to="/admin/ai-insights" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/ai-insights') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    AI Insights Dashboard
                   </Link>
                   <Link 
                     to="/admin/search" 
