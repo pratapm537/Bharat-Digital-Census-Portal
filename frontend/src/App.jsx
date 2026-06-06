@@ -23,6 +23,7 @@ import TerritoryManagement from './pages/TerritoryManagement.jsx';
 import FieldVerificationManagement from './pages/FieldVerificationManagement.jsx';
 import PopulationAnalytics from './pages/PopulationAnalytics.jsx';
 import CitizenSearch from './pages/CitizenSearch.jsx';
+import DocumentVerification from './pages/DocumentVerification.jsx';
 
 
 // Guard for authenticated Citizen routes
@@ -210,6 +211,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <CitizenSearch />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/document-verification"
+          element={
+            <OfficerRoute>
+              <DocumentVerification />
             </OfficerRoute>
           }
         />

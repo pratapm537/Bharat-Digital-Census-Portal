@@ -162,6 +162,14 @@ const TopNavBar = () => {
               >
                 Citizen Search
               </Link>
+              <Link 
+                to="/admin/document-verification" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/admin/document-verification') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Document Verification
+              </Link>
             </>
           )}
         </nav>
@@ -328,6 +336,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/search') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Citizen Search
+              </Link>
+              <Link 
+                to="/admin/document-verification" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/document-verification') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Document Verification
               </Link>
             </>
           )}
