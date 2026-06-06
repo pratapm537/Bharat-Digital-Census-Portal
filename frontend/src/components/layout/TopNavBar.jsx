@@ -154,6 +154,14 @@ const TopNavBar = () => {
               >
                 Population Analytics
               </Link>
+              <Link 
+                to="/admin/search" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/admin/search') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Citizen Search
+              </Link>
             </>
           )}
         </nav>
@@ -313,6 +321,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/analytics') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Population Analytics
+              </Link>
+              <Link 
+                to="/admin/search" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/search') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Citizen Search
               </Link>
             </>
           )}

@@ -22,6 +22,7 @@ import OfficerManagement from './pages/OfficerManagement.jsx';
 import TerritoryManagement from './pages/TerritoryManagement.jsx';
 import FieldVerificationManagement from './pages/FieldVerificationManagement.jsx';
 import PopulationAnalytics from './pages/PopulationAnalytics.jsx';
+import CitizenSearch from './pages/CitizenSearch.jsx';
 
 
 // Guard for authenticated Citizen routes
@@ -201,6 +202,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <PopulationAnalytics />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/search"
+          element={
+            <OfficerRoute>
+              <CitizenSearch />
             </OfficerRoute>
           }
         />
