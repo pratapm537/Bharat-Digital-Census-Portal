@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
-import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck, ShieldAlert, LifeBuoy, Mail, Clipboard } from 'lucide-react';
+import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck, ShieldAlert, LifeBuoy, Mail, Clipboard, Terminal } from 'lucide-react';
 
 const TopNavBar = () => {
   const { user, logout } = useAuth();
@@ -147,7 +147,7 @@ const TopNavBar = () => {
               >
                 <button 
                   className={`flex items-center gap-1.5 h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 cursor-pointer outline-none ${
-                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/search') || isActive('/admin/document-verification') || isActive('/admin/fraud-detection') || isActive('/admin/grievance-management') || isActive('/admin/communication-center') || isActive('/admin/reports-center')
+                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/search') || isActive('/admin/document-verification') || isActive('/admin/fraud-detection') || isActive('/admin/grievance-management') || isActive('/admin/communication-center') || isActive('/admin/reports-center') || isActive('/admin/audit-logs')
                       ? 'border-primary text-primary' 
                       : 'border-transparent'
                   }`}
@@ -227,6 +227,15 @@ const TopNavBar = () => {
                       }`}
                     >
                       <Clipboard className="w-4 h-4 text-primary" /> Reports Center
+                    </Link>
+                    <Link 
+                      to="/admin/audit-logs" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/audit-logs') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <Terminal className="w-4 h-4 text-primary" /> Audit Logs
                     </Link>
                   </div>
                 )}
@@ -441,6 +450,13 @@ const TopNavBar = () => {
                     className={`font-semibold py-1.5 text-xs ${isActive('/admin/reports-center') ? 'text-primary' : 'text-onSurfaceVariant'}`}
                   >
                     Reports Center
+                  </Link>
+                  <Link 
+                    to="/admin/audit-logs" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/audit-logs') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    Audit Logs
                   </Link>
                 </div>
               )}

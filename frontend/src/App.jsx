@@ -28,6 +28,7 @@ import FraudDetection from './pages/FraudDetection.jsx';
 import GrievanceManagement from './pages/GrievanceManagement.jsx';
 import CommunicationCenter from './pages/CommunicationCenter.jsx';
 import ReportsCenter from './pages/ReportsCenter.jsx';
+import AuditLogs from './pages/AuditLogs.jsx';
 
 
 // Guard for authenticated Citizen routes
@@ -255,6 +256,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <ReportsCenter />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/audit-logs"
+          element={
+            <OfficerRoute>
+              <AuditLogs />
             </OfficerRoute>
           }
         />
