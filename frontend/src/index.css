@@ -377,3 +377,19 @@ html {
   display: none !important;
 }
 
+/* Global Dark Mode Hover State Contrast Fixes */
+.dark .hover\:bg-surface-low\/50:hover,
+.dark .hover\:bg-surface-low\/65:hover,
+.dark .hover\:bg-surface-low\/10:hover,
+.dark .hover\:bg-surface-low\/15:hover,
+.dark .hover\:bg-surface-low\/20:hover,
+.dark .hover\:bg-surface-container\/20:hover,
+.dark [class*="hover:bg-surface-low"]:hover,
+.dark [class*="hover:bg-surface-container"]:hover,
+.dark [class*="hover:bg-surface-high"]:hover,
+.dark [class*="hover:bg-surface-highest"]:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+
