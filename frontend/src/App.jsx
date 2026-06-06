@@ -29,6 +29,8 @@ import GrievanceManagement from './pages/GrievanceManagement.jsx';
 import CommunicationCenter from './pages/CommunicationCenter.jsx';
 import ReportsCenter from './pages/ReportsCenter.jsx';
 import AuditLogs from './pages/AuditLogs.jsx';
+import RolePermissionManagement from './pages/RolePermissionManagement.jsx';
+
 
 
 // Guard for authenticated Citizen routes
@@ -267,6 +269,15 @@ const AppContent = () => {
             </OfficerRoute>
           }
         />
+        <Route
+          path="/admin/roles-permissions"
+          element={
+            <OfficerRoute>
+              <RolePermissionManagement />
+            </OfficerRoute>
+          }
+        />
+
 
         {/* Fallback redirect */}
         <Route path="*" element={<Navigate to="/" replace />} />
