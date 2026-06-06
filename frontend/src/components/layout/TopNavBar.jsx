@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
-import { LogOut, User, Menu, X, Landmark, FileText, BarChart2 } from 'lucide-react';
+import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck } from 'lucide-react';
 
 const TopNavBar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [opsDropdownOpen, setOpsDropdownOpen] = useState(false);
+  const [mobileOpsOpen, setMobileOpsOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -138,38 +140,61 @@ const TopNavBar = () => {
               >
                 Territory Management
               </Link>
-              <Link 
-                to="/admin/field-verification" 
-                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
-                  isActive('/admin/field-verification') ? 'border-primary text-primary' : 'border-transparent'
-                }`}
+              <div 
+                className="relative h-full flex items-center"
+                onMouseEnter={() => setOpsDropdownOpen(true)}
+                onMouseLeave={() => setOpsDropdownOpen(false)}
               >
-                Field Verification
-              </Link>
-              <Link 
-                to="/admin/analytics" 
-                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
-                  isActive('/admin/analytics') ? 'border-primary text-primary' : 'border-transparent'
-                }`}
-              >
-                Population Analytics
-              </Link>
-              <Link 
-                to="/admin/search" 
-                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
-                  isActive('/admin/search') ? 'border-primary text-primary' : 'border-transparent'
-                }`}
-              >
-                Citizen Search
-              </Link>
-              <Link 
-                to="/admin/document-verification" 
-                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
-                  isActive('/admin/document-verification') ? 'border-primary text-primary' : 'border-transparent'
-                }`}
-              >
-                Document Verification
-              </Link>
+                <button 
+                  className={`flex items-center gap-1.5 h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 cursor-pointer outline-none ${
+                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/search') || isActive('/admin/document-verification')
+                      ? 'border-primary text-primary' 
+                      : 'border-transparent'
+                  }`}
+                >
+                  Census Operations <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+                {opsDropdownOpen && (
+                  <div className="absolute top-16 left-0 w-56 bg-surface border border-outlineVariant/30 rounded-lg shadow-premium py-2 flex flex-col z-50 animate-fade-in dark:bg-black">
+                    <Link 
+                      to="/admin/field-verification" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/field-verification') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <ClipboardCheck className="w-4 h-4 text-primary" /> Field Verification
+                    </Link>
+                    <Link 
+                      to="/admin/analytics" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/analytics') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <BarChart2 className="w-4 h-4 text-primary" /> Population Analytics
+                    </Link>
+                    <Link 
+                      to="/admin/search" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/search') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <Search className="w-4 h-4 text-primary" /> Citizen Search
+                    </Link>
+                    <Link 
+                      to="/admin/document-verification" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/document-verification') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <ShieldCheck className="w-4 h-4 text-primary" /> Document Verification
+                    </Link>
+                  </div>
+                )}
+              </div>
             </>
           )}
         </nav>
@@ -316,34 +341,45 @@ const TopNavBar = () => {
               >
                 Territory Management
               </Link>
-              <Link 
-                to="/admin/field-verification" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/field-verification') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              <button 
+                onClick={() => setMobileOpsOpen(!mobileOpsOpen)}
+                className="font-semibold py-2 border-b border-outlineVariant/20 text-onSurfaceVariant text-left flex justify-between items-center w-full cursor-pointer outline-none"
               >
-                Field Verification
-              </Link>
-              <Link 
-                to="/admin/analytics" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/analytics') ? 'text-primary' : 'text-onSurfaceVariant'}`}
-              >
-                Population Analytics
-              </Link>
-              <Link 
-                to="/admin/search" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/search') ? 'text-primary' : 'text-onSurfaceVariant'}`}
-              >
-                Citizen Search
-              </Link>
-              <Link 
-                to="/admin/document-verification" 
-                onClick={() => setMobileMenuOpen(false)}
-                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/document-verification') ? 'text-primary' : 'text-onSurfaceVariant'}`}
-              >
-                Document Verification
-              </Link>
+                <span>Census Operations</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileOpsOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {mobileOpsOpen && (
+                <div className="flex flex-col pl-4 border-l border-outlineVariant/20 gap-2 mt-1 animate-fade-in">
+                  <Link 
+                    to="/admin/field-verification" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/field-verification') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    Field Verification
+                  </Link>
+                  <Link 
+                    to="/admin/analytics" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/analytics') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    Population Analytics
+                  </Link>
+                  <Link 
+                    to="/admin/search" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/search') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    Citizen Search
+                  </Link>
+                  <Link 
+                    to="/admin/document-verification" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/document-verification') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    Document Verification
+                  </Link>
+                </div>
+              )}
             </>
           )}
 
