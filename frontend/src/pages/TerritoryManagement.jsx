@@ -532,6 +532,14 @@ const TerritoryManagement = () => {
         .dark .flex-grow .absolute.z-20 {
           background-color: #000000 !important;
         }
+        .dark select option {
+          background-color: #000000 !important;
+          color: #ffffff !important;
+        }
+        select option {
+          background-color: #ffffff;
+          color: #191c1e;
+        }
       `}</style>
       
       {/* FEEDBACK SYSTEM */}

@@ -146,6 +146,14 @@ const PopulationAnalytics = () => {
         .dark .flex-grow .absolute.z-20 {
           background-color: #000000 !important;
         }
+        .dark select option {
+          background-color: #000000 !important;
+          color: #ffffff !important;
+        }
+        select option {
+          background-color: #ffffff;
+          color: #191c1e;
+        }
       `}</style>
 
       {/* TOAST FEEDBACKS */}
@@ -184,8 +192,8 @@ const PopulationAnalytics = () => {
               }}
               className="px-3 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg text-xs outline-none"
             >
-              <option value="" className="text-primary-dark">Select State</option>
-              {INITIAL_STATES.map(s => <option key={s.id} value={s.id} className="text-primary-dark">{s.name}</option>)}
+              <option value="" className="bg-surface dark:bg-black text-onSurface dark:text-white">Select State</option>
+              {INITIAL_STATES.map(s => <option key={s.id} value={s.id} className="bg-surface dark:bg-black text-onSurface dark:text-white">{s.name}</option>)}
             </select>
           </div>
 
