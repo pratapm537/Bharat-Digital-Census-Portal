@@ -613,7 +613,7 @@ const RolePermissionManagement = () => {
               Permissions cascade downwards in the structure. Super Administrators inherit all controls of child entities, while lower nodes carry localized functional restrictions.
             </p>
 
-            <div className="flex flex-col items-center gap-1.5 bg-surface-low/40 p-4 rounded-xl border border-outlineVariant/20 mt-2">
+            <div className="flex flex-col items-center gap-1.5 bg-surface-low p-4 rounded-xl border border-outlineVariant/20 mt-2">
               <div className="bg-primary text-white font-bold text-[10px] px-3.5 py-1 rounded-full border border-white/20 shadow-sm flex items-center gap-1">
                 <Globe className="w-3 h-3 text-secondary animate-spin" /> India Census System
               </div>
