@@ -24,6 +24,7 @@ import FieldVerificationManagement from './pages/FieldVerificationManagement.jsx
 import PopulationAnalytics from './pages/PopulationAnalytics.jsx';
 import CitizenSearch from './pages/CitizenSearch.jsx';
 import DocumentVerification from './pages/DocumentVerification.jsx';
+import FraudDetection from './pages/FraudDetection.jsx';
 
 
 // Guard for authenticated Citizen routes
@@ -219,6 +220,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <DocumentVerification />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/fraud-detection"
+          element={
+            <OfficerRoute>
+              <FraudDetection />
             </OfficerRoute>
           }
         />
