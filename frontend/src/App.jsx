@@ -20,6 +20,7 @@ import GrievanceCenter from './pages/GrievanceCenter.jsx';
 import ProfileManagement from './pages/ProfileManagement.jsx';
 import OfficerManagement from './pages/OfficerManagement.jsx';
 import TerritoryManagement from './pages/TerritoryManagement.jsx';
+import FieldVerificationManagement from './pages/FieldVerificationManagement.jsx';
 
 
 // Guard for authenticated Citizen routes
@@ -183,6 +184,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <TerritoryManagement />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/field-verification"
+          element={
+            <OfficerRoute>
+              <FieldVerificationManagement />
             </OfficerRoute>
           }
         />
