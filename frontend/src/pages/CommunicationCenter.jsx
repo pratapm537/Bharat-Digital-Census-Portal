@@ -526,9 +526,9 @@ const CommunicationCenter = () => {
                       <div className="bg-slate-800 text-[9px] py-1 rounded text-center mb-2 font-semibold text-slate-300">
                         💬 +91 BHARAT-CEN
                       </div>
-                      <div className="bg-[#e9e9eb] text-slate-800 p-2.5 rounded-lg text-[10px] leading-relaxed relative">
+                      <div className="bg-blue-600 text-white p-2.5 rounded-lg text-[10px] leading-relaxed relative">
                         {smsText}
-                        <div className="text-[8px] text-slate-400 text-right mt-1.5">Just Now</div>
+                        <div className="text-[8px] text-blue-200 text-right mt-1.5">Just Now</div>
                       </div>
                     </div>
                   </div>
