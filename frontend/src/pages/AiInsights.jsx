@@ -4,7 +4,7 @@ import {
   Zap, Brain, TrendingUp, Compass, Sliders, AlertTriangle, 
   CheckCircle2, AlertCircle, Download, RefreshCw, HelpCircle, 
   MapPin, Clock, ArrowRight, UserCheck, Users, Activity, BarChart2, 
-  FileText, Shield, ShieldAlert, ChevronRight, Settings, Info,
+  FileText, Shield, ShieldAlert, ShieldCheck, ChevronRight, Settings, Info,
   Mail, Phone, Globe, Terminal, Server, Plus, Target
 } from 'lucide-react';
 
