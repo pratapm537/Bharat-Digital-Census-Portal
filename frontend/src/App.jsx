@@ -30,6 +30,8 @@ import CommunicationCenter from './pages/CommunicationCenter.jsx';
 import ReportsCenter from './pages/ReportsCenter.jsx';
 import AuditLogs from './pages/AuditLogs.jsx';
 import RolePermissionManagement from './pages/RolePermissionManagement.jsx';
+import SystemSettings from './pages/SystemSettings.jsx';
+
 
 
 
@@ -277,6 +279,15 @@ const AppContent = () => {
             </OfficerRoute>
           }
         />
+        <Route
+          path="/admin/system-settings"
+          element={
+            <OfficerRoute>
+              <SystemSettings />
+            </OfficerRoute>
+          }
+        />
+
 
 
         {/* Fallback redirect */}

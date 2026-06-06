@@ -147,7 +147,7 @@ const TopNavBar = () => {
               >
                 <button 
                   className={`flex items-center gap-1.5 h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 cursor-pointer outline-none ${
-                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/search') || isActive('/admin/document-verification') || isActive('/admin/fraud-detection') || isActive('/admin/grievance-management') || isActive('/admin/communication-center') || isActive('/admin/reports-center') || isActive('/admin/audit-logs') || isActive('/admin/roles-permissions')
+                    isActive('/admin/field-verification') || isActive('/admin/analytics') || isActive('/admin/search') || isActive('/admin/document-verification') || isActive('/admin/fraud-detection') || isActive('/admin/grievance-management') || isActive('/admin/communication-center') || isActive('/admin/reports-center') || isActive('/admin/audit-logs') || isActive('/admin/roles-permissions') || isActive('/admin/system-settings')
                       ? 'border-primary text-primary' 
                       : 'border-transparent'
                   }`}
@@ -245,6 +245,15 @@ const TopNavBar = () => {
                       }`}
                     >
                       <ShieldCheck className="w-4 h-4 text-primary" /> Access Control
+                    </Link>
+                    <Link 
+                      to="/admin/system-settings" 
+                      onClick={() => setOpsDropdownOpen(false)}
+                      className={`px-4 py-2 text-xs font-semibold hover:bg-primary/5 transition-colors flex items-center gap-2 ${
+                        isActive('/admin/system-settings') ? 'text-primary bg-primary/5' : 'text-onSurfaceVariant'
+                      }`}
+                    >
+                      <Settings className="w-4 h-4 text-primary" /> System Settings
                     </Link>
                   </div>
                 )}
@@ -473,6 +482,13 @@ const TopNavBar = () => {
                     className={`font-semibold py-1.5 text-xs ${isActive('/admin/roles-permissions') ? 'text-primary' : 'text-onSurfaceVariant'}`}
                   >
                     Access Control (IAM)
+                  </Link>
+                  <Link 
+                    to="/admin/system-settings" 
+                    onClick={() => { setMobileMenuOpen(false); setMobileOpsOpen(false); }}
+                    className={`font-semibold py-1.5 text-xs ${isActive('/admin/system-settings') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+                  >
+                    System Settings
                   </Link>
                 </div>
               )}
