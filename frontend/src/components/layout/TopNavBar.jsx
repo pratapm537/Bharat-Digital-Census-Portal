@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
-import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck, ShieldAlert, LifeBuoy, Mail, Clipboard, Terminal } from 'lucide-react';
+import { LogOut, User, Menu, X, Landmark, FileText, BarChart2, ChevronDown, ClipboardCheck, Search, ShieldCheck, ShieldAlert, LifeBuoy, Mail, Clipboard, Terminal, Settings } from 'lucide-react';
 
 const TopNavBar = () => {
   const { user, logout } = useAuth();
