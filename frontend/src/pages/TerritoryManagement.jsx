@@ -528,7 +528,8 @@ const TerritoryManagement = () => {
         .dark .flex-grow .bg-surface-high,
         .dark .flex-grow .bg-surface-highest,
         .dark .flex-grow .bg-white,
-        .dark .flex-grow .premium-card {
+        .dark .flex-grow .premium-card,
+        .dark .flex-grow .absolute.z-20 {
           background-color: #000000 !important;
         }
       `}</style>
