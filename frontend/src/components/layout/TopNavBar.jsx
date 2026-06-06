@@ -130,6 +130,14 @@ const TopNavBar = () => {
               >
                 Officer Management
               </Link>
+              <Link 
+                to="/admin/territories" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/admin/territories') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Territory Management
+              </Link>
             </>
           )}
         </nav>
@@ -268,6 +276,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/officers') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Officer Management
+              </Link>
+              <Link 
+                to="/admin/territories" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/territories') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Territory Management
               </Link>
             </>
           )}

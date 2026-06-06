@@ -19,6 +19,8 @@ import NotificationCenter from './pages/NotificationCenter.jsx';
 import GrievanceCenter from './pages/GrievanceCenter.jsx';
 import ProfileManagement from './pages/ProfileManagement.jsx';
 import OfficerManagement from './pages/OfficerManagement.jsx';
+import TerritoryManagement from './pages/TerritoryManagement.jsx';
+
 
 // Guard for authenticated Citizen routes
 const CitizenRoute = ({ children }) => {
@@ -173,6 +175,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <OfficerManagement />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/territories"
+          element={
+            <OfficerRoute>
+              <TerritoryManagement />
             </OfficerRoute>
           }
         />
