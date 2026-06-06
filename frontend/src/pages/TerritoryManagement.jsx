@@ -521,6 +521,17 @@ const TerritoryManagement = () => {
 
   return (
     <div className="flex-grow w-full max-w-containerMax mx-auto px-6 py-8 flex flex-col gap-8 text-onSurface bg-background">
+      <style>{`
+        .dark .flex-grow .bg-surface,
+        .dark .flex-grow .bg-surface-low,
+        .dark .flex-grow .bg-surface-container,
+        .dark .flex-grow .bg-surface-high,
+        .dark .flex-grow .bg-surface-highest,
+        .dark .flex-grow .bg-white,
+        .dark .flex-grow .premium-card {
+          background-color: #000000 !important;
+        }
+      `}</style>
       
       {/* FEEDBACK SYSTEM */}
       {feedback.message && (
@@ -538,9 +549,6 @@ const TerritoryManagement = () => {
 
       {/* SECTION 1: PAGE HEADER */}
       <section className="relative overflow-hidden rounded-xl border border-outlineVariant/50 bg-primary p-6 text-white shadow-ambient flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div className="absolute right-0 top-0 opacity-10 pointer-events-none transform translate-x-8 -translate-y-8">
-          <Globe className="w-64 h-64 text-white" />
-        </div>
         
         <div className="flex flex-col gap-2 relative z-10">
           <div className="flex items-center gap-2">
