@@ -146,6 +146,14 @@ const TopNavBar = () => {
               >
                 Field Verification
               </Link>
+              <Link 
+                to="/admin/analytics" 
+                className={`flex items-center h-full px-2 text-onSurfaceVariant hover:text-primary transition-colors border-b-2 ${
+                  isActive('/admin/analytics') ? 'border-primary text-primary' : 'border-transparent'
+                }`}
+              >
+                Population Analytics
+              </Link>
             </>
           )}
         </nav>
@@ -298,6 +306,13 @@ const TopNavBar = () => {
                 className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/field-verification') ? 'text-primary' : 'text-onSurfaceVariant'}`}
               >
                 Field Verification
+              </Link>
+              <Link 
+                to="/admin/analytics" 
+                onClick={() => setMobileMenuOpen(false)}
+                className={`font-semibold py-2 border-b border-outlineVariant/20 ${isActive('/admin/analytics') ? 'text-primary' : 'text-onSurfaceVariant'}`}
+              >
+                Population Analytics
               </Link>
             </>
           )}

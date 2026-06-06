@@ -21,6 +21,7 @@ import ProfileManagement from './pages/ProfileManagement.jsx';
 import OfficerManagement from './pages/OfficerManagement.jsx';
 import TerritoryManagement from './pages/TerritoryManagement.jsx';
 import FieldVerificationManagement from './pages/FieldVerificationManagement.jsx';
+import PopulationAnalytics from './pages/PopulationAnalytics.jsx';
 
 
 // Guard for authenticated Citizen routes
@@ -192,6 +193,14 @@ const AppContent = () => {
           element={
             <OfficerRoute>
               <FieldVerificationManagement />
+            </OfficerRoute>
+          }
+        />
+        <Route
+          path="/admin/analytics"
+          element={
+            <OfficerRoute>
+              <PopulationAnalytics />
             </OfficerRoute>
           }
         />
